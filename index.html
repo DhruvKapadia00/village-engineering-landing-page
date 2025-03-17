@@ -3,191 +3,357 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Village Labs - AI-Powered Knowledge for Engineering Teams</title>
+    <title>Village Labs - Save Your Engineering Team Hours Every Week</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Header/Navbar -->
     <header>
         <div class="container">
-            <nav>
-                <div class="logo">
-                    <a href="#">
-                        <img src="images/village-logo.svg" alt="Village Labs Logo" class="village-logo">
-                    </a>
+            <nav class="navbar">
+                <div class="nav-logo">
+                    <img src="images/village-logo.png" alt="Village Labs Logo" class="village-logo">
                 </div>
                 <div class="nav-buttons">
-                    <a href="https://www.villagelabs.ai/get-started" class="primary-btn">Book a Demo</a>
+                    <a href="https://www.villagelabs.ai/get-started" class="button-primary">Schedule Your Demo</a>
                 </div>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1>Code More, Manage Less.</h1>
-                <h3 class="hero-description">Village instantly answers engineering questions by connecting and synthesizing context across Slack, Jira, Notion, GitHub, and more—saving your engineers 8+ hours every week.</h3>
-                <div class="cta-buttons">
-                    <a href="https://www.villagelabs.ai/get-started" class="primary-btn">Book a Demo</a>
-                </div>
-                <div class="video-container hero-video">
-                    <video id="hero-video" controls>
-                        <source src="videos/hero-video.mp4?v=2" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="title home-hero">Save Your Engineering Team Hours Every Week with Village</h1>
+                    <p class="subtitle">Instantly find answers, automate PR reviews, and gain deep insights into your team's workflow.</p>
+                    <ul class="hero-bullets">
+                        <li>Instant access to knowledge across all your tools</li>
+                        <li>Automated, accurate code review summaries</li>
+                        <li>Deep organizational memory (OM1) understands your team's work, progress, and bottlenecks</li>
+                    </ul>
+                    <p class="risk-reversal">Get set up securely in just 30 minutes, SOC 2 and GDPR compliant.</p>
+                    <div class="hero-buttons">
+                        <a href="https://www.villagelabs.ai/get-started" class="button-primary">Schedule Your Demo</a>
+                    </div>
                 </div>
                 <div class="hero-image">
-                    <div class="placeholder-box">
-                        <i class="fas fa-image"></i>
-                        <p>Engineering Productivity Dashboard</p>
+                    <img src="images/hero-demo.gif" alt="Village Demo" class="hero-demo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logo Carousel Section -->
+    <section class="logo-carousel">
+        <div class="container">
+            <h2 class="text-center">Trusted by innovative engineering teams</h2>
+            <div class="carousel">
+                <div class="carousel-track">
+                    <!-- Original slides -->
+                    <div class="carousel-slide">
+                        <img src="images/logos/new/upbound logo.jpg" alt="Upbound Logo">
+                        <p class="company-name">Upbound</p>
+                        <p class="company-desc">Cloud infrastructure automation</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/logos/new/xlabs logo.jpg" alt="xLabs Logo">
+                        <p class="company-name">xLabs</p>
+                        <p class="company-desc">AI/ML and software development</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/logos/new/curri logo.png" alt="Curri Logo">
+                        <p class="company-name">Curri</p>
+                        <p class="company-desc">Logistics platform with tech-heavy automation</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/logos/new/Draiver logo.png" alt="Draiver Logo">
+                        <p class="company-name">Draiver</p>
+                        <p class="company-desc">Fleet management and AI-driven logistics</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/logos/new/Tusdatos logo.jpg" alt="Tusdatos Logo">
+                        <p class="company-name">Tusdatos</p>
+                        <p class="company-desc">Data-driven identity verification</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/logos/new/Packsmith logo.png" alt="Packsmith Logo">
+                        <p class="company-name">Packsmith</p>
+                        <p class="company-desc">Tech-driven logistics & packaging</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/logos/new/Bonsai logo.jpg" alt="Bonsai Logo">
+                        <p class="company-name">Bonsai</p>
+                        <p class="company-desc">Software for freelancers and businesses</p>
+                    </div>
+                    
+                    <!-- Duplicate slides for infinite scroll effect -->
+                    <div class="carousel-slide">
+                        <img src="images/logos/new/upbound logo.jpg" alt="Upbound Logo">
+                        <p class="company-name">Upbound</p>
+                        <p class="company-desc">Cloud infrastructure automation</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/logos/new/xlabs logo.jpg" alt="xLabs Logo">
+                        <p class="company-name">xLabs</p>
+                        <p class="company-desc">AI/ML and software development</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/logos/new/curri logo.png" alt="Curri Logo">
+                        <p class="company-name">Curri</p>
+                        <p class="company-desc">Logistics platform with tech-heavy automation</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/logos/new/Draiver logo.png" alt="Draiver Logo">
+                        <p class="company-name">Draiver</p>
+                        <p class="company-desc">Fleet management and AI-driven logistics</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/logos/new/Tusdatos logo.jpg" alt="Tusdatos Logo">
+                        <p class="company-name">Tusdatos</p>
+                        <p class="company-desc">Data-driven identity verification</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/logos/new/Packsmith logo.png" alt="Packsmith Logo">
+                        <p class="company-name">Packsmith</p>
+                        <p class="company-desc">Tech-driven logistics & packaging</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/logos/new/Bonsai logo.jpg" alt="Bonsai Logo">
+                        <p class="company-name">Bonsai</p>
+                        <p class="company-desc">Software for freelancers and businesses</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="problem-solution">
-            <div class="container">
-                <h2>Engineers spend 8+ hours a week searching for information across Slack, Jira, Notion, and GitHub.</h2>
-                <p class="section-description">With Village, you just ask—and AI finds the right answer in seconds.</p>
+    <!-- Comparison Section -->
+    <section class="comparison-section">
+        <div class="container">
+            <h2>Engineering Teams Before & After Village Labs</h2>
+            <p class="section-description">See how Village Labs transforms your engineering workflows and saves your team valuable time.</p>
+            
+            <div class="comparison-table">
+                <div class="comparison-row">
+                    <div class="comparison-cell before">
+                        <span class="status-indicator red">Before Village Labs</span>
+                        <h4>Hours spent searching for information</h4>
+                        <p>Engineers waste 30% of their time searching across Slack, Jira, Confluence, and other tools to find the information they need.</p>
+                    </div>
+                    <div class="comparison-cell after">
+                        <span class="status-indicator green">After Village Labs</span>
+                        <h4>Instant information retrieval</h4>
+                        <p>Engineers get immediate answers to their questions from a single interface that searches across all connected tools.</p>
+                    </div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell before">
+                        <span class="status-indicator red">Before Village Labs</span>
+                        <h4>Manual code reviews</h4>
+                        <p>Senior engineers spend hours reviewing PRs, creating bottlenecks and slowing down development cycles.</p>
+                    </div>
+                    <div class="comparison-cell after">
+                        <span class="status-indicator green">After Village Labs</span>
+                        <h4>Automated PR reviews</h4>
+                        <p>AI-powered code reviews provide instant feedback, catching issues early and freeing up senior engineers' time.</p>
+                    </div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell before">
+                        <span class="status-indicator red">Before Village Labs</span>
+                        <h4>Knowledge silos</h4>
+                        <p>Critical information gets lost in threads, documents, and tribal knowledge, causing repeated mistakes and duplicated work.</p>
+                    </div>
+                    <div class="comparison-cell after">
+                        <span class="status-indicator green">After Village Labs</span>
+                        <h4>Organizational Memory (OM1)</h4>
+                        <p>All your team's knowledge is preserved, organized, and made instantly accessible to everyone who needs it.</p>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="demo" class="demo">
-            <div class="container">
-                <h2>Watch a 60-Second Demo: See Village in Action</h2>
-                <p class="section-description">Witness exactly how your engineers save 8+ hours per week with Village:</p>
-                <div class="use-case-container">
-                    <ul class="use-case-list">
-                        <li><strong>Instantly find "latest API documentation."</strong></li>
-                        <li><strong>Immediately retrieve "deployment steps" from Jira.</strong></li>
-                        <li><strong>Get quick answers on "team discussions about recent API changes."</strong></li>
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <h2>Key Features & Benefits</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📌</div>
+                    <h3>Instant Info Retrieval</h3>
+                    <p class="feature-tagline">"Stop searching. Start understanding your team's work."</p>
+                    <ul class="feature-list">
+                        <li>AI-powered knowledge graph ranks information by relevance.</li>
+                        <li>Cross-platform search instantly retrieves answers from Slack, Notion, Jira, GitHub, and Google Drive.</li>
+                        <li>Multi-resolution data handling from high-level reports to raw data.</li>
                     </ul>
                 </div>
-                <div class="video-container">
-                    <video id="demo-video" controls>
-                        <source src="videos/demo-video-v3.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Automated Code Reviews</h3>
+                    <p class="feature-tagline">"Review PRs in seconds, not hours—get AI-powered summaries with key insights."</p>
+                    <ul class="feature-list">
+                        <li>AI-powered GitHub PR bot automatically generates code summaries and test cases.</li>
+                        <li>Automated pull request analysis highlights key changes and risks.</li>
+                        <li>Built-in security scanning catches vulnerabilities before deployment.</li>
+                    </ul>
                 </div>
-                <div class="cta-buttons">
-                    <a href="https://www.villagelabs.ai/get-started" class="primary-btn">Book Your Session</a>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>AI-Powered Engineering Memory</h3>
+                    <p class="feature-tagline">"Village understands team collaboration, workflows, and blockers—not just individual answers."</p>
+                    <ul class="feature-list">
+                        <li>Automated daily & weekly status reporting eliminates manual check-ins.</li>
+                        <li>Meeting intelligence: Transcribes, summarizes, and surfaces key action items.</li>
+                        <li>Performance coaching: Uses data-driven insights to provide actionable feedback for engineers.</li>
+                    </ul>
                 </div>
-            </div>
-        </section>
-
-        <section class="testimonial">
-            <div class="container">
-                <h2>Trusted by High-Performance Engineering Teams</h2>
-                <div class="testimonial-card">
-                    <p class="quote">"With Village, our engineers stopped wasting hours every week searching across multiple apps. Information is instantly accessible, onboarding new hires takes days instead of weeks, and our senior engineers finally have space to focus on challenging work again."</p>
-                    <p class="author">— VP of Engineering, SaaS Startup</p>
-                </div>
-                <p class="highlight-text">Engineering teams using Village see an average of 8+ hours saved per engineer per week.</p>
-            </div>
-        </section>
-
-        <section id="comparison" class="comparison">
-            <div class="container">
-                <h2>Village vs. Other Tools: Why Engineering Teams Choose Village</h2>
-                <div class="comparison-table">
-                    <div class="comparison-header">
-                        <div class="comparison-cell"></div>
-                        <div class="comparison-cell">Village</div>
-                        <div class="comparison-cell">Traditional Search Tools</div>
-                    </div>
-                    <div class="comparison-row">
-                        <div class="comparison-cell">Instant cross-app answers</div>
-                        <div class="comparison-cell"><i class="fas fa-check-circle"></i></div>
-                        <div class="comparison-cell">Limited</div>
-                    </div>
-                    <div class="comparison-row">
-                        <div class="comparison-cell">Comprehensive organizational memory</div>
-                        <div class="comparison-cell"><i class="fas fa-check-circle"></i></div>
-                        <div class="comparison-cell"><i class="fas fa-times-circle"></i></div>
-                    </div>
-                    <div class="comparison-row">
-                        <div class="comparison-cell">AI-powered documentation generation</div>
-                        <div class="comparison-cell"><i class="fas fa-check-circle"></i></div>
-                        <div class="comparison-cell"><i class="fas fa-times-circle"></i></div>
-                    </div>
-                    <div class="comparison-row">
-                        <div class="comparison-cell">Automated meeting summaries & context understanding</div>
-                        <div class="comparison-cell"><i class="fas fa-check-circle"></i></div>
-                        <div class="comparison-cell"><i class="fas fa-times-circle"></i></div>
-                    </div>
-                    <div class="comparison-row">
-                        <div class="comparison-cell">Context-aware onboarding assistance</div>
-                        <div class="comparison-cell"><i class="fas fa-check-circle"></i></div>
-                        <div class="comparison-cell"><i class="fas fa-times-circle"></i></div>
-                    </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Workflow Automation & Team Intelligence</h3>
+                    <p class="feature-tagline">"Eliminate manual overhead and increase engineering velocity."</p>
+                    <ul class="feature-list">
+                        <li>Automated task tracking connects Jira and GitHub issues to real progress updates.</li>
+                        <li>Custom AI workflows automate repetitive engineering tasks like documentation updates.</li>
+                        <li>Advanced engineering analytics provide visibility into team velocity, blockers, and bottlenecks.</li>
+                    </ul>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="faq" class="faq">
-            <div class="container">
-                <h2>Common Engineering Questions about Village</h2>
-                <div class="faq-accordion">
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>How does Village differ from tools like Glean or traditional search apps?</h3>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Unlike simple search tools, Village builds deep, contextual organizational memory across your apps. It understands your internal structure, team contexts, and data, providing synthesized answers—not just keyword-based document search.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>How quickly can we integrate Village into our stack?</h3>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Village connects securely within 30 minutes to your existing tools (Jira, GitHub, Slack, Confluence, Notion, and more). It's fully SOC 2 and GDPR compliant, enterprise-ready, and straightforward to deploy.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>Is Village secure for sensitive engineering data?</h3>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Absolutely. Village meets enterprise-grade security standards including SOC 2 and GDPR compliance, maintaining strict security protocols to protect your data and privacy.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <h3>What's the expected return on investment for an engineering team?</h3>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Engineering teams save an average of 8+ hours per week per engineer. Reducing onboarding time, eliminating repeat questions, and automating documentation means significant, measurable ROI immediately.</p>
-                        </div>
-                    </div>
+    <!-- Why Village Section -->
+    <section class="why-village">
+        <div class="container">
+            <h2>Beyond Answers—Village Understands Your Engineering Team</h2>
+            <div class="why-points">
+                <div class="why-point">
+                    <p>More than AI search: Village understands engineering workflows, team dynamics, and blockers.</p>
+                </div>
+                <div class="why-point">
+                    <p>Beyond automation: Village tracks engineering trends to help teams continuously improve.</p>
+                </div>
+                <div class="why-point">
+                    <p>Smarter than knowledge retrieval: Village synthesizes insights to pinpoint bottlenecks and accelerate shipping.</p>
                 </div>
             </div>
-        </section>
+            <a href="https://www.villagelabs.ai/get-started" class="button-primary">Try Village Today</a>
+        </div>
+    </section>
 
-        <section class="cta">
-            <div class="container">
-                <h2>Ready to Free Your Engineers from Information Overload?</h2>
-                <p>Instantly equip your engineers with answers, automate their routine tasks, and let them focus on the work that matters—building exceptional products.</p>
-                <div class="cta-buttons">
-                    <a href="https://www.villagelabs.ai/get-started" class="primary-btn">Schedule a Live Demo</a>
+    <!-- Integrations Section -->
+    <section class="integrations">
+        <div class="container">
+            <h2>Connect Your Engineering Stack</h2>
+            <p class="section-description">Village connects to your engineering tools—so your team spends less time searching and more time shipping</p>
+            <div class="integration-grid">
+                <div class="integration-item">
+                    <img src="logos/GitHub-logo.png" alt="GitHub - Source code management and automated PR reviews">
+                </div>
+                <div class="integration-item">
+                    <img src="logos/Jira_Logo.svg.png" alt="Jira - Project tracking and issue management">
+                </div>
+                <div class="integration-item">
+                    <img src="logos/Slack-logo.png" alt="Slack - Real-time team collaboration and workflow automation">
+                </div>
+                <div class="integration-item">
+                    <img src="logos/Linear logo.png" alt="Linear - Agile issue tracking and product development">
+                </div>
+                <div class="integration-item">
+                    <img src="logos/Notion logo.png" alt="Notion - Centralized documentation and knowledge management">
+                </div>
+                <div class="integration-item">
+                    <img src="logos/Gitlab-Logo.jpg" alt="GitLab - CI/CD pipelines and DevOps workflows">
                 </div>
             </div>
-        </section>
-    </main>
+            <div class="integration-cta">
+                <a href="https://www.villagelabs.ai/integrations" class="btn-demo">See All Integrations</a>
+            </div>
+        </div>
+    </section>
 
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <p class="section-description">Get started with Village in three simple steps</p>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>30-Minute Onboarding Call</h3>
+                    <p>Securely connect your tools via OAuth.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Village Builds Your Organizational Memory (OM1)</h3>
+                    <p>Fully automated—no effort required from your team.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Unlock Instant Knowledge & Automated Workflows</h3>
+                    <p>Reduce engineering bottlenecks, accelerate code reviews, and improve team-wide efficiency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Video Section -->
+    <section class="demo-video">
+        <div class="container">
+            <h2>See Village in Action</h2>
+            <p class="section-description">Watch how Village helps engineering teams automate PR reviews, gain real-time insights into blockers, and eliminate wasted time searching for information.</p>
+            <div class="video-container">
+                <div class="video-placeholder">
+                    <img src="images/demo.gif" alt="Village Demo" class="demo-gif">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Switch to Village and Save 8+ Hours Per Engineer Every Week</h2>
+            <p class="benefit-reinforcement">Less repetitive work, better visibility, and faster deployments.</p>
+            <a href="https://www.villagelabs.ai/get-started" class="button-primary">Schedule Your Demo Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-simple">
-                <img src="images/village-logo.svg" alt="Village Labs Logo" class="village-logo-footer">
-                <p>&copy; 2025 Village Labs. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-logo-section">
+                    <img src="images/village-logo.png" alt="Village Labs Logo" class="village-logo-footer">
+                    <p class="tagline">Make work matter.</p>
+                    <p class="copyright">Copyright 2024 Village Platforms, Inc.</p>
+                    <p class="trademark">All rights reserved. VILLAGE and VILLAGE LABS are trademarks<br>of Village Platforms, Inc.</p>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Video placeholder click handler
+            const videoPlaceholder = document.querySelector('.video-placeholder');
+            if (videoPlaceholder) {
+                videoPlaceholder.addEventListener('click', function() {
+                    // In a real implementation, this would open a modal with the video
+                    alert('Video player would open here in the actual implementation.');
+                });
+            }
+        });
+    </script>
 </body>
 </html>

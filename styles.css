@@ -217,6 +217,22 @@ p, li, a, span, button, input, textarea, select, label {
     text-align: center;
 }
 
+/* Add THICCCBOI SemiBold to specific elements */
+.hero-bullets li,
+.subtitle,
+.section-description,
+.feature-item p,
+.beyond-item p,
+.step p,
+.comparison-cell p,
+.risk-reversal,
+.tagline,
+.copyright,
+.trademark {
+    font-family: "THICCCBOI", sans-serif;
+    font-weight: 600;
+}
+
 /* Header and Navigation */
 header {
     padding: 20px 0;

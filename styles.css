@@ -107,11 +107,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    letter-spacing: -.75px;
+    letter-spacing: -1.5px; /* Reduced letter spacing to make text closer together */
     margin-top: 0;
     margin-bottom: 24px;
     font-size: 58px;
-    line-height: 1.276em;
+    line-height: 1.2em; /* Slightly reduced line height */
     text-align: left;
 }
 

@@ -391,6 +391,7 @@ header {
     margin-bottom: 20px;
     padding-left: 0; /* Remove default padding */
     list-style-type: none; /* Remove default bullets */
+    text-align: left; /* Ensure left alignment */
 }
 
 .hero-bullets li {
@@ -399,13 +400,20 @@ header {
     margin-bottom: 12px;
     font-size: 1.1rem;
     line-height: 1.4;
-    padding-left: 0;
-    display: flex;
-    align-items: flex-start;
+    padding-left: 0; /* Remove any left padding */
+    display: flex; /* Use flexbox for alignment */
+    align-items: flex-start; /* Align items at the top */
+    text-align: left; /* Ensure left alignment */
 }
 
 .hero-bullets li::before {
     content: none; /* Remove any pseudo-element bullets */
+}
+
+.hero-bullets li span.emoji {
+    margin-right: 8px;
+    display: inline-block;
+    min-width: 24px;
 }
 
 .risk-reversal {

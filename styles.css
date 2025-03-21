@@ -702,6 +702,66 @@ header {
     color: var(--primary-1);
 }
 
+/* Mobile Responsive Styles */
+@media (max-width: 992px) {
+    .hero-content {
+        flex-direction: column;
+    }
+    
+    .hero-text, .hero-image {
+        max-width: 100%;
+    }
+    
+    .hero-description {
+        font-size: 20px;
+    }
+    
+    /* Fix for comparison section on mobile */
+    .comparison-headers {
+        display: none; /* Hide headers on mobile */
+    }
+    
+    .comparison-row {
+        flex-direction: column;
+        margin-bottom: 40px; /* More space between rows */
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .comparison-cell {
+        padding: 20px;
+    }
+    
+    .comparison-cell.before {
+        border-right: none;
+        border-bottom: 1px solid var(--neutral-300);
+        position: relative;
+        padding-top: 50px; /* Space for the label */
+    }
+    
+    .comparison-cell.after {
+        position: relative;
+        padding-top: 50px; /* Space for the label */
+    }
+    
+    /* Add mobile labels */
+    .comparison-cell.before::before,
+    .comparison-cell.after::before {
+        content: "Before Village";
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        font-weight: 600;
+        font-size: 16px;
+        color: var(--neutral-800);
+    }
+    
+    .comparison-cell.after::before {
+        content: "After Village";
+        color: var(--primary-1);
+    }
+}
+
 /* Features Section */
 .features-section {
     padding: 80px 0;
@@ -1282,4 +1342,82 @@ footer {
     font-weight: 500; /* Medium */
     padding: 14px 28px;
     font-size: 18px;
+}
+
+/* Responsive Styles for Integration Grid, How It Works Section, and Other Elements on Mobile Devices */
+@media (max-width: 992px) {
+    /* Integration grid responsive layout */
+    .integration-grid {
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+    
+    .integration-item {
+        flex: 0 0 calc(50% - 20px); /* Two items per row on tablets */
+        height: 120px;
+    }
+    
+    /* How it works responsive layout */
+    .steps-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .step {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+    
+    /* Logo carousel responsive layout */
+    .logo-carousel-track {
+        animation: scroll 30s linear infinite; /* Slower on mobile */
+    }
+}
+
+@media (max-width: 576px) {
+    /* Further adjustments for phones */
+    .integration-item {
+        flex: 0 0 100%; /* One item per row on phones */
+        max-width: 280px;
+    }
+    
+    /* Smaller headings on mobile */
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    h3 {
+        font-size: 1.5rem;
+    }
+    
+    /* Adjust button sizing */
+    .button-primary, .button-secondary, .btn-demo {
+        padding: 12px 20px;
+        font-size: 16px;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    /* Hero section adjustments */
+    .hero-image img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* Final CTA adjustments */
+    .final-cta-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .final-cta-image {
+        margin-bottom: 30px;
+    }
 }

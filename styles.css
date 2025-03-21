@@ -109,136 +109,88 @@ body {
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'THICCCBOI', sans-serif;
-    font-weight: 700;
+    font-weight: 700; /* Bold weight for headers */
     color: var(--neutral-800);
-    letter-spacing: -1.5px; /* Tighter letter spacing for all headers */
+    letter-spacing: -0.02em; /* Match main Village site */
+    line-height: 1.2;
+    margin-bottom: 20px;
 }
 
 h1 {
-    letter-spacing: -2px; /* Even tighter for main heading */
-    margin-top: 0;
-    margin-bottom: 24px;
-    font-size: 58px;
-    line-height: 1.2em;
-    text-align: left;
-}
-
-h2, h3, h4, h5, h6 {
-    text-align: center;
+    font-size: 3.5rem;
+    letter-spacing: -0.03em; /* Slightly more negative for h1 */
 }
 
 h2 {
-    margin: 0 0 2.5rem;
-    padding: 0 20px;
-    font-size: 42px;
-    line-height: 1.4em;
-    font-family: 'THICCCBOI', sans-serif;
-    font-weight: 600 !important;
-    color: var(--neutral-800);
+    font-size: 2.5rem;
+    letter-spacing: -0.02em;
 }
 
 h3 {
-    letter-spacing: -.25px;
-    margin-top: 0;
-    margin-bottom: 12px;
-    font-size: 32px;
-    line-height: 1.375em;
+    font-size: 1.8rem;
+    letter-spacing: -0.015em;
 }
 
 h4 {
-    letter-spacing: -.25px;
-    margin-top: 0;
-    margin-bottom: 12px;
-    font-size: 24px;
-    line-height: 1.417em;
+    font-size: 1.4rem;
+    letter-spacing: -0.01em;
 }
 
-h5 {
-    letter-spacing: -.25px;
-    margin-top: 0;
-    margin-bottom: 12px;
-    font-size: 20px;
-    line-height: 1.5em;
-}
-
-h6 {
-    letter-spacing: -.25px;
-    margin-top: 0;
-    margin-bottom: 12px;
-    font-size: 16px;
-    font-weight: 500; /* Medium */
-    line-height: 1.5em;
-}
-
-.title {
-    letter-spacing: -2.5px;
-    margin-top: 0;
-    margin-bottom: 8px;
-}
-
-.title.home-hero {
-    letter-spacing: -3px;
-    margin-bottom: 18px;
-    font-size: 64px;
-    font-weight: 500; /* Medium */
-    line-height: 1.1;
-    color: var(--neutral-800);
-    max-width: 800px;
-    margin-left: 0;
-    text-align: left;
-    font-family: 'Inter', sans-serif;
-    -webkit-text-stroke: none;
-}
-
-p, li, a, span, button, input, textarea, select, label {
+p {
     font-family: 'THICCCBOI', sans-serif;
-    font-weight: 500;
-    color: var(--neutral-600);
-    letter-spacing: -0.5px;
-    word-wrap: normal;
-    white-space: normal;
-    line-height: 1.667em;
-    font-size: 18px;
-}
-
-.hero-description {
-    font-size: 22px;
-    font-weight: 500; /* Medium */
-    max-width: 800px;
-    margin: 0 auto 2rem;
-    color: var(--neutral-600);
-    line-height: 1.667em;
-    text-indent: 0px;
-    word-break: normal;
-    direction: ltr;
-    letter-spacing: -0.5px;
-    text-align: center;
+    font-weight: 500; /* Medium weight */
+    color: var(--neutral-700);
+    line-height: 1.6;
+    margin-bottom: 15px;
+    letter-spacing: -0.01em; /* Slight negative letter spacing for body text */
 }
 
 .section-description {
-    font-size: 20px;
-    font-weight: 500; /* Medium */
-    max-width: 800px;
-    margin: 0 auto 3rem;
+    font-family: 'THICCCBOI', sans-serif;
+    font-weight: 500; /* Medium weight */
+    font-size: 1.2rem;
     color: var(--neutral-600);
-    line-height: 1.667em;
+    max-width: 800px;
+    margin: 0 auto 40px;
     text-align: center;
+    letter-spacing: -0.01em;
 }
 
-/* Add THICCCBOI SemiBold to specific elements */
-.hero-bullets li,
-.subtitle,
-.section-description,
-.feature-item p,
-.beyond-item p,
-.step p,
-.comparison-cell p,
-.risk-reversal,
-.tagline,
-.copyright,
-.trademark {
-    font-family: 'THICCCBOI', sans-serif;
-    font-weight: 600;
+.title {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: var(--neutral-800);
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: var(--neutral-600);
+    margin-bottom: 30px;
+}
+
+.hero-bullets {
+    margin-bottom: 30px;
+    padding-left: 20px;
+}
+
+.hero-bullets li {
+    margin-bottom: 10px;
+    color: var(--neutral-700);
+    font-size: 1.1rem;
+}
+
+.risk-reversal {
+    font-size: 1rem;
+    color: var(--neutral-600);
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
 }
 
 /* Header and Navigation */
@@ -342,30 +294,40 @@ header {
 
 /* Hero Section */
 .hero {
-    padding: 60px 0 80px;
+    padding: 80px 0 60px;
     background-color: var(--neutral-100);
-    overflow: hidden;
 }
 
 .hero-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 30px;
+    gap: 40px;
 }
 
 .hero-text {
-    flex: 0.9; /* Slightly less than image */
-    max-width: 500px;
+    flex: 1;
+    max-width: 600px;
 }
 
-.hero-text .subtitle {
-    font-family: 'THICCCBOI', sans-serif;
-    font-weight: 500; /* Medium */
+.title.home-hero {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.03em;
+    color: var(--neutral-800);
+    font-weight: 700;
+    text-align: left;
+}
+
+.subtitle {
     font-size: 1.25rem;
     line-height: 1.5;
-    color: var(--neutral-700);
-    margin-bottom: 20px;
+    color: var(--neutral-600);
+    margin-bottom: 30px;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+    text-align: left;
 }
 
 .hero-image {
@@ -429,43 +391,6 @@ header {
 
 .hero-buttons .button-primary {
     margin-top: 0; /* Reset margin for buttons inside hero-buttons */
-}
-
-.title {
-    font-size: 3rem;
-    line-height: 1.2;
-    margin-bottom: 20px;
-    color: var(--neutral-800);
-}
-
-.subtitle {
-    font-size: 1.25rem;
-    line-height: 1.5;
-    color: var(--neutral-600);
-    margin-bottom: 30px;
-}
-
-.hero-bullets {
-    margin-bottom: 30px;
-    padding-left: 20px;
-}
-
-.hero-bullets li {
-    margin-bottom: 10px;
-    color: var(--neutral-700);
-    font-size: 1.1rem;
-}
-
-.risk-reversal {
-    font-size: 1rem;
-    color: var(--neutral-600);
-    margin-bottom: 30px;
-    font-weight: 500;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 20px;
 }
 
 /* Responsive Styles */
@@ -627,11 +552,12 @@ header {
 }
 
 .logo-carousel h2 {
-    margin-bottom: 20px;
+    margin-bottom: 60px; /* Increased from 40px to 60px */
     color: var(--neutral-800);
     text-align: center;
     font-size: 16px;
     font-weight: normal;
+    letter-spacing: -0.01em; /* Match main Village site */
 }
 
 .carousel {
@@ -851,8 +777,8 @@ header {
 }
 
 .integration-item {
-    flex: 0 0 200px; /* Increased from original size */
-    height: 120px; /* Increased height */
+    flex: 0 0 220px; /* Increased from 200px */
+    height: 140px; /* Increased from 120px */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -864,9 +790,25 @@ header {
 }
 
 .integration-item img {
-    max-width: 170px; /* Increased from original size */
-    max-height: 90px; /* Increased height */
+    max-width: 180px; /* Increased from 140px */
+    max-height: 80px; /* Increased from 60px */
+    object-fit: contain; /* Ensure images maintain aspect ratio */
     filter: none; /* Ensure no grayscale filter is applied */
+}
+
+.integration-item img[alt*="GitHub"] {
+    max-width: 160px;
+    max-height: 70px;
+}
+
+.integration-item img[alt*="Jira"] {
+    max-width: 130px; /* Reduced from 140px */
+    max-height: 55px; /* Reduced from 60px */
+}
+
+.integration-item img[alt*="Notion"] {
+    max-width: 190px; /* Increased size for Notion logo */
+    max-height: 85px;
 }
 
 .integration-item:hover {
@@ -899,17 +841,28 @@ header {
     background-color: white;
 }
 
+.how-it-works h2 {
+    text-align: center;
+    letter-spacing: -0.02em;
+}
+
+.how-it-works .section-description {
+    margin-bottom: 50px;
+    letter-spacing: -0.01em;
+}
+
 .steps-container {
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
     flex-wrap: wrap;
+    gap: 30px;
 }
 
 .step {
-    flex: 0 0 30%;
+    flex: 0 0 calc(33.333% - 30px);
     background-color: #f9f9f9;
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
@@ -937,11 +890,18 @@ header {
 .step h3 {
     margin-bottom: 15px;
     color: var(--neutral-800);
+    font-size: 1.5rem;
+    letter-spacing: -0.015em;
+    text-align: center;
 }
 
 .step p {
-    font-family: 'THICCCBOI', sans-serif;
-    font-weight: 500; /* Medium weight */
+    color: var(--neutral-600);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 @media (max-width: 768px) {

@@ -69,6 +69,57 @@
         </div>
     </section>
 
+    <!-- Interactive App Demo Section -->
+    <section class="app-demo-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Try Village for yourself</h2>
+                <p>See how Village can help your team find information instantly</p>
+            </div>
+            <div class="app-demo-container">
+                <div class="app-demo-header">
+                    <div class="demo-header-dots">
+                        <span class="header-dot"></span>
+                        <span class="header-dot"></span>
+                        <span class="header-dot"></span>
+                    </div>
+                </div>
+                <div class="app-demo-content">
+                    <div class="app-demo-brain">
+                        <div class="brain-icon">
+                            <img src="images/village-brain-logo.png" alt="Village Brain" class="brain-logo">
+                        </div>
+                        <h3 class="demo-title">Your company's brain</h3>
+                    </div>
+                    <div class="app-demo-search">
+                        <div class="search-bar">
+                            <input type="text" id="search-input" placeholder="Ask anything about your company...">
+                            <button class="search-button">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="search-results" class="search-results">
+                        <!-- Results will appear here -->
+                    </div>
+                </div>
+            </div>
+            <div class="demo-suggestions">
+                <p>Try asking about:</p>
+                <div class="suggestion-chips">
+                    <div class="suggestion-chip" data-query="How to set up the authentication flow?">Authentication flow</div>
+                    <div class="suggestion-chip" data-query="Who worked on the payment API?">Payment API contributors</div>
+                    <div class="suggestion-chip" data-query="What's the status of the latest deployment?">Deployment status</div>
+                    <div class="suggestion-chip" data-query="Find the database schema for users">User database schema</div>
+                    <div class="suggestion-chip" data-query="How does Merlin work for engineering teams?">Merlin capabilities</div>
+                    <div class="suggestion-chip" data-query="Show me a PR review example">PR review example</div>
+                    <div class="suggestion-chip" data-query="What are the engineering productivity benefits?">Engineering productivity</div>
+                    <div class="suggestion-chip" data-query="How does automated reporting work?">Automated reporting</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Logo Carousel Section -->
     <section class="logo-carousel">
         <div class="container">
@@ -309,6 +360,23 @@
         </div>
     </section>
 
+    <!-- Demo Popup -->
+    <div id="demo-popup" class="demo-popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Try the Full Demo</h3>
+                <button id="close-popup" class="close-popup">&times;</button>
+            </div>
+            <div class="popup-body">
+                <p>Would you like to try the full interactive demo?</p>
+                <div class="popup-buttons">
+                    <a href="https://www.villagelabs.ai/get-started" class="popup-button primary">Go to Demo</a>
+                    <button id="stay-here" class="popup-button secondary">Stay Here</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -324,16 +392,351 @@
     </footer>
 
     <script>
-        // JavaScript for interactive elements
         document.addEventListener('DOMContentLoaded', function() {
-            // Video placeholder click handler
-            const videoPlaceholder = document.querySelector('.video-placeholder');
-            if (videoPlaceholder) {
-                videoPlaceholder.addEventListener('click', function() {
-                    // In a real implementation, this would open a modal with the video
-                    alert('Video player would open here in the actual implementation.');
-                });
+            const searchInput = document.getElementById('search-input');
+            const searchButton = document.querySelector('.search-button');
+            const searchResults = document.getElementById('search-results');
+            const demoPopup = document.getElementById('demo-popup');
+            const closePopup = document.getElementById('close-popup');
+            const stayHere = document.getElementById('stay-here');
+            
+            // Demo queries
+            const demoQueries = [
+                "How to set up the authentication flow?",
+                "Who worked on the payment API?",
+                "What's the status of the latest deployment?",
+                "Find the database schema for users",
+                "How does Merlin work for engineering teams?",
+                "Show me a PR review example",
+                "What are the engineering productivity benefits?",
+                "How does automated reporting work?"
+            ];
+            
+            // Mock results for demo queries
+            const mockResults = {
+                "authentication flow": `
+                    <div class="result-item">
+                        <div class="result-header">
+                            <img src="images/integrations/github.svg" alt="GitHub" class="source-icon">
+                            <span class="result-title">Auth Service: OAuth Implementation Guide</span>
+                        </div>
+                        <div class="result-content">
+                            <p>This document outlines the OAuth 2.0 authentication flow implementation for our services. It includes code examples, sequence diagrams, and best practices for secure authentication.</p>
+                        </div>
+                        <div class="result-footer">
+                            <span class="result-date">Updated 2 weeks ago</span>
+                            <span class="result-author">Alex Johnson</span>
+                        </div>
+                    </div>
+                `,
+                "payment api": `
+                    <div class="result-item">
+                        <div class="result-header">
+                            <img src="images/integrations/github.svg" alt="GitHub" class="source-icon">
+                            <span class="result-title">Payment API Repository</span>
+                        </div>
+                        <div class="result-content">
+                            <p>Main repository for the payment processing API. Contains implementation of Stripe and PayPal integrations, transaction handling, and security measures.</p>
+                        </div>
+                        <div class="result-footer">
+                            <span class="result-date">Updated 5 days ago</span>
+                            <span class="result-author">Michael Torres</span>
+                        </div>
+                    </div>
+                `,
+                "latest deployment": `
+                    <div class="result-item">
+                        <div class="result-header">
+                            <img src="images/integrations/slack.svg" alt="Slack" class="source-icon">
+                            <span class="result-title">Deployment Status Update</span>
+                        </div>
+                        <div class="result-content">
+                            <p>The latest deployment (v2.4.0) was completed successfully on Tuesday. All services are running normally with no reported issues in production.</p>
+                        </div>
+                        <div class="result-footer">
+                            <span class="result-date">2 days ago</span>
+                            <span class="result-author">DevOps Team</span>
+                        </div>
+                    </div>
+                `,
+                "database schema": `
+                    <div class="result-item">
+                        <div class="result-header">
+                            <img src="images/integrations/notion.svg" alt="Notion" class="source-icon">
+                            <span class="result-title">User Database Schema Definition</span>
+                        </div>
+                        <div class="result-content">
+                            <p>Complete documentation of the user database schema, including tables, relationships, indexes, and field definitions. Includes recent updates for GDPR compliance.</p>
+                        </div>
+                        <div class="result-footer">
+                            <span class="result-date">Updated 1 week ago</span>
+                            <span class="result-author">Database Team</span>
+                        </div>
+                    </div>
+                `,
+                "merlin capabilities": `
+                    <div class="result-item">
+                        <div class="result-header">
+                            <img src="images/integrations/github.svg" alt="GitHub" class="source-icon">
+                            <span class="result-title">Merlin: AI-Powered Development Tool Overview</span>
+                        </div>
+                        <div class="result-content">
+                            <p>Merlin is a CLI-based development assistant that uses AI to help with coding tasks. It integrates with GitHub, Jira, and Google Suite to automate code generation, test case creation, PR reviews, and documentation. Engineering teams report 15-20x productivity improvement for certain tasks, with potential annual cost savings ranging from $208K to $28M depending on company size.</p>
+                        </div>
+                        <div class="result-footer">
+                            <span class="result-date">Updated 3 days ago</span>
+                            <span class="result-author">Product Team</span>
+                        </div>
+                    </div>
+                `,
+                "pr review example": `
+                    <div class="result-item">
+                        <div class="result-header">
+                            <img src="images/integrations/github.svg" alt="GitHub" class="source-icon">
+                            <span class="result-title">PR #342: Add Payment Processing Module</span>
+                        </div>
+                        <div class="result-content">
+                            <div class="pr-review-example">
+                                <div class="pr-header">
+                                    <span class="pr-status approved">Approved by Merlin AI</span>
+                                    <span class="pr-date">Reviewed 2 days ago</span>
+                                </div>
+                                <div class="pr-summary">
+                                    <h4>Summary of Changes</h4>
+                                    <ul>
+                                        <li>✅ Added new PaymentProcessor class with Stripe integration</li>
+                                        <li>✅ Implemented transaction logging and error handling</li>
+                                        <li>✅ Added unit tests with 94% coverage</li>
+                                        <li>⚠️ Missing documentation for the refund process</li>
+                                    </ul>
+                                </div>
+                                <div class="code-review">
+                                    <h4>Code Review</h4>
+                                    <div class="code-comment">
+                                        <div class="code-snippet">
+                                            <pre><code>function processPayment(amount, currency) {
+  // Process payment logic
+  const response = await stripe.charges.create({
+    amount: amount,
+    currency: currency
+  });
+  return response;</code></pre>
+                                        </div>
+                                        <div class="ai-comment">
+                                            <p><strong>Merlin AI:</strong> Consider adding error handling here. If the Stripe API call fails, the function will throw an unhandled exception.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ai-suggestions">
+                                    <h4>AI Suggestions</h4>
+                                    <ul>
+                                        <li>Add try/catch block around Stripe API calls</li>
+                                        <li>Document the refund process in README.md</li>
+                                        <li>Consider implementing payment retry logic</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="result-footer">
+                            <span class="result-author">Reviewed by Merlin AI Assistant</span>
+                        </div>
+                    </div>
+                `,
+                "engineering productivity": `
+                    <div class="result-item">
+                        <div class="result-header">
+                            <img src="images/integrations/notion.svg" alt="Notion" class="source-icon">
+                            <span class="result-title">Engineering Productivity Benefits</span>
+                        </div>
+                        <div class="result-content">
+                            <p>Village and OM1 accelerate engineering onboarding, getting new engineers contributing faster through better signals about technical contributions, code quality, and project velocity. The AI-powered GitHub PR bot provides valuable support for code review and junior developer assistance. Estimated time savings of 8 hours/week for Product/Engineering roles with annual ROI of $546,000.</p>
+                        </div>
+                        <div class="result-footer">
+                            <span class="result-date">Updated 2 weeks ago</span>
+                            <span class="result-author">Data Science Team</span>
+                        </div>
+                    </div>
+                `,
+                "automated reporting": `
+                    <div class="result-item">
+                        <div class="result-header">
+                            <img src="images/integrations/slack.svg" alt="Slack" class="source-icon">
+                            <span class="result-title">Automated Status Reporting</span>
+                        </div>
+                        <div class="result-content">
+                            <p>Village's People and Teams modules provide daily and weekly status reporting automatically. Engineers don't need to write up "here's what I did" because it's all done automatically. The system generates automated standup reports for geographically dispersed teams and reduces manual overhead for scrum masters by integrating with tools like Jira for comprehensive project tracking.</p>
+                        </div>
+                        <div class="result-footer">
+                            <span class="result-date">Updated 4 days ago</span>
+                            <span class="result-author">Alex Johnson</span>
+                        </div>
+                    </div>
+                `
+            };
+            
+            // Type animation for demo
+            let currentQuery = 0;
+            let charIndex = 0;
+            let typingInterval;
+            let isUserInteracting = false;
+            
+            function startTypingAnimation() {
+                if (isUserInteracting) return;
+                
+                if (currentQuery >= demoQueries.length) currentQuery = 0;
+                
+                const query = demoQueries[currentQuery];
+                charIndex = 0;
+                searchInput.value = '';
+                searchResults.innerHTML = '';
+                
+                clearInterval(typingInterval);
+                typingInterval = setInterval(() => {
+                    if (charIndex < query.length) {
+                        searchInput.value += query.charAt(charIndex);
+                        charIndex++;
+                    } else {
+                        clearInterval(typingInterval);
+                        
+                        // Show results after typing is complete
+                        setTimeout(() => {
+                            if (!isUserInteracting) {
+                                performSearch(query);
+                                
+                                // Clear and start next query after a delay
+                                setTimeout(() => {
+                                    if (!isUserInteracting) {
+                                        searchInput.value = '';
+                                        searchResults.innerHTML = '';
+                                        currentQuery++;
+                                        setTimeout(startTypingAnimation, 800);
+                                    }
+                                }, 3000);
+                            }
+                        }, 500);
+                    }
+                }, 100);
             }
+            
+            // Function to check if query is one of the demo queries
+            function isDemoQuery(query) {
+                return demoQueries.some(demoQuery => 
+                    query.toLowerCase().includes(demoQuery.toLowerCase().substring(0, 15))
+                );
+            }
+            
+            // Function to perform search
+            function performSearch(query) {
+                // Convert query to lowercase and simplify for matching
+                const simplifiedQuery = query.toLowerCase();
+                let resultHtml = '';
+                
+                // Check for matching results
+                if (simplifiedQuery.includes("authentication flow")) {
+                    resultHtml = mockResults["authentication flow"];
+                } else if (simplifiedQuery.includes("payment api")) {
+                    resultHtml = mockResults["payment api"];
+                } else if (simplifiedQuery.includes("latest deployment")) {
+                    resultHtml = mockResults["latest deployment"];
+                } else if (simplifiedQuery.includes("database schema")) {
+                    resultHtml = mockResults["database schema"];
+                } else if (simplifiedQuery.includes("merlin work") || simplifiedQuery.includes("merlin capabilities")) {
+                    resultHtml = mockResults["merlin capabilities"];
+                } else if (simplifiedQuery.includes("pr review example")) {
+                    resultHtml = mockResults["pr review example"];
+                } else if (simplifiedQuery.includes("engineering productivity") || simplifiedQuery.includes("productivity benefits")) {
+                    resultHtml = mockResults["engineering productivity"];
+                } else if (simplifiedQuery.includes("automated reporting") || simplifiedQuery.includes("status reporting")) {
+                    resultHtml = mockResults["automated reporting"];
+                } else {
+                    // Default "no results" state
+                    resultHtml = `
+                        <div class="no-results">
+                            <p>No results found for "${query}"</p>
+                            <p>Try another search or rephrase your question</p>
+                        </div>
+                    `;
+                }
+                
+                searchResults.innerHTML = resultHtml;
+            }
+            
+            // Function to show popup
+            function showPopup() {
+                demoPopup.classList.add('active');
+            }
+            
+            // Function to hide popup
+            function hidePopup() {
+                demoPopup.classList.remove('active');
+            }
+            
+            // Start the typing animation after a delay
+            setTimeout(startTypingAnimation, 1500);
+            
+            // Handle search input focus
+            searchInput.addEventListener('focus', function() {
+                isUserInteracting = true;
+                clearInterval(typingInterval);
+            });
+            
+            // Handle search button click
+            searchButton.addEventListener('click', function() {
+                const query = searchInput.value.trim();
+                if (query !== '') {
+                    isUserInteracting = true;
+                    clearInterval(typingInterval);
+                    
+                    // Only show popup if the query is not one of the demo queries
+                    if (!isDemoQuery(query)) {
+                        showPopup();
+                    } else {
+                        performSearch(query);
+                    }
+                }
+            });
+            
+            // Handle Enter key press
+            searchInput.addEventListener('keypress', function(e) {
+                const query = searchInput.value.trim();
+                if (e.key === 'Enter' && query !== '') {
+                    isUserInteracting = true;
+                    clearInterval(typingInterval);
+                    
+                    // Only show popup if the query is not one of the demo queries
+                    if (!isDemoQuery(query)) {
+                        showPopup();
+                    } else {
+                        performSearch(query);
+                    }
+                }
+            });
+            
+            // Suggestion chip click handler
+            const suggestionChips = document.querySelectorAll('.suggestion-chip');
+            suggestionChips.forEach(chip => {
+                chip.addEventListener('click', function() {
+                    isUserInteracting = true;
+                    clearInterval(typingInterval);
+                    const query = chip.getAttribute('data-query');
+                    searchInput.value = query;
+                    performSearch(query);
+                });
+            });
+            
+            // Close popup handlers
+            closePopup.addEventListener('click', hidePopup);
+            stayHere.addEventListener('click', function() {
+                hidePopup();
+                performSearch(searchInput.value);
+            });
+            
+            // Close popup when clicking outside
+            demoPopup.addEventListener('click', function(e) {
+                if (e.target === demoPopup) {
+                    hidePopup();
+                }
+            });
         });
     </script>
 </body>

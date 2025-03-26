@@ -115,19 +115,277 @@ const mockResults = {
             author: "Engineering",
             authorInitials: "EN"
         }
+    ],
+    "pr review example": [
+        {
+            source: "GitHub",
+            sourceIcon: "images/integrations/github.svg",
+            title: "PR #342: Add Payment Processing Module",
+            snippet: `<div class="pr-review-example">
+                <div class="pr-header">
+                    <span class="pr-status approved">Approved by Merlin AI</span>
+                    <span class="pr-date">Reviewed 2 days ago</span>
+                </div>
+                <div class="pr-summary">
+                    <h4>Summary of Changes</h4>
+                    <ul>
+                        <li>✅ Added new PaymentProcessor class with Stripe integration</li>
+                        <li>✅ Implemented transaction logging and error handling</li>
+                        <li>✅ Added unit tests with 94% coverage</li>
+                        <li>⚠️ Missing documentation for the refund process</li>
+                    </ul>
+                </div>
+                <div class="code-review">
+                    <h4>Code Review</h4>
+                    <div class="code-comment">
+                        <div class="code-snippet">
+                            <pre><code>function processPayment(amount, currency) {
+  // Process payment logic
+  const response = await stripe.charges.create({
+    amount: amount,
+    currency: currency
+  });
+  return response;</code></pre>
+                        </div>
+                        <div class="ai-comment">
+                            <p><strong>Merlin AI:</strong> Consider adding error handling here. If the Stripe API call fails, the function will throw an unhandled exception.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ai-suggestions">
+                    <h4>AI Suggestions</h4>
+                    <ul>
+                        <li>Add try/catch block around Stripe API calls</li>
+                        <li>Document the refund process in README.md</li>
+                        <li>Consider implementing payment retry logic</li>
+                    </ul>
+                </div>
+            </div>`,
+            date: "Updated 2 days ago",
+            author: "Merlin AI Assistant",
+            authorInitials: "MA"
+        }
+    ],
+    "engineering productivity": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Engineering Productivity Benefits",
+            snippet: "Village and OM1 accelerate engineering onboarding, getting new engineers contributing faster through better signals about technical contributions, code quality, and project velocity. The AI-powered GitHub PR bot provides valuable support for code review and junior developer assistance. Estimated time savings of 8 hours/week for Product/Engineering roles with annual ROI of $546,000.",
+            date: "Updated 2 weeks ago",
+            author: "Data Science Team",
+            authorInitials: "DS"
+        }
+    ],
+    "automated reporting": [
+        {
+            source: "Slack",
+            sourceIcon: "images/integrations/slack.svg",
+            title: "Automated Status Reporting",
+            snippet: "Village's People and Teams modules provide daily and weekly status reporting automatically. Engineers don't need to write up \"here's what I did\" because it's all done automatically. The system generates automated standup reports for geographically dispersed teams and reduces manual overhead for scrum masters by integrating with tools like Jira for comprehensive project tracking.",
+            date: "Updated 4 days ago",
+            author: "Alex Johnson",
+            authorInitials: "AJ"
+        }
+    ]
+};
+
+// Category-specific suggestion chips
+const categorySuggestions = {
+    "engineering": [
+        { text: "Authentication flow", query: "How to set up the authentication flow?" },
+        { text: "Payment API contributors", query: "Who worked on the payment API?" },
+        { text: "Deployment status", query: "What's the status of the latest deployment?" },
+        { text: "User database schema", query: "Find the database schema for users" },
+        { text: "PR review example", query: "Show me a PR review example" },
+        { text: "Engineering productivity", query: "What are the engineering productivity benefits?" },
+        { text: "Automated reporting", query: "How does automated reporting work?" }
+    ],
+    "product": [
+        { text: "Product roadmap", query: "What's on our product roadmap for Q3?" },
+        { text: "Feature prioritization", query: "How do we prioritize new features?" },
+        { text: "User research findings", query: "Summarize recent user research findings" },
+        { text: "Product metrics", query: "What are our key product metrics?" }
+    ],
+    "marketing": [
+        { text: "Campaign performance", query: "How did our last email campaign perform?" },
+        { text: "Content calendar", query: "Show me the content calendar for next month" },
+        { text: "Brand guidelines", query: "Where can I find our brand guidelines?" },
+        { text: "Social media strategy", query: "What's our social media strategy?" }
+    ],
+    "sales": [
+        { text: "Sales pipeline", query: "What's our current sales pipeline?" },
+        { text: "Deal closing process", query: "Explain our deal closing process" },
+        { text: "Customer objections", query: "Common customer objections and responses" },
+        { text: "Sales enablement", query: "What sales enablement resources do we have?" }
+    ],
+    "customer-success": [
+        { text: "Customer onboarding", query: "What's our customer onboarding process?" },
+        { text: "Churn reduction", query: "Strategies for reducing customer churn" },
+        { text: "Support escalation", query: "How does our support escalation process work?" },
+        { text: "Customer health score", query: "How do we calculate customer health scores?" }
+    ],
+    "operations": [
+        { text: "Procurement process", query: "What's our procurement process?" },
+        { text: "Security protocols", query: "Explain our security protocols" },
+        { text: "Vendor management", query: "How do we manage vendor relationships?" },
+        { text: "Compliance requirements", query: "What compliance requirements do we have?" }
+    ],
+    "leadership": [
+        { text: "Company OKRs", query: "What are our company OKRs this quarter?" },
+        { text: "Leadership principles", query: "What are our leadership principles?" },
+        { text: "Strategic initiatives", query: "What strategic initiatives are we focusing on?" },
+        { text: "Board meeting prep", query: "How should I prepare for board meetings?" }
+    ],
+    "hr": [
+        { text: "Hiring process", query: "What's our hiring process?" },
+        { text: "Performance reviews", query: "How do we conduct performance reviews?" },
+        { text: "Employee benefits", query: "What employee benefits do we offer?" },
+        { text: "Remote work policy", query: "What's our remote work policy?" }
     ]
 };
 
 // Function to fill the search input with a suggestion
 function fillSearch(query) {
-    document.getElementById('search-input').value = query;
-    performSearch(query);
+    const searchInput = document.getElementById('search-input');
+    searchInput.value = '';
+    
+    // Type the query with animation - one character at a time
+    let i = 0;
+    const typeInterval = setInterval(() => {
+        if (i < query.length) {
+            searchInput.value = query.substring(0, i + 1);
+            i++;
+        } else {
+            clearInterval(typeInterval);
+            // Don't automatically perform search, wait for user to press Enter or click Search
+        }
+    }, 20);
 }
 
-// Function to perform search and display results
+// Function to cycle through suggestions automatically
+function cycleAutoSuggestions() {
+    // Get initial category
+    const currentCategory = document.querySelector('.category-tab.active').getAttribute('data-category');
+    const suggestions = categorySuggestions[currentCategory];
+    let currentIndex = 0;
+    let isUserInteracting = false;
+    let isTypingInProgress = false;
+    let cycleTimeout;
+    
+    // Check if user is interacting with the search
+    const searchInput = document.getElementById('search-input');
+    
+    function checkInteraction() {
+        // If search input has content or search results are showing something other than the placeholder
+        const resultsContainer = document.getElementById('search-results');
+        const hasResults = !resultsContainer.querySelector('.results-placeholder');
+        
+        if (searchInput.value.trim() !== '' || hasResults) {
+            isUserInteracting = true;
+        } else {
+            isUserInteracting = false;
+        }
+    }
+    
+    searchInput.addEventListener('focus', function() {
+        isUserInteracting = true;
+    });
+    
+    searchInput.addEventListener('blur', function() {
+        checkInteraction();
+    });
+    
+    // Reset interaction state when search is completed
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.search-bar') && !e.target.closest('.suggestion-chips') && 
+            !e.target.closest('.search-results') && !e.target.closest('.demo-popup')) {
+            checkInteraction();
+        }
+    });
+    
+    // Function to fill search with auto-rotation tracking - only fills the search bar, doesn't perform search
+    function autoCycleFillSearch(query) {
+        isTypingInProgress = true;
+        
+        searchInput.value = '';
+        
+        // Type the query with animation - using substring to avoid adding extra characters
+        let i = 0;
+        const typeInterval = setInterval(() => {
+            if (i < query.length) {
+                searchInput.value = query.substring(0, i + 1);
+                i++;
+            } else {
+                clearInterval(typeInterval);
+                // Don't automatically perform search, just mark typing as complete
+                setTimeout(() => {
+                    isTypingInProgress = false;
+                }, 2000); // Short delay before allowing next suggestion
+            }
+        }, 20);
+    }
+    
+    // Start cycling through suggestions
+    function startCycling() {
+        // Clear any existing timeout
+        if (cycleTimeout) clearTimeout(cycleTimeout);
+        
+        // Get current category and suggestions
+        const activeTab = document.querySelector('.category-tab.active');
+        const category = activeTab ? activeTab.getAttribute('data-category') : 'engineering';
+        const currentSuggestions = categorySuggestions[category] || categorySuggestions['engineering'];
+        
+        function checkAndCycle() {
+            // Only cycle if user is not interacting and typing is not in progress
+            checkInteraction();
+            if (!isUserInteracting && !isTypingInProgress) {
+                autoCycleFillSearch(currentSuggestions[currentIndex].query);
+                currentIndex = (currentIndex + 1) % currentSuggestions.length;
+            }
+            
+            // Schedule the next check
+            cycleTimeout = setTimeout(checkAndCycle, 6000); // Check every 6 seconds
+        }
+        
+        // Start the cycle
+        cycleTimeout = setTimeout(checkAndCycle, 2000);
+    }
+    
+    // Update cycle when category changes
+    document.querySelectorAll('.category-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            const newCategory = this.getAttribute('data-category');
+            updateSuggestionChips(newCategory);
+            
+            // Reset index for new category
+            currentIndex = 0;
+            
+            // Restart cycling with the new category
+            startCycling();
+        });
+    });
+    
+    // Initial suggestion after a delay
+    setTimeout(() => {
+        if (!isUserInteracting && !isTypingInProgress) {
+            autoCycleFillSearch(suggestions[0].query);
+            currentIndex = 1; // Start with the second suggestion next time
+        }
+        startCycling();
+    }, 2000);
+}
+
+// Function to perform search and display results with typing effect
 function performSearch(query) {
     const resultsContainer = document.getElementById('search-results');
     resultsContainer.innerHTML = '';
+    
+    // Create a loading indicator first
+    const loadingIndicator = document.createElement('div');
+    loadingIndicator.className = 'chat-loading';
+    loadingIndicator.innerHTML = '<div class="loading-dots"><span></span><span></span><span></span></div>';
+    resultsContainer.appendChild(loadingIndicator);
     
     // Determine which mock results to show based on the query
     let resultsToShow = [];
@@ -140,90 +398,425 @@ function performSearch(query) {
         resultsToShow = mockResults["deployment issues"];
     } else if (query.toLowerCase().includes('database') || query.toLowerCase().includes('schema')) {
         resultsToShow = mockResults["database schema"];
+    } else if (query.toLowerCase().includes('pr review') || query.toLowerCase().includes('pull request')) {
+        resultsToShow = mockResults["pr review example"];
     }
     
-    // If we have results to show
-    if (resultsToShow.length > 0) {
-        // Create results header
-        const resultsHeader = document.createElement('div');
-        resultsHeader.className = 'results-header';
-        resultsHeader.innerHTML = `<h3>Results for "${query}"</h3>`;
-        resultsContainer.appendChild(resultsHeader);
+    // Short delay to simulate thinking
+    setTimeout(() => {
+        resultsContainer.removeChild(loadingIndicator);
         
-        // Create result items
-        resultsToShow.forEach(result => {
-            const resultItem = document.createElement('div');
-            resultItem.className = 'result-item';
-            resultItem.innerHTML = `
-                <div class="result-source">
-                    <img src="${result.sourceIcon}" alt="${result.source}" class="source-icon">
-                    <span class="source-name">${result.source}</span>
-                </div>
-                <h4 class="result-title">${result.title}</h4>
-                <p class="result-snippet">${result.snippet}</p>
-                <div class="result-meta">
-                    <span class="result-date">${result.date}</span>
-                    <div class="result-author">
-                        <div class="author-avatar">${result.authorInitials}</div>
-                        <span>${result.author}</span>
-                    </div>
-                </div>
-            `;
-            resultsContainer.appendChild(resultItem);
-        });
-    } else if (query.trim() !== '') {
-        // No results found
-        resultsContainer.innerHTML = `
-            <div class="results-placeholder">
-                <img src="images/no-results.svg" alt="No Results" class="placeholder-image">
-                <h3>No results found</h3>
-                <p>We couldn't find any matches for "${query}". Try a different search term or browse our suggested searches.</p>
-            </div>
-        `;
-    } else {
-        // Empty query, show default placeholder
-        resultsContainer.innerHTML = `
-            <div class="results-placeholder">
-                <img src="images/search-illustration.svg" alt="Search Illustration" class="placeholder-image">
-                <h3>Search across all your engineering tools</h3>
-                <p>Village connects to GitHub, Jira, Slack, Notion, and more to help you find information instantly.</p>
-            </div>
-        `;
+        // If we have results to show
+        if (resultsToShow.length > 0) {
+            // Create chat-like response container
+            const chatResponse = document.createElement('div');
+            chatResponse.className = 'chat-response';
+            
+            // Create results header
+            const resultsHeader = document.createElement('div');
+            resultsHeader.className = 'results-header';
+            resultsHeader.innerHTML = `<h3>Results for "${query}"</h3>`;
+            chatResponse.appendChild(resultsHeader);
+            
+            // Create response text container
+            const responseText = document.createElement('div');
+            responseText.className = 'response-text';
+            chatResponse.appendChild(responseText);
+            
+            resultsContainer.appendChild(chatResponse);
+            
+            // Prepare the full response text
+            let fullResponseHTML = '';
+            
+            resultsToShow.forEach((result, index) => {
+                fullResponseHTML += `<div class="result-item"><div class="result-source"><img src="${result.sourceIcon}" alt="${result.source}" class="source-icon"><span class="source-name">${result.source}</span></div><h4 class="result-title">${result.title}</h4><p class="result-snippet">${result.snippet}</p><div class="result-meta"><span class="result-date">${result.date}</span><div class="result-author"><div class="author-avatar">${result.authorInitials}</div><span>${result.author}</span></div></div></div>${index < resultsToShow.length - 1 ? '<hr class="result-divider">' : ''}`;
+            });
+            
+            // Type out the response
+            typeOutResponse(responseText, fullResponseHTML);
+        } else if (query.trim() !== '') {
+            // No results found - create chat-like response
+            const chatResponse = document.createElement('div');
+            chatResponse.className = 'chat-response';
+            
+            const noResultsHTML = `<div class="results-placeholder"><div class="placeholder-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#6A69F8" stroke-width="2"/><path d="M12 8V12L15 15" stroke="#6A69F8" stroke-width="2" stroke-linecap="round"/></svg></div><h3>No results found</h3><p>I couldn't find any matches for "${query}". Try a different search term or browse our suggested searches.</p></div>`;
+            
+            // Create response text container
+            const responseText = document.createElement('div');
+            responseText.className = 'response-text';
+            chatResponse.appendChild(responseText);
+            
+            resultsContainer.appendChild(chatResponse);
+            
+            // Type out the no results message
+            typeOutResponse(responseText, noResultsHTML);
+        } else {
+            // Empty query, show default placeholder
+            resultsContainer.innerHTML = `<div class="results-placeholder"><div class="placeholder-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#6A69F8" stroke-width="2"/><path d="M12 8V12L15 15" stroke="#6A69F8" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Ask Village anything about your organization</h3><p>Village connects to your tools and knowledge base to provide instant, accurate answers.</p></div>`;
+        }
+    }, 1500); // Simulate thinking time
+}
+
+// Function to type out response with a typing effect
+function typeOutResponse(element, html) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html.trim().replace(/\s+/g, ' '); // Normalize whitespace
+    
+    // Store the full HTML
+    const fullHTML = tempDiv.innerHTML;
+    let displayedChars = 0;
+    const totalChars = getTextContentLength(tempDiv);
+    
+    // Start with empty content
+    element.innerHTML = '';
+    
+    // Function to get text content length
+    function getTextContentLength(el) {
+        return el.textContent.length;
     }
+    
+    // Function to get partial HTML
+    function getPartialHTML(fullEl, ratio) {
+        // Create a deep clone of the full element
+        const tempEl = fullEl.cloneNode(true);
+        
+        // Calculate how many characters to show
+        const targetChars = Math.floor(getTextContentLength(fullEl) * ratio);
+        
+        // Process the element tree to show only partial text
+        processElementTree(tempEl, targetChars);
+        
+        return tempEl.innerHTML;
+    }
+    
+    // Function to process element tree for partial display
+    function processElementTree(el, targetChars) {
+        let charCount = 0;
+        
+        // Process child nodes
+        Array.from(el.childNodes).forEach(node => {
+            if (charCount >= targetChars) {
+                // We've reached our target, remove remaining nodes
+                if (node.parentNode) {
+                    node.parentNode.removeChild(node);
+                }
+                return;
+            }
+            
+            if (node.nodeType === Node.TEXT_NODE) {
+                // Text node
+                if (charCount + node.textContent.length <= targetChars) {
+                    // Include the entire text node
+                    charCount += node.textContent.length;
+                } else {
+                    // Include partial text
+                    const remainingChars = targetChars - charCount;
+                    node.textContent = node.textContent.substring(0, remainingChars);
+                    charCount = targetChars;
+                }
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+                // Element node - process recursively
+                const beforeCount = charCount;
+                processElementTree(node, targetChars - beforeCount);
+                charCount += getTextContentLength(node);
+            }
+        });
+    }
+    
+    // Start typing animation
+    const typeInterval = setInterval(() => {
+        if (displayedChars >= totalChars) {
+            clearInterval(typeInterval);
+            // Set final content without cursor
+            element.innerHTML = fullHTML;
+            return;
+        }
+        
+        // Increment displayed characters
+        displayedChars += 3; // Adjust speed by changing increment
+        
+        // Calculate ratio of text to show
+        const ratio = Math.min(1, displayedChars / totalChars);
+        
+        // Get partial HTML
+        const partialHTML = getPartialHTML(tempDiv, ratio);
+        
+        // Display with cursor
+        element.innerHTML = partialHTML + '<span class="typing-cursor"></span>';
+        
+        // Auto-scroll to the bottom of the results container
+        const resultsContainer = document.getElementById('search-results');
+        resultsContainer.scrollTop = resultsContainer.scrollHeight;
+    }, 20);
+}
+
+// Function to update suggestion chips based on selected category
+function updateSuggestionChips(category) {
+    const suggestionChipsContainer = document.querySelector('.suggestion-chips');
+    suggestionChipsContainer.innerHTML = '';
+    
+    // Update active tab
+    document.querySelectorAll('.category-tab').forEach(tab => {
+        if (tab.getAttribute('data-category') === category) {
+            tab.classList.add('active');
+        } else {
+            tab.classList.remove('active');
+        }
+    });
+    
+    const suggestions = categorySuggestions[category] || categorySuggestions["engineering"];
+    
+    suggestions.forEach(suggestion => {
+        const chip = document.createElement('div');
+        chip.className = 'suggestion-chip';
+        chip.textContent = suggestion.text;
+        chip.setAttribute('data-query', suggestion.query);
+        chip.addEventListener('click', function() {
+            fillSearch(this.getAttribute('data-query'));
+        });
+        suggestionChipsContainer.appendChild(chip);
+    });
+}
+
+// Function to cycle through suggestions automatically
+function cycleAutoSuggestions() {
+    // Get initial category
+    const currentCategory = document.querySelector('.category-tab.active').getAttribute('data-category');
+    const suggestions = categorySuggestions[currentCategory];
+    let currentIndex = 0;
+    let isUserInteracting = false;
+    let isTypingInProgress = false;
+    let cycleTimeout;
+    
+    // Check if user is interacting with the search
+    const searchInput = document.getElementById('search-input');
+    
+    function checkInteraction() {
+        // If search input has content or search results are showing something other than the placeholder
+        const resultsContainer = document.getElementById('search-results');
+        const hasResults = !resultsContainer.querySelector('.results-placeholder');
+        
+        if (searchInput.value.trim() !== '' || hasResults) {
+            isUserInteracting = true;
+        } else {
+            isUserInteracting = false;
+        }
+    }
+    
+    searchInput.addEventListener('focus', function() {
+        isUserInteracting = true;
+    });
+    
+    searchInput.addEventListener('blur', function() {
+        checkInteraction();
+    });
+    
+    // Reset interaction state when search is completed
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.search-bar') && !e.target.closest('.suggestion-chips') && 
+            !e.target.closest('.search-results') && !e.target.closest('.demo-popup')) {
+            checkInteraction();
+        }
+    });
+    
+    // Function to fill search with auto-rotation tracking - only fills the search bar, doesn't perform search
+    function autoCycleFillSearch(query) {
+        isTypingInProgress = true;
+        
+        searchInput.value = '';
+        
+        // Type the query with animation - using substring to avoid adding extra characters
+        let i = 0;
+        const typeInterval = setInterval(() => {
+            if (i < query.length) {
+                searchInput.value = query.substring(0, i + 1);
+                i++;
+            } else {
+                clearInterval(typeInterval);
+                // Don't automatically perform search, just mark typing as complete
+                setTimeout(() => {
+                    isTypingInProgress = false;
+                }, 2000); // Short delay before allowing next suggestion
+            }
+        }, 20);
+    }
+    
+    // Start cycling through suggestions
+    function startCycling() {
+        // Clear any existing timeout
+        if (cycleTimeout) clearTimeout(cycleTimeout);
+        
+        // Get current category and suggestions
+        const activeTab = document.querySelector('.category-tab.active');
+        const category = activeTab ? activeTab.getAttribute('data-category') : 'engineering';
+        const currentSuggestions = categorySuggestions[category] || categorySuggestions['engineering'];
+        
+        function checkAndCycle() {
+            // Only cycle if user is not interacting and typing is not in progress
+            checkInteraction();
+            if (!isUserInteracting && !isTypingInProgress) {
+                autoCycleFillSearch(currentSuggestions[currentIndex].query);
+                currentIndex = (currentIndex + 1) % currentSuggestions.length;
+            }
+            
+            // Schedule the next check
+            cycleTimeout = setTimeout(checkAndCycle, 6000); // Check every 6 seconds
+        }
+        
+        // Start the cycle
+        cycleTimeout = setTimeout(checkAndCycle, 2000);
+    }
+    
+    // Update cycle when category changes
+    document.querySelectorAll('.category-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            const newCategory = this.getAttribute('data-category');
+            updateSuggestionChips(newCategory);
+            
+            // Reset index for new category
+            currentIndex = 0;
+            
+            // Restart cycling with the new category
+            startCycling();
+        });
+    });
+    
+    // Initial suggestion after a delay
+    setTimeout(() => {
+        if (!isUserInteracting && !isTypingInProgress) {
+            autoCycleFillSearch(suggestions[0].query);
+            currentIndex = 1; // Start with the second suggestion next time
+        }
+        startCycling();
+    }, 2000);
 }
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('search-input');
-    const searchButton = document.querySelector('.search-button');
-    
-    // Search button click event
-    searchButton.addEventListener('click', function() {
-        performSearch(searchInput.value);
+    // Initialize category tabs
+    const categoryTabs = document.querySelectorAll('.category-tab');
+    categoryTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const category = this.getAttribute('data-category');
+            
+            // Update active tab
+            categoryTabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Update suggestion chips
+            updateSuggestionChips(category);
+        });
     });
     
-    // Enter key press event
+    // Initialize suggestion chips for default category
+    updateSuggestionChips('engineering');
+    
+    // Handle search input
+    const searchInput = document.getElementById('search-input');
     searchInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
-            performSearch(searchInput.value);
+            const query = this.value.trim();
+            if (query) {
+                // Check if it's a predefined query
+                let isPredefined = false;
+                for (const category in categorySuggestions) {
+                    if (categorySuggestions[category].some(suggestion => suggestion.query === query)) {
+                        isPredefined = true;
+                        break;
+                    }
+                }
+                
+                // If not a predefined query, show the popup
+                if (!isPredefined && demoPopup) {
+                    demoPopup.classList.add('show');
+                } else {
+                    performSearch(query);
+                }
+            }
+        }
+    });
+
+    // Handle search button click
+    const searchButton = document.getElementById('search-button');
+    searchButton.addEventListener('click', function() {
+        const query = searchInput.value.trim();
+        if (query) {
+            // Check if it's a predefined query
+            let isPredefined = false;
+            for (const category in categorySuggestions) {
+                if (categorySuggestions[category].some(suggestion => suggestion.query === query)) {
+                    isPredefined = true;
+                    break;
+                }
+            }
+            
+            // If not a predefined query, show the popup
+            if (!isPredefined && demoPopup) {
+                demoPopup.classList.add('show');
+            } else {
+                performSearch(query);
+            }
         }
     });
     
-    // Add typing animation to search input
-    setTimeout(() => {
-        const demoQuery = "How to set up the authentication flow?";
-        let i = 0;
+    // Handle suggestion chip clicks
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('suggestion-chip')) {
+            const query = e.target.getAttribute('data-query');
+            fillSearch(query);
+        }
+    });
+    
+    // Start auto-suggestion cycle
+    cycleAutoSuggestions();
+    
+    // Show default placeholder
+    const resultsContainer = document.getElementById('search-results');
+    resultsContainer.innerHTML = `<div class="results-placeholder"><div class="placeholder-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#6A69F8" stroke-width="2"/><path d="M12 8V12L15 15" stroke="#6A69F8" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Ask Village anything about your organization</h3><p>Village connects to your tools and knowledge base to provide instant, accurate answers.</p></div>`;
+    
+    // Handle demo popup buttons
+    const demoPopup = document.getElementById('demo-popup');
+    const closePopup = document.getElementById('close-popup');
+    const stayHereButton = document.getElementById('stay-here');
+    const goToDemoButton = document.querySelector('.popup-button.primary');
+
+    if (demoPopup) {
+        // Close popup when clicking the X button
+        if (closePopup) {
+            closePopup.addEventListener('click', function() {
+                demoPopup.classList.remove('show');
+            });
+        }
         
-        const typeInterval = setInterval(() => {
-            if (i < demoQuery.length) {
-                searchInput.value += demoQuery.charAt(i);
-                i++;
-            } else {
-                clearInterval(typeInterval);
-                setTimeout(() => {
-                    performSearch(demoQuery);
-                }, 500);
+        // Stay on page button
+        if (stayHereButton) {
+            stayHereButton.addEventListener('click', function() {
+                demoPopup.classList.remove('show');
+                // Perform search with the current query
+                performSearch(searchInput.value.trim());
+            });
+        }
+        
+        // Go to demo button
+        if (goToDemoButton) {
+            goToDemoButton.addEventListener('click', function() {
+                window.location.href = 'https://www.villagelabs.ai/get-started';
+            });
+        }
+        
+        // Prevent popup close when clicking inside popup
+        demoPopup.addEventListener('click', function(e) {
+            if (e.target === demoPopup) {
+                demoPopup.classList.remove('show');
             }
-        }, 100);
-    }, 1500);
+        });
+        
+        // Stop propagation on popup content
+        const popupContent = demoPopup.querySelector('.popup-content');
+        if (popupContent) {
+            popupContent.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+    }
 });

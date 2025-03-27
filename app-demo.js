@@ -187,6 +187,573 @@ const mockResults = {
             author: "Alex Johnson",
             authorInitials: "AJ"
         }
+    ],
+    // Marketing-related search results
+    "email campaign performance": [
+        {
+            source: "Slack",
+            sourceIcon: "images/integrations/slack.svg",
+            title: "Q2 Email Campaign Performance Report",
+            snippet: "Village's automated reporting provided a comprehensive analysis of our recent email campaigns, showing a 24% increase in open rates and 15% increase in click-through rates compared to Q1. The automated customer insights feature identified key engagement patterns and suggested content improvements for future campaigns.",
+            date: "Updated 1 week ago",
+            author: "Marketing Team",
+            authorInitials: "MT"
+        },
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Customer Insights: Email Engagement Analysis",
+            snippet: "Using Village's deep research capabilities, we've compiled a comprehensive overview of customer feedback and engagement patterns across our email campaigns. The AI has identified key themes in successful emails and provided actionable recommendations for improving future content strategies.",
+            date: "Updated 2 weeks ago",
+            author: "Sarah Chen",
+            authorInitials: "SC"
+        }
+    ],
+    "content calendar": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Q3 Content Calendar and Strategy",
+            snippet: "Village has compiled our upcoming content calendar with automated scheduling recommendations based on past performance data. The system has identified optimal posting times and content themes that resonate with our audience, along with suggested improvements for content distribution across channels.",
+            date: "Updated 3 days ago",
+            author: "Content Team",
+            authorInitials: "CT"
+        },
+        {
+            source: "Slack",
+            sourceIcon: "images/integrations/slack.svg",
+            title: "Content Planning Discussion",
+            snippet: "Thread from the #marketing channel discussing the content calendar for the upcoming month. Village's AI provided topic suggestions based on trending industry keywords and competitive analysis, helping the team prioritize content creation efforts for maximum impact.",
+            date: "5 days ago",
+            author: "Marketing Leadership",
+            authorInitials: "ML"
+        }
+    ],
+    "brand guidelines": [
+        {
+            source: "Google Drive",
+            sourceIcon: "images/integrations/google drive.png",
+            title: "Brand Guidelines Master Document",
+            snippet: "Comprehensive brand guidelines document including logo usage, color palette, typography, voice and tone guidelines, and visual design principles. Village provides instant access to these guidelines across teams to ensure brand consistency in all communications.",
+            date: "Updated 1 month ago",
+            author: "Design Team",
+            authorInitials: "DT"
+        },
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Brand Asset Library",
+            snippet: "Centralized collection of brand assets organized and searchable through Village's knowledge management system. Includes approved logos, templates, imagery, and design components with usage guidelines for marketing and communications teams.",
+            date: "Updated 2 weeks ago",
+            author: "Brand Manager",
+            authorInitials: "BM"
+        }
+    ],
+    "social media strategy": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Social Media Strategy 2024",
+            snippet: "Village's research and analytics tools have helped us develop a comprehensive social media strategy based on audience insights, competitive analysis, and platform-specific best practices. The document outlines our channel approach, content pillars, posting schedule, and performance metrics.",
+            date: "Updated 3 weeks ago",
+            author: "Social Media Team",
+            authorInitials: "SM"
+        },
+        {
+            source: "Slack",
+            sourceIcon: "images/integrations/slack.svg",
+            title: "Social Campaign Performance Analysis",
+            snippet: "Village's automated reporting has analyzed our recent social media campaigns and identified key performance patterns. The AI suggests adjusting our posting schedule to increase engagement and recommends content types that have demonstrated higher conversion rates.",
+            date: "1 week ago",
+            author: "Marketing Analytics",
+            authorInitials: "MA"
+        }
+    ],
+    // Product-related search results
+    "product roadmap": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Product Roadmap Q3 2024",
+            snippet: "Village's organizational memory has compiled our Q3 product roadmap with features prioritized based on customer feedback, market trends, and strategic goals. The document includes timeline projections, resource allocations, and key milestones with dependencies mapped across teams.",
+            date: "Updated 1 week ago",
+            author: "Product Leadership",
+            authorInitials: "PL"
+        },
+        {
+            source: "Jira",
+            sourceIcon: "images/integrations/jira.svg",
+            title: "Product Development Timeline",
+            snippet: "Detailed development timeline for upcoming features and improvements. Village integrates with Jira to provide real-time status updates, resource allocations, and progress tracking across all product initiatives.",
+            date: "Updated 2 days ago",
+            author: "Product Management",
+            authorInitials: "PM"
+        }
+    ],
+    "feature prioritization": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Feature Prioritization Framework",
+            snippet: "Village analyzes feature requests across customer feedback channels, support tickets, and sales conversations to help prioritize development efforts. The framework incorporates RICE scoring (Reach, Impact, Confidence, Effort) augmented with AI-driven insights on market trends and competitive positioning.",
+            date: "Updated 2 weeks ago",
+            author: "Product Strategy",
+            authorInitials: "PS"
+        },
+        {
+            source: "Slack",
+            sourceIcon: "images/integrations/slack.svg",
+            title: "Feature Planning Discussion",
+            snippet: "Thread from the #product channel discussing feature prioritization for the upcoming sprint. Village provided data-backed insights on user needs and potential impact, helping the team make informed decisions on development priorities.",
+            date: "4 days ago",
+            author: "Product Team",
+            authorInitials: "PT"
+        }
+    ],
+    "user research findings": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "User Research Report: Core Workflows",
+            snippet: "Village has synthesized findings from recent user interviews, surveys, and usage analytics to identify key pain points and opportunities for improvement in core product workflows. The report includes user journey maps, key insights, and actionable recommendations for product enhancements.",
+            date: "Updated 3 weeks ago",
+            author: "UX Research Team",
+            authorInitials: "UX"
+        },
+        {
+            source: "Google Drive",
+            sourceIcon: "images/integrations/google drive.png",
+            title: "User Feedback Analysis Q2 2024",
+            snippet: "Village's analytics tools have processed feedback from multiple channels to identify recurring themes and prioritize user needs. The report highlights critical usability issues, feature requests, and sentiment analysis with recommendations for product improvements.",
+            date: "Updated 1 month ago",
+            author: "Customer Insights",
+            authorInitials: "CI"
+        }
+    ],
+    "product metrics": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Product Performance Dashboard",
+            snippet: "Village's automated reporting provides real-time metrics on product usage, feature adoption, user engagement, and retention. The dashboard tracks key performance indicators against targets and highlights areas for optimization with AI-generated insights.",
+            date: "Updated daily",
+            author: "Data Science",
+            authorInitials: "DS"
+        },
+        {
+            source: "Slack",
+            sourceIcon: "images/integrations/slack.svg",
+            title: "Weekly Product Metrics Review",
+            snippet: "Village automatically generates weekly reports on product metrics, highlighting significant changes and trends. The analysis includes user growth, feature usage patterns, conversion rates, and retention metrics with contextual insights for decision-making.",
+            date: "Updated weekly",
+            author: "Product Analytics",
+            authorInitials: "PA"
+        }
+    ],
+    // Operations-related search results
+    "procurement process": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Procurement Process Documentation",
+            snippet: "Village maintains a comprehensive guide to our procurement processes, including vendor selection criteria, approval workflows, budget considerations, and compliance requirements. The system ensures all team members have access to the latest procedures and helps track procurement activities.",
+            date: "Updated 1 month ago",
+            author: "Operations Team",
+            authorInitials: "OT"
+        },
+        {
+            source: "Slack",
+            sourceIcon: "images/integrations/slack.svg",
+            title: "Vendor Evaluation Discussion",
+            snippet: "Thread from the #operations channel discussing vendor evaluation for new software tools. Village provided historical context on previous vendor relationships and automated comparison of proposals against our procurement criteria.",
+            date: "1 week ago",
+            author: "Procurement",
+            authorInitials: "PR"
+        }
+    ],
+    "security protocols": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Security Protocols and Compliance Standards",
+            snippet: "Village maintains our security documentation with role-based access controls to ensure information is available to authorized personnel. The document outlines data protection measures, access controls, incident response procedures, and compliance with SOC2 and GDPR requirements.",
+            date: "Updated 3 weeks ago",
+            author: "Security Team",
+            authorInitials: "ST"
+        },
+        {
+            source: "Google Drive",
+            sourceIcon: "images/integrations/google drive.png",
+            title: "Security Training Materials",
+            snippet: "Comprehensive security training resources for all team members, covering data protection, secure communication practices, and threat identification. Village tracks completion and comprehension to ensure organizational compliance with security protocols.",
+            date: "Updated 2 months ago",
+            author: "IT Department",
+            authorInitials: "IT"
+        }
+    ],
+    "vendor management": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Vendor Relationship Management Guide",
+            snippet: "Village's organizational memory preserves our approach to vendor management, including selection criteria, performance evaluation metrics, contract negotiation guidelines, and relationship maintenance strategies. The system helps track vendor interactions and ensures consistent engagement.",
+            date: "Updated 2 weeks ago",
+            author: "Operations Leadership",
+            authorInitials: "OL"
+        },
+        {
+            source: "Slack",
+            sourceIcon: "images/integrations/slack.svg",
+            title: "Quarterly Vendor Review Process",
+            snippet: "Village automates the collection and analysis of vendor performance data, facilitating quarterly reviews with standardized metrics. The process includes satisfaction ratings, delivery timeliness, quality assessments, and cost-effectiveness evaluations.",
+            date: "Updated quarterly",
+            author: "Vendor Management",
+            authorInitials: "VM"
+        }
+    ],
+    "compliance requirements": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Compliance Requirements Overview",
+            snippet: "Village maintains a comprehensive repository of compliance requirements relevant to our operations, including industry regulations, data protection standards, and contractual obligations. The system helps track compliance status and upcoming requirements with automated alerts.",
+            date: "Updated monthly",
+            author: "Legal Team",
+            authorInitials: "LT"
+        },
+        {
+            source: "Google Drive",
+            sourceIcon: "images/integrations/google drive.png",
+            title: "Compliance Audit Documentation",
+            snippet: "Village organizes and preserves all documentation related to compliance audits, including SOC2 and GDPR certification. The system provides quick access to evidence files, audit histories, and remediation plans for continuous compliance management.",
+            date: "Updated quarterly",
+            author: "Compliance Officer",
+            authorInitials: "CO"
+        }
+    ],
+    // HR-related search results
+    "hiring process": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Hiring Process Documentation",
+            snippet: "Village preserves our end-to-end hiring workflow, from requisition approval to onboarding. The document outlines role definition, candidate sourcing strategies, interview processes, evaluation criteria, and offers a consistent reference for all hiring managers.",
+            date: "Updated 3 weeks ago",
+            author: "Talent Acquisition",
+            authorInitials: "TA"
+        },
+        {
+            source: "Slack",
+            sourceIcon: "images/integrations/slack.svg",
+            title: "Candidate Evaluation Discussion",
+            snippet: "Village facilitates collaborative hiring decisions by organizing feedback from multiple interviewers in structured formats. Thread from the #hiring channel shows how the system helps compare candidates against job requirements and team fit criteria.",
+            date: "1 week ago",
+            author: "Hiring Committee",
+            authorInitials: "HC"
+        }
+    ],
+    "performance reviews": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Performance Review Process Guide",
+            snippet: "Village maintains our performance review framework, including evaluation criteria, timeline, feedback collection methods, and calibration procedures. The system helps managers track objectives throughout the review period and provides historical context for growth discussions.",
+            date: "Updated quarterly",
+            author: "People Operations",
+            authorInitials: "PO"
+        },
+        {
+            source: "Google Drive",
+            sourceIcon: "images/integrations/google drive.png",
+            title: "Performance Evaluation Templates",
+            snippet: "Standardized templates for performance reviews across different roles and levels. Village ensures all managers have access to consistent evaluation tools and helps track completion rates and quality of feedback across departments.",
+            date: "Updated 2 months ago",
+            author: "HR Team",
+            authorInitials: "HR"
+        }
+    ],
+    "employee benefits": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Employee Benefits Overview",
+            snippet: "Village provides a comprehensive repository of information about our benefits programs, including health insurance, retirement plans, time off policies, professional development allowances, and wellness initiatives. The system ensures all employees have access to the latest benefits information.",
+            date: "Updated monthly",
+            author: "Benefits Administration",
+            authorInitials: "BA"
+        },
+        {
+            source: "Slack",
+            sourceIcon: "images/integrations/slack.svg",
+            title: "Benefits FAQ and Resources",
+            snippet: "Village collects and organizes frequently asked questions about employee benefits, providing instant access to answers and relevant resources. Thread from the #hr-questions channel shows how the system helps employees navigate benefits enrollment and utilization.",
+            date: "Updated weekly",
+            author: "HR Support",
+            authorInitials: "HS"
+        }
+    ],
+    "remote work policy": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Remote Work Policy Documentation",
+            snippet: "Village maintains our remote work guidelines, including eligibility criteria, communication expectations, equipment provisions, security requirements, and performance management approaches. The system ensures all team members understand remote work standards and processes.",
+            date: "Updated 1 month ago",
+            author: "HR Leadership",
+            authorInitials: "HL"
+        },
+        {
+            source: "Google Drive",
+            sourceIcon: "images/integrations/google drive.png",
+            title: "Remote Work Best Practices Guide",
+            snippet: "Compiled resources for effective remote work, including communication tools, productivity strategies, collaboration techniques, and work-life balance recommendations. Village helps preserve and share organizational knowledge about successful remote working approaches.",
+            date: "Updated 2 months ago",
+            author: "People Experience",
+            authorInitials: "PE"
+        }
+    ],
+    // Sales-related search results
+    "sales pipeline": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Sales Pipeline Overview Q2 2024",
+            snippet: "Village's deep research assistant has compiled a comprehensive analysis of our current sales pipeline, including conversion rates at each stage, velocity metrics, and forecasted close dates. The AI has identified key opportunities requiring attention and provided recommendations for accelerating deals.",
+            date: "Updated weekly",
+            author: "Sales Operations",
+            authorInitials: "SO"
+        },
+        {
+            source: "Slack",
+            sourceIcon: "images/integrations/slack.svg",
+            title: "Pipeline Review Discussion",
+            snippet: "Thread from the #sales channel discussing the current pipeline status and strategies for improving conversion rates. Village's automated reporting highlighted trends in successful deals and identified common obstacles in stalled opportunities.",
+            date: "2 days ago",
+            author: "Sales Leadership",
+            authorInitials: "SL"
+        }
+    ],
+    "deal closing process": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Deal Closing Process Documentation",
+            snippet: "Village maintains our standardized deal closing workflow, including contract negotiation guidelines, approval processes, and closing verification steps. The system ensures all sales representatives follow consistent procedures and provides automated tracking of deals through each stage.",
+            date: "Updated 1 month ago",
+            author: "Sales Enablement",
+            authorInitials: "SE"
+        },
+        {
+            source: "Google Drive",
+            sourceIcon: "images/integrations/google drive.png",
+            title: "Deal Closing Best Practices",
+            snippet: "Village has compiled successful closing strategies and techniques from top-performing sales representatives. The document includes effective negotiation approaches, objection handling techniques, and methods for accelerating the decision process.",
+            date: "Updated 3 weeks ago",
+            author: "Sales Training",
+            authorInitials: "ST"
+        }
+    ],
+    "customer objections": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Common Customer Objections Database",
+            snippet: "Village's organizational memory maintains a comprehensive database of customer objections and effective responses. The system categorizes objections by type (price, timing, competition, features) and provides proven frameworks for addressing each concern.",
+            date: "Updated continuously",
+            author: "Sales Team",
+            authorInitials: "ST"
+        },
+        {
+            source: "Slack",
+            sourceIcon: "images/integrations/slack.svg",
+            title: "Objection Handling Workshop Summary",
+            snippet: "Village captured key insights from our recent objection handling workshop, including role-playing exercises, customer psychology principles, and situation-specific approaches. The AI has categorized and organized these insights for easy reference during sales conversations.",
+            date: "Updated 2 weeks ago",
+            author: "Sales Development",
+            authorInitials: "SD"
+        }
+    ],
+    "sales enablement": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Sales Enablement Resources Hub",
+            snippet: "Village provides a centralized repository of sales enablement resources, including product sheets, competitive comparison guides, case studies, ROI calculators, and presentation templates. The system ensures all sales materials are up-to-date and easily accessible.",
+            date: "Updated continuously",
+            author: "Marketing",
+            authorInitials: "MK"
+        },
+        {
+            source: "Google Drive",
+            sourceIcon: "images/integrations/google drive.png",
+            title: "Sales Playbook 2024",
+            snippet: "Comprehensive sales playbook covering our target markets, buyer personas, value propositions, sales methodologies, discovery frameworks, and closing techniques. Village ensures this resource evolves based on successful sales patterns and market changes.",
+            date: "Updated quarterly",
+            author: "Sales Strategy",
+            authorInitials: "SS"
+        }
+    ],
+    // Customer Success-related search results
+    "customer onboarding": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Customer Onboarding Process",
+            snippet: "Village maintains our customer onboarding workflow, from account setup to initial value delivery. The documentation includes role responsibilities, timeline expectations, milestone definitions, and success criteria for a completed onboarding.",
+            date: "Updated 1 month ago",
+            author: "Customer Success",
+            authorInitials: "CS"
+        },
+        {
+            source: "Slack",
+            sourceIcon: "images/integrations/slack.svg",
+            title: "Onboarding Improvement Discussion",
+            snippet: "Thread from the #customer-success channel discussing optimization of the onboarding process. Village's analytics identified common friction points and suggested improvements based on patterns in successful customer activations.",
+            date: "1 week ago",
+            author: "Onboarding Team",
+            authorInitials: "OT"
+        }
+    ],
+    "churn reduction": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Churn Reduction Strategies",
+            snippet: "Village's data analysis has identified key indicators of churn risk and effective intervention strategies. The document outlines proactive monitoring approaches, engagement tactics for at-risk accounts, and process improvements to address common causes of customer dissatisfaction.",
+            date: "Updated monthly",
+            author: "Customer Retention",
+            authorInitials: "CR"
+        },
+        {
+            source: "Google Drive",
+            sourceIcon: "images/integrations/google drive.png",
+            title: "Churn Analysis Report Q1 2024",
+            snippet: "Village's automated reporting analyzed churn patterns for Q1, identifying common exit points, feature utilization gaps before cancellation, and feedback themes from exit surveys. The report includes specific recommendations for product and service improvements.",
+            date: "Updated quarterly",
+            author: "Data Analytics",
+            authorInitials: "DA"
+        }
+    ],
+    "support escalation": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Support Escalation Process",
+            snippet: "Village maintains our support escalation framework, including severity definitions, response time expectations, escalation paths, and resolution protocols. The system ensures consistent handling of support issues and appropriate resource allocation based on impact.",
+            date: "Updated 2 weeks ago",
+            author: "Support Leadership",
+            authorInitials: "SL"
+        },
+        {
+            source: "Slack",
+            sourceIcon: "images/integrations/slack.svg",
+            title: "Escalation Handling Discussion",
+            snippet: "Thread from the #support channel discussing a complex escalation case and the resolution approach. Village preserved this discussion as a reference for handling similar situations in the future, highlighting effective communication strategies and technical solutions.",
+            date: "3 days ago",
+            author: "Support Team",
+            authorInitials: "ST"
+        }
+    ],
+    "customer health score": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Customer Health Score Methodology",
+            snippet: "Village's analytics engine powers our customer health scoring system, which combines product usage metrics, support interactions, NPS/CSAT scores, contract data, and engagement indicators. The document explains how these factors are weighted and interpreted for proactive account management.",
+            date: "Updated quarterly",
+            author: "Customer Success Ops",
+            authorInitials: "CO"
+        },
+        {
+            source: "Google Drive",
+            sourceIcon: "images/integrations/google drive.png",
+            title: "Health Score Dashboard Guide",
+            snippet: "Documentation for using the customer health score dashboard, including how to interpret different indicators, recommended actions for various score ranges, and processes for documenting interventions. Village ensures this guide evolves based on patterns in successful account recoveries.",
+            date: "Updated 2 months ago",
+            author: "Success Operations",
+            authorInitials: "SO"
+        }
+    ],
+    // Leadership-related search results
+    "company okrs": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Company OKRs Q2 2024",
+            snippet: "Village maintains our company-wide Objectives and Key Results, tracking progress and dependencies across departments. The document outlines our top-level goals, success metrics, and the cascade of supporting objectives for each team. Current focus areas include market expansion, product adoption, and operational efficiency.",
+            date: "Updated quarterly",
+            author: "Executive Team",
+            authorInitials: "ET"
+        },
+        {
+            source: "Slack",
+            sourceIcon: "images/integrations/slack.svg",
+            title: "OKR Planning Discussion",
+            snippet: "Thread from the #leadership channel discussing OKR planning for the upcoming quarter. Village's analytics provided historical performance data and trend analysis to inform goal-setting and resource allocation decisions.",
+            date: "2 weeks ago",
+            author: "Operations Leadership",
+            authorInitials: "OL"
+        }
+    ],
+    "leadership principles": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Leadership Principles Framework",
+            snippet: "Village preserves our core leadership principles, which guide decision-making and team management across the organization. The document outlines our values-based approach to leadership, with specific examples of how these principles apply in different situations and roles.",
+            date: "Updated 2 months ago",
+            author: "People & Culture",
+            authorInitials: "PC"
+        },
+        {
+            source: "Google Drive",
+            sourceIcon: "images/integrations/google drive.png",
+            title: "Leadership Development Resources",
+            snippet: "Compilation of leadership development resources, including training materials, recommended readings, workshop outlines, and coaching frameworks. Village ensures these resources align with our leadership principles and business objectives.",
+            date: "Updated monthly",
+            author: "Leadership Development",
+            authorInitials: "LD"
+        }
+    ],
+    "strategic initiatives": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Strategic Initiatives Overview 2024",
+            snippet: "Village tracks our key strategic initiatives, including market expansion, product evolution, operational excellence, and organizational development. The document outlines the objectives, timelines, resource allocations, risk assessments, and success metrics for each initiative.",
+            date: "Updated monthly",
+            author: "Strategy Team",
+            authorInitials: "ST"
+        },
+        {
+            source: "Slack",
+            sourceIcon: "images/integrations/slack.svg",
+            title: "Strategic Initiative Progress Review",
+            snippet: "Thread from the #strategic-initiatives channel discussing progress on key initiatives. Village's reporting provides status updates, milestone achievements, resource utilization metrics, and blockers requiring leadership attention.",
+            date: "1 week ago",
+            author: "Executive Leadership",
+            authorInitials: "EL"
+        }
+    ],
+    "board meeting prep": [
+        {
+            source: "Notion",
+            sourceIcon: "images/integrations/notion.svg",
+            title: "Board Meeting Preparation Guide",
+            snippet: "Village maintains our process for board meeting preparation, including required materials, presentation standards, data collection timelines, and stakeholder responsibilities. The document ensures consistent, comprehensive, and strategic communication with our board of directors.",
+            date: "Updated quarterly",
+            author: "CEO Office",
+            authorInitials: "CO"
+        },
+        {
+            source: "Google Drive",
+            sourceIcon: "images/integrations/google drive.png",
+            title: "Board Meeting Materials Template",
+            snippet: "Standardized templates for board meeting materials, including executive summary, financial performance, strategic initiatives, market analysis, and forward-looking projections. Village helps ensure consistency and completeness in board communications.",
+            date: "Updated 3 months ago",
+            author: "Finance Team",
+            authorInitials: "FT"
+        }
     ]
 };
 
@@ -281,7 +848,8 @@ function cycleAutoSuggestions() {
         const resultsContainer = document.getElementById('search-results');
         const hasResults = !resultsContainer.querySelector('.results-placeholder');
         
-        if (searchInput.value.trim() !== '' || hasResults) {
+        // Only consider showing results as user interaction, not just having text in the input
+        if (hasResults) {
             isUserInteracting = true;
         } else {
             isUserInteracting = false;
@@ -289,19 +857,12 @@ function cycleAutoSuggestions() {
     }
     
     searchInput.addEventListener('focus', function() {
-        isUserInteracting = true;
+        // Don't set isUserInteracting to true on focus, only when results are showing
+        checkInteraction();
     });
     
     searchInput.addEventListener('blur', function() {
         checkInteraction();
-    });
-    
-    // Reset interaction state when search is completed
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.search-bar') && !e.target.closest('.suggestion-chips') && 
-            !e.target.closest('.search-results') && !e.target.closest('.demo-popup')) {
-            checkInteraction();
-        }
     });
     
     // Function to fill search with auto-rotation tracking - only fills the search bar, doesn't perform search
@@ -321,7 +882,7 @@ function cycleAutoSuggestions() {
                 // Don't automatically perform search, just mark typing as complete
                 setTimeout(() => {
                     isTypingInProgress = false;
-                }, 2000); // Short delay before allowing next suggestion
+                }, 1500); // Shorter delay before allowing next suggestion
             }
         }, 20);
     }
@@ -345,11 +906,11 @@ function cycleAutoSuggestions() {
             }
             
             // Schedule the next check
-            cycleTimeout = setTimeout(checkAndCycle, 6000); // Check every 6 seconds
+            cycleTimeout = setTimeout(checkAndCycle, 4000); // Check more frequently
         }
         
         // Start the cycle
-        cycleTimeout = setTimeout(checkAndCycle, 2000);
+        cycleTimeout = setTimeout(checkAndCycle, 1500);
     }
     
     // Update cycle when category changes
@@ -373,7 +934,7 @@ function cycleAutoSuggestions() {
             currentIndex = 1; // Start with the second suggestion next time
         }
         startCycling();
-    }, 2000);
+    }, 1500);
 }
 
 // Function to perform search and display results with typing effect
@@ -381,25 +942,106 @@ function performSearch(query) {
     const resultsContainer = document.getElementById('search-results');
     resultsContainer.innerHTML = '';
     
-    // Create a loading indicator first
+    // Create a loading indicator with the logo and text
     const loadingIndicator = document.createElement('div');
     loadingIndicator.className = 'chat-loading';
-    loadingIndicator.innerHTML = '<div class="loading-dots"><span></span><span></span><span></span></div>';
+    loadingIndicator.innerHTML = `
+        <div class="loading-content">
+            <img src="images/Ellipse 2.png" alt="Village Logo" class="loading-logo">
+            <p class="loading-text">Retrieved organizational memory. Generating response...</p>
+        </div>
+    `;
     resultsContainer.appendChild(loadingIndicator);
     
     // Determine which mock results to show based on the query
     let resultsToShow = [];
+    const queryLower = query.toLowerCase();
     
-    if (query.toLowerCase().includes('authentication') || query.toLowerCase().includes('auth flow')) {
+    // Engineering searches
+    if (queryLower.includes('authentication') || queryLower.includes('auth flow')) {
         resultsToShow = mockResults["authentication flow"];
-    } else if (query.toLowerCase().includes('payment api') || query.toLowerCase().includes('payment')) {
+    } else if (queryLower.includes('payment api') || queryLower.includes('payment')) {
         resultsToShow = mockResults["payment api"];
-    } else if (query.toLowerCase().includes('deployment') || query.toLowerCase().includes('deploy')) {
+    } else if (queryLower.includes('deployment') || queryLower.includes('deploy')) {
         resultsToShow = mockResults["deployment issues"];
-    } else if (query.toLowerCase().includes('database') || query.toLowerCase().includes('schema')) {
+    } else if (queryLower.includes('database') || queryLower.includes('schema')) {
         resultsToShow = mockResults["database schema"];
-    } else if (query.toLowerCase().includes('pr review') || query.toLowerCase().includes('pull request')) {
+    } else if (queryLower.includes('pr review') || queryLower.includes('pull request')) {
         resultsToShow = mockResults["pr review example"];
+    } else if (queryLower.includes('engineering productivity')) {
+        resultsToShow = mockResults["engineering productivity"];
+    } else if (queryLower.includes('automated reporting') || queryLower.includes('report')) {
+        resultsToShow = mockResults["automated reporting"];
+    }
+    // Marketing searches
+    else if (queryLower.includes('email campaign') || queryLower.includes('campaign performance')) {
+        resultsToShow = mockResults["email campaign performance"];
+    } else if (queryLower.includes('content calendar')) {
+        resultsToShow = mockResults["content calendar"];
+    } else if (queryLower.includes('brand guidelines')) {
+        resultsToShow = mockResults["brand guidelines"];
+    } else if (queryLower.includes('social media') || queryLower.includes('social strategy')) {
+        resultsToShow = mockResults["social media strategy"];
+    }
+    // Product searches
+    else if (queryLower.includes('product roadmap') || queryLower.includes('roadmap')) {
+        resultsToShow = mockResults["product roadmap"];
+    } else if (queryLower.includes('feature prioritization') || queryLower.includes('prioritize')) {
+        resultsToShow = mockResults["feature prioritization"];
+    } else if (queryLower.includes('user research') || queryLower.includes('research findings')) {
+        resultsToShow = mockResults["user research findings"];
+    } else if (queryLower.includes('product metrics') || queryLower.includes('metrics')) {
+        resultsToShow = mockResults["product metrics"];
+    }
+    // Operations searches
+    else if (queryLower.includes('procurement') || queryLower.includes('procurement process')) {
+        resultsToShow = mockResults["procurement process"];
+    } else if (queryLower.includes('security') || queryLower.includes('security protocols')) {
+        resultsToShow = mockResults["security protocols"];
+    } else if (queryLower.includes('vendor') || queryLower.includes('vendor management')) {
+        resultsToShow = mockResults["vendor management"];
+    } else if (queryLower.includes('compliance') || queryLower.includes('compliance requirements')) {
+        resultsToShow = mockResults["compliance requirements"];
+    }
+    // HR searches
+    else if (queryLower.includes('hiring') || queryLower.includes('hiring process')) {
+        resultsToShow = mockResults["hiring process"];
+    } else if (queryLower.includes('performance review') || queryLower.includes('review')) {
+        resultsToShow = mockResults["performance reviews"];
+    } else if (queryLower.includes('employee benefits') || queryLower.includes('benefits')) {
+        resultsToShow = mockResults["employee benefits"];
+    } else if (queryLower.includes('remote work') || queryLower.includes('remote policy')) {
+        resultsToShow = mockResults["remote work policy"];
+    }
+    // Sales searches
+    else if (queryLower.includes('sales pipeline') || queryLower.includes('pipeline')) {
+        resultsToShow = mockResults["sales pipeline"];
+    } else if (queryLower.includes('deal closing') || queryLower.includes('closing process')) {
+        resultsToShow = mockResults["deal closing process"];
+    } else if (queryLower.includes('customer objections') || queryLower.includes('objections')) {
+        resultsToShow = mockResults["customer objections"];
+    } else if (queryLower.includes('sales enablement') || queryLower.includes('enablement')) {
+        resultsToShow = mockResults["sales enablement"];
+    }
+    // Customer Success searches
+    else if (queryLower.includes('customer onboarding') || queryLower.includes('onboarding')) {
+        resultsToShow = mockResults["customer onboarding"];
+    } else if (queryLower.includes('churn reduction') || queryLower.includes('churn')) {
+        resultsToShow = mockResults["churn reduction"];
+    } else if (queryLower.includes('support escalation') || queryLower.includes('escalation')) {
+        resultsToShow = mockResults["support escalation"];
+    } else if (queryLower.includes('customer health') || queryLower.includes('health score')) {
+        resultsToShow = mockResults["customer health score"];
+    }
+    // Leadership searches
+    else if (queryLower.includes('company okrs') || queryLower.includes('okrs')) {
+        resultsToShow = mockResults["company okrs"];
+    } else if (queryLower.includes('leadership principles') || queryLower.includes('principles')) {
+        resultsToShow = mockResults["leadership principles"];
+    } else if (queryLower.includes('strategic initiatives') || queryLower.includes('initiatives')) {
+        resultsToShow = mockResults["strategic initiatives"];
+    } else if (queryLower.includes('board meeting') || queryLower.includes('board prep')) {
+        resultsToShow = mockResults["board meeting prep"];
     }
     
     // Short delay to simulate thinking
@@ -411,12 +1053,6 @@ function performSearch(query) {
             // Create chat-like response container
             const chatResponse = document.createElement('div');
             chatResponse.className = 'chat-response';
-            
-            // Create results header
-            const resultsHeader = document.createElement('div');
-            resultsHeader.className = 'results-header';
-            resultsHeader.innerHTML = `<h3>Results for "${query}"</h3>`;
-            chatResponse.appendChild(resultsHeader);
             
             // Create response text container
             const responseText = document.createElement('div');
@@ -729,7 +1365,18 @@ document.addEventListener('DOMContentLoaded', function() {
         // Position the popup correctly
         const rect = connectorIcons.getBoundingClientRect();
         connectorPopup.style.top = (rect.bottom + window.scrollY) + 'px';
-        connectorPopup.style.left = (rect.left + window.scrollX) + 'px';
+        
+        // Calculate horizontal position to ensure popup stays within viewport
+        const windowWidth = window.innerWidth;
+        const popupWidth = connectorPopup.offsetWidth;
+        let leftPosition = rect.left + window.scrollX;
+        
+        // Adjust if it would go off the right edge
+        if (leftPosition + popupWidth > windowWidth - 20) {
+            leftPosition = Math.max(20, windowWidth - popupWidth - 20);
+        }
+        
+        connectorPopup.style.left = leftPosition + 'px';
     });
 
     // Show OM1 popup when clicking on memory toggle
@@ -747,7 +1394,18 @@ document.addEventListener('DOMContentLoaded', function() {
         // Position the popup correctly
         const rect = memoryToggle.getBoundingClientRect();
         om1Popup.style.top = (rect.bottom + window.scrollY) + 'px';
-        om1Popup.style.left = (rect.left + window.scrollX) + 'px';
+        
+        // Calculate horizontal position to ensure popup stays within viewport
+        const windowWidth = window.innerWidth;
+        const popupWidth = om1Popup.offsetWidth;
+        let leftPosition = rect.left + window.scrollX;
+        
+        // Adjust if it would go off the right edge
+        if (leftPosition + popupWidth > windowWidth - 20) {
+            leftPosition = Math.max(20, windowWidth - popupWidth - 20);
+        }
+        
+        om1Popup.style.left = leftPosition + 'px';
     });
 
     // Close popups when clicking outside

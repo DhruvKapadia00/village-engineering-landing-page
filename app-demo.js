@@ -578,119 +578,6 @@ function updateSuggestionChips(category) {
     });
 }
 
-// Function to cycle through suggestions automatically
-function cycleAutoSuggestions() {
-    // Get initial category
-    const currentCategory = document.querySelector('.category-tab.active').getAttribute('data-category');
-    const suggestions = categorySuggestions[currentCategory];
-    let currentIndex = 0;
-    let isUserInteracting = false;
-    let isTypingInProgress = false;
-    let cycleTimeout;
-    
-    // Check if user is interacting with the search
-    const searchInput = document.getElementById('search-input');
-    
-    function checkInteraction() {
-        // If search input has content or search results are showing something other than the placeholder
-        const resultsContainer = document.getElementById('search-results');
-        const hasResults = !resultsContainer.querySelector('.results-placeholder');
-        
-        if (searchInput.value.trim() !== '' || hasResults) {
-            isUserInteracting = true;
-        } else {
-            isUserInteracting = false;
-        }
-    }
-    
-    searchInput.addEventListener('focus', function() {
-        isUserInteracting = true;
-    });
-    
-    searchInput.addEventListener('blur', function() {
-        checkInteraction();
-    });
-    
-    // Reset interaction state when search is completed
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.search-bar') && !e.target.closest('.suggestion-chips') && 
-            !e.target.closest('.search-results') && !e.target.closest('.demo-popup')) {
-            checkInteraction();
-        }
-    });
-    
-    // Function to fill search with auto-rotation tracking - only fills the search bar, doesn't perform search
-    function autoCycleFillSearch(query) {
-        isTypingInProgress = true;
-        
-        searchInput.value = '';
-        
-        // Type the query with animation - using substring to avoid adding extra characters
-        let i = 0;
-        const typeInterval = setInterval(() => {
-            if (i < query.length) {
-                searchInput.value = query.substring(0, i + 1);
-                i++;
-            } else {
-                clearInterval(typeInterval);
-                // Don't automatically perform search, just mark typing as complete
-                setTimeout(() => {
-                    isTypingInProgress = false;
-                }, 2000); // Short delay before allowing next suggestion
-            }
-        }, 20);
-    }
-    
-    // Start cycling through suggestions
-    function startCycling() {
-        // Clear any existing timeout
-        if (cycleTimeout) clearTimeout(cycleTimeout);
-        
-        // Get current category and suggestions
-        const activeTab = document.querySelector('.category-tab.active');
-        const category = activeTab ? activeTab.getAttribute('data-category') : 'engineering';
-        const currentSuggestions = categorySuggestions[category] || categorySuggestions['engineering'];
-        
-        function checkAndCycle() {
-            // Only cycle if user is not interacting and typing is not in progress
-            checkInteraction();
-            if (!isUserInteracting && !isTypingInProgress) {
-                autoCycleFillSearch(currentSuggestions[currentIndex].query);
-                currentIndex = (currentIndex + 1) % currentSuggestions.length;
-            }
-            
-            // Schedule the next check
-            cycleTimeout = setTimeout(checkAndCycle, 6000); // Check every 6 seconds
-        }
-        
-        // Start the cycle
-        cycleTimeout = setTimeout(checkAndCycle, 2000);
-    }
-    
-    // Update cycle when category changes
-    document.querySelectorAll('.category-tab').forEach(tab => {
-        tab.addEventListener('click', function() {
-            const newCategory = this.getAttribute('data-category');
-            updateSuggestionChips(newCategory);
-            
-            // Reset index for new category
-            currentIndex = 0;
-            
-            // Restart cycling with the new category
-            startCycling();
-        });
-    });
-    
-    // Initial suggestion after a delay
-    setTimeout(() => {
-        if (!isUserInteracting && !isTypingInProgress) {
-            autoCycleFillSearch(suggestions[0].query);
-            currentIndex = 1; // Start with the second suggestion next time
-        }
-        startCycling();
-    }, 2000);
-}
-
 // Event listeners
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize category tabs
@@ -737,7 +624,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Handle search button click
-    const searchButton = document.getElementById('search-button');
+    const searchButton = document.getElementById('send-button');
     searchButton.addEventListener('click', function() {
         const query = searchInput.value.trim();
         if (query) {
@@ -819,4 +706,57 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+
+    // Code for handling the connector popup
+    const connectorIcons = document.querySelector('.connector-icons');
+    const connectorPopup = document.getElementById('connector-popup');
+    const memoryToggle = document.querySelector('.memory-toggle');
+    const om1Popup = document.getElementById('om1-popup');
+    
+    // Handle toggle checkbox change
+    const toggleCheckbox = memoryToggle.querySelector('input[type="checkbox"]');
+    toggleCheckbox.addEventListener('change', function() {
+        // You can add functionality here if needed when the toggle changes
+        console.log("Organizational Memory is now " + (this.checked ? "enabled" : "disabled"));
+    });
+
+    // Show connector popup when clicking on connector icons
+    connectorIcons.addEventListener('click', function(e) {
+        e.stopPropagation();
+        connectorPopup.style.display = 'block';
+        om1Popup.style.display = 'none'; // Hide other popup if open
+        
+        // Position the popup correctly
+        const rect = connectorIcons.getBoundingClientRect();
+        connectorPopup.style.top = (rect.bottom + window.scrollY) + 'px';
+        connectorPopup.style.left = (rect.left + window.scrollX) + 'px';
+    });
+
+    // Show OM1 popup when clicking on memory toggle
+    memoryToggle.addEventListener('click', function(e) {
+        // Don't show popup when clicking on the checkbox itself
+        if (e.target.tagName === 'INPUT') {
+            e.stopPropagation();
+            return;
+        }
+        
+        e.stopPropagation();
+        om1Popup.style.display = 'block';
+        connectorPopup.style.display = 'none'; // Hide other popup if open
+        
+        // Position the popup correctly
+        const rect = memoryToggle.getBoundingClientRect();
+        om1Popup.style.top = (rect.bottom + window.scrollY) + 'px';
+        om1Popup.style.left = (rect.left + window.scrollX) + 'px';
+    });
+
+    // Close popups when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!connectorIcons.contains(e.target) && !connectorPopup.contains(e.target)) {
+            connectorPopup.style.display = 'none';
+        }
+        if (!memoryToggle.contains(e.target) && !om1Popup.contains(e.target)) {
+            om1Popup.style.display = 'none';
+        }
+    });
 });

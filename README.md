@@ -15,6 +15,7 @@ A modern, responsive landing page for Village Labs, showcasing their AI-powered 
 - Clear calls-to-action throughout
 - Updated suggestion buttons with improved UI
 - Redesigned suggestion layout with query text display
+- Enhanced user experience with categorized suggestions
 
 ## Technology Stack
 

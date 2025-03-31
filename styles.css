@@ -1368,8 +1368,8 @@ header {
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
     transition: all 0.3s ease;
     border-radius: 12px;
-    object-fit: contain; /* Ensures proper scaling */
-    display: block; /* Prevents inline display issues */
+    object-fit: contain;
+    display: block;
 }
 
 .brain-logo:hover {
@@ -1387,8 +1387,8 @@ header {
 
 .app-demo-search {
     width: 100%;
-    max-width: 850px; /* Increased from 800px */
-    margin: 0 auto 20px; /* Reduced bottom margin from 25px */
+    max-width: 850px;
+    margin: 0 auto 20px;
     position: relative;
     z-index: 100;
     padding: 10px;
@@ -1409,10 +1409,10 @@ header {
 .search-input-container {
     display: flex;
     align-items: center;
-    padding: 0 20px; /* Horizontal padding */
-    height: 85px; /* Height for vertical space */
-    position: relative; /* For absolute positioning of cursor */
-    justify-content: space-between; /* Space between input and buttons */
+    padding: 0 20px;
+    height: 85px;
+    position: relative;
+    justify-content: space-between;
 }
 
 #search-input {
@@ -1421,7 +1421,7 @@ header {
     outline: none;
     font-size: 1.1rem;
     color: #111827;
-    padding: 0 18px; /* Increased padding */
+    padding: 0 18px;
     font-family: 'Inter', sans-serif;
     height: 100%;
     caret-color: #6a69f8;
@@ -1429,7 +1429,7 @@ header {
 
 #search-input::placeholder {
     color: #a0a9b8;
-    opacity: 0;  /* Hide default placeholder completely */
+    opacity: 0;
     font-style: italic;
     font-weight: 400;
     transition: opacity 0.1s;
@@ -1453,10 +1453,10 @@ header {
     justify-content: center;
     cursor: pointer;
     transition: all 0.2s ease;
-    margin-right: 0; /* No right margin */
+    margin-right: 0;
     position: relative;
-    flex-shrink: 0; /* Prevent shrinking */
-    visibility: visible !important; /* Force visibility */
+    flex-shrink: 0;
+    visibility: visible !important;
 }
 
 #search-button:hover {
@@ -1593,7 +1593,6 @@ header {
     color: #6b7280;
 }
 
-/* Search Categories Styles */
 .search-categories {
     margin-top: 15px;
 }
@@ -1703,7 +1702,7 @@ header {
 
 /* Demo Suggestions */
 .demo-suggestions {
-    margin-top: 20px; /* Reduced from 30px to save vertical space */
+    margin-top: 20px;
     text-align: center;
     padding: 0 10px;
 }
@@ -1761,12 +1760,12 @@ header {
 }
 
 .result-item {
-    padding: 24px; /* Increased from 20px */
-    margin-bottom: 24px; /* Increased from 20px */
+    padding: 24px;
+    margin-bottom: 24px;
     background-color: #ffffff;
     border: 1px solid #e5e7eb;
-    border-radius: 10px; /* Increased from 8px */
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06); /* Enhanced shadow */
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
     transition: all 0.2s ease;
     overflow: visible;
     width: 100%;
@@ -1774,8 +1773,8 @@ header {
 }
 
 .result-item:hover {
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Enhanced hover shadow */
-    transform: translateY(-2px); /* Slight lift effect on hover */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
 }
 
 .result-snippet {
@@ -1811,7 +1810,7 @@ header {
 .search-results {
     flex: 1;
     overflow-y: auto;
-    padding: 25px; /* Increased from 20px */
+    padding: 25px;
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
     max-height: none;
@@ -1935,7 +1934,7 @@ header {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    height: 700px; /* Increased from 600px */
+    height: 700px;
 }
 
 /* App Demo Content - Ensure proper scrolling */
@@ -1945,14 +1944,14 @@ header {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    height: 700px; /* Increased from 600px */
+    height: 700px;
 }
 
 /* Search Results Container - Make it scrollable */
 .search-results {
     flex: 1;
     overflow-y: auto;
-    padding: 25px; /* Increased from 20px */
+    padding: 25px;
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
     max-height: none;
@@ -1963,8 +1962,8 @@ header {
 .app-demo-search {
     position: relative;
     z-index: 10;
-    margin-bottom: 25px; /* Increased bottom margin */
-    padding: 10px; /* Added padding around the search component */
+    margin-bottom: 25px;
+    padding: 10px;
 }
 
 /* Ensure all content is properly contained */
@@ -2000,10 +1999,10 @@ header {
 .search-input-container {
     display: flex;
     align-items: center;
-    padding: 0 20px; /* Horizontal padding */
-    height: 85px; /* Height for vertical space */
-    position: relative; /* For absolute positioning of cursor */
-    justify-content: space-between; /* Space between input and buttons */
+    padding: 0 20px;
+    height: 85px;
+    position: relative;
+    justify-content: space-between;
 }
 
 #search-input {
@@ -2012,7 +2011,7 @@ header {
     outline: none;
     font-size: 1.1rem;
     color: #111827;
-    padding: 0 18px; /* Increased padding */
+    padding: 0 18px;
     font-family: 'Inter', sans-serif;
     height: 100%;
     caret-color: #6a69f8;
@@ -2020,7 +2019,7 @@ header {
 
 #search-input::placeholder {
     color: #a0a9b8;
-    opacity: 0;  /* Hide default placeholder completely */
+    opacity: 0;
     font-style: italic;
     font-weight: 400;
     transition: opacity 0.1s;
@@ -2044,10 +2043,10 @@ header {
     justify-content: center;
     cursor: pointer;
     transition: all 0.2s ease;
-    margin-right: 0; /* No right margin */
+    margin-right: 0;
     position: relative;
-    flex-shrink: 0; /* Prevent shrinking */
-    visibility: visible !important; /* Force visibility */
+    flex-shrink: 0;
+    visibility: visible !important;
 }
 
 #search-button:hover {
@@ -2140,18 +2139,18 @@ header {
 
 /* Chat Response Styling */
 .chat-response {
-    margin-bottom: 24px; /* Increased from 16px */
+    margin-bottom: 24px;
     padding: 0;
     background: transparent;
     font-size: 16px;
-    line-height: 1.7; /* Increased line height for better readability */
+    line-height: 1.7;
 }
 
 .response-text {
     margin: 0;
     padding: 0;
     font-size: 16px;
-    line-height: 1.7; /* Increased from 1.6 */
+    line-height: 1.7;
     color: #333;
 }
 
@@ -2305,7 +2304,7 @@ header {
     gap: 8px;
     height: 100%;
     padding-right: 5px;
-    flex-shrink: 0; /* Prevent shrinking */
+    flex-shrink: 0;
 }
 
 .mic-button, .send-button {
@@ -2318,7 +2317,7 @@ header {
     align-items: center;
     justify-content: center;
     transition: color 0.2s;
-    position: relative; /* Ensure proper positioning */
+    position: relative;
 }
 
 .mic-button:hover, .send-button:hover {
@@ -2442,9 +2441,8 @@ header {
 
 .connector-more-link .btn-demo {
     display: inline-block;
-    padding: 8px 16px;
     font-size: 14px;
-    border-radius: 6px;
+    padding: 10px 20px;
 }
 
 .memory-toggle {
@@ -2537,23 +2535,23 @@ header {
 .unified-search-bar {
     display: flex;
     flex-direction: column;
-    border: 2px solid rgba(220, 222, 227, 0.9); /* Increased border weight and adjusted color */
-    border-radius: 12px; /* Slightly increased border radius */
+    border: 2px solid rgba(220, 222, 227, 0.9);
+    border-radius: 12px;
     background-color: #ffffff;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07); /* Enhanced shadow */
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
     overflow: hidden;
     width: 100%;
     margin: 0 auto;
     max-width: 900px;
-    padding: 5px; /* Added overall padding around the entire container */
+    padding: 5px;
 }
 
 .search-toolbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px 12px 25px; /* Increased horizontal padding and added bottom padding */
-    height: 50px; /* Increased height */
+    padding: 0 20px 12px 25px;
+    height: 50px;
     background-color: #ffffff;
     border-top: none;
 }
@@ -2561,9 +2559,9 @@ header {
 .search-input-container {
     display: flex;
     align-items: center;
-    padding: 0 20px; /* Increased horizontal padding */
-    height: 85px; /* Increased height for more vertical space */
-    position: relative; /* Required for absolute positioning of cursor */
+    padding: 0 20px;
+    height: 85px;
+    position: relative;
 }
 
 #om1-popup {
@@ -2616,22 +2614,22 @@ header {
 }
 
 .app-demo-section {
-    padding: 60px 0 80px; /* Increased bottom padding */
-    margin-bottom: 30px; /* Added margin at the bottom */
+    padding: 60px 0 80px;
+    margin-bottom: 30px;
 }
 
 .section-header {
-    margin-bottom: 50px; /* Increased from 40px */
+    margin-bottom: 50px;
     text-align: center;
 }
 
 .result-item {
-    padding: 24px; /* Increased from 20px */
-    margin-bottom: 24px; /* Increased from 20px */
+    padding: 24px;
+    margin-bottom: 24px;
     background-color: #ffffff;
     border: 1px solid #e5e7eb;
-    border-radius: 10px; /* Increased from 8px */
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06); /* Enhanced shadow */
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
     transition: all 0.2s ease;
     overflow: visible;
     width: 100%;
@@ -2685,7 +2683,7 @@ header {
     display: flex;
     align-items: center;
     pointer-events: none;
-    left: 38px; /* Adjusted from 54px to better position cursor */
+    left: 38px;
     top: 0;
     z-index: 5;
 }
@@ -2694,7 +2692,7 @@ header {
     display: inline-block;
     width: 2px;
     height: 24px;
-    background-color: #000; /* Pure black */
+    background-color: #000;
     animation: blink 0.8s infinite;
 }
 
@@ -2710,14 +2708,14 @@ header {
 
 /* Make the loading logo smaller */
 .loading-logo {
-    width: 50px !important; /* Reduced from original size */
-    height: 50px !important; /* Reduced from original size */
+    width: 50px !important;
+    height: 50px !important;
     margin-bottom: 10px;
 }
 
 .loading-text {
     font-size: 14px;
-    color: #333; /* Darker text instead of light grey */
+    color: #333;
     margin: 0;
 }
 
@@ -2729,15 +2727,15 @@ header {
 
 /* Fix loading screen alignment issues */
 .loading-logo {
-    width: 80px; /* Restored to original size */
-    height: 80px; /* Restored to original size */
+    width: 80px;
+    height: 80px;
     margin-bottom: 15px;
     animation: pulse 1.5s infinite ease-in-out;
 }
 
 .loading-text {
     font-size: 16px;
-    color: #6b7280; /* Restored to original light grey color */
+    color: #6b7280;
     margin: 0;
 }
 
@@ -2800,4 +2798,67 @@ footer {
     font-size: 14px;
     color: rgba(0, 0, 0, 0.6);
     line-height: 1.5;
+}
+
+/* Suggestions section under category tabs */
+.suggestions {
+    margin-top: 20px;
+    padding: 0 15px;
+}
+
+.suggestions h3 {
+    font-size: 16px;
+    color: #6b7280;
+    margin-bottom: 15px;
+    font-weight: 500;
+    text-align: left;
+}
+
+/* Updated suggestion chips to match the image */
+.search-categories .suggestion-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-categories .suggestion-chip {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #111827;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+}
+
+.search-categories .suggestion-chip:hover {
+    background-color: #f3f4f6;
+    border-color: #d1d5db;
+}
+
+.suggestion-query {
+    display: block;
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 5px;
+}
+
+/* Focus for today style */
+.search-categories .suggestion-chip.focus-today {
+    background-color: #f0f9ff;
+    border-color: #bae6fd;
+}
+
+/* Stakeholder feedback style */
+.search-categories .suggestion-chip.stakeholder-feedback {
+    background-color: #f0fdf4;
+    border-color: #bbf7d0;
 }

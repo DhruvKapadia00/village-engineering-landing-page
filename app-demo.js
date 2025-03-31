@@ -512,303 +512,59 @@ const mockResults = {
             authorInitials: "PE"
         }
     ],
-    // Sales-related search results
-    "sales pipeline": [
-        {
-            source: "Notion",
-            sourceIcon: "images/integrations/notion.svg",
-            title: "Sales Pipeline Overview Q2 2024",
-            snippet: "Village's deep research assistant has compiled a comprehensive analysis of our current sales pipeline, including conversion rates at each stage, velocity metrics, and forecasted close dates. The AI has identified key opportunities requiring attention and provided recommendations for accelerating deals.",
-            date: "Updated weekly",
-            author: "Sales Operations",
-            authorInitials: "SO"
-        },
-        {
-            source: "Slack",
-            sourceIcon: "images/integrations/slack.svg",
-            title: "Pipeline Review Discussion",
-            snippet: "Thread from the #sales channel discussing the current pipeline status and strategies for improving conversion rates. Village's automated reporting highlighted trends in successful deals and identified common obstacles in stalled opportunities.",
-            date: "2 days ago",
-            author: "Sales Leadership",
-            authorInitials: "SL"
-        }
-    ],
-    "deal closing process": [
-        {
-            source: "Notion",
-            sourceIcon: "images/integrations/notion.svg",
-            title: "Deal Closing Process Documentation",
-            snippet: "Village maintains our standardized deal closing workflow, including contract negotiation guidelines, approval processes, and closing verification steps. The system ensures all sales representatives follow consistent procedures and provides automated tracking of deals through each stage.",
-            date: "Updated 1 month ago",
-            author: "Sales Enablement",
-            authorInitials: "SE"
-        },
-        {
-            source: "Google Drive",
-            sourceIcon: "images/integrations/google drive.png",
-            title: "Deal Closing Best Practices",
-            snippet: "Village has compiled successful closing strategies and techniques from top-performing sales representatives. The document includes effective negotiation approaches, objection handling techniques, and methods for accelerating the decision process.",
-            date: "Updated 3 weeks ago",
-            author: "Sales Training",
-            authorInitials: "ST"
-        }
-    ],
-    "customer objections": [
-        {
-            source: "Notion",
-            sourceIcon: "images/integrations/notion.svg",
-            title: "Common Customer Objections Database",
-            snippet: "Village's organizational memory maintains a comprehensive database of customer objections and effective responses. The system categorizes objections by type (price, timing, competition, features) and provides proven frameworks for addressing each concern.",
-            date: "Updated continuously",
-            author: "Sales Team",
-            authorInitials: "ST"
-        },
-        {
-            source: "Slack",
-            sourceIcon: "images/integrations/slack.svg",
-            title: "Objection Handling Workshop Summary",
-            snippet: "Village captured key insights from our recent objection handling workshop, including role-playing exercises, customer psychology principles, and situation-specific approaches. The AI has categorized and organized these insights for easy reference during sales conversations.",
-            date: "Updated 2 weeks ago",
-            author: "Sales Development",
-            authorInitials: "SD"
-        }
-    ],
-    "sales enablement": [
-        {
-            source: "Notion",
-            sourceIcon: "images/integrations/notion.svg",
-            title: "Sales Enablement Resources Hub",
-            snippet: "Village provides a centralized repository of sales enablement resources, including product sheets, competitive comparison guides, case studies, ROI calculators, and presentation templates. The system ensures all sales materials are up-to-date and easily accessible.",
-            date: "Updated continuously",
-            author: "Marketing",
-            authorInitials: "MK"
-        },
-        {
-            source: "Google Drive",
-            sourceIcon: "images/integrations/google drive.png",
-            title: "Sales Playbook 2024",
-            snippet: "Comprehensive sales playbook covering our target markets, buyer personas, value propositions, sales methodologies, discovery frameworks, and closing techniques. Village ensures this resource evolves based on successful sales patterns and market changes.",
-            date: "Updated quarterly",
-            author: "Sales Strategy",
-            authorInitials: "SS"
-        }
-    ],
-    // Customer Success-related search results
-    "customer onboarding": [
-        {
-            source: "Notion",
-            sourceIcon: "images/integrations/notion.svg",
-            title: "Customer Onboarding Process",
-            snippet: "Village maintains our customer onboarding workflow, from account setup to initial value delivery. The documentation includes role responsibilities, timeline expectations, milestone definitions, and success criteria for a completed onboarding.",
-            date: "Updated 1 month ago",
-            author: "Customer Success",
-            authorInitials: "CS"
-        },
-        {
-            source: "Slack",
-            sourceIcon: "images/integrations/slack.svg",
-            title: "Onboarding Improvement Discussion",
-            snippet: "Thread from the #customer-success channel discussing optimization of the onboarding process. Village's analytics identified common friction points and suggested improvements based on patterns in successful customer activations.",
-            date: "1 week ago",
-            author: "Onboarding Team",
-            authorInitials: "OT"
-        }
-    ],
-    "churn reduction": [
-        {
-            source: "Notion",
-            sourceIcon: "images/integrations/notion.svg",
-            title: "Churn Reduction Strategies",
-            snippet: "Village's data analysis has identified key indicators of churn risk and effective intervention strategies. The document outlines proactive monitoring approaches, engagement tactics for at-risk accounts, and process improvements to address common causes of customer dissatisfaction.",
-            date: "Updated monthly",
-            author: "Customer Retention",
-            authorInitials: "CR"
-        },
-        {
-            source: "Google Drive",
-            sourceIcon: "images/integrations/google drive.png",
-            title: "Churn Analysis Report Q1 2024",
-            snippet: "Village's automated reporting analyzed churn patterns for Q1, identifying common exit points, feature utilization gaps before cancellation, and feedback themes from exit surveys. The report includes specific recommendations for product and service improvements.",
-            date: "Updated quarterly",
-            author: "Data Analytics",
-            authorInitials: "DA"
-        }
-    ],
-    "support escalation": [
-        {
-            source: "Notion",
-            sourceIcon: "images/integrations/notion.svg",
-            title: "Support Escalation Process",
-            snippet: "Village maintains our support escalation framework, including severity definitions, response time expectations, escalation paths, and resolution protocols. The system ensures consistent handling of support issues and appropriate resource allocation based on impact.",
-            date: "Updated 2 weeks ago",
-            author: "Support Leadership",
-            authorInitials: "SL"
-        },
-        {
-            source: "Slack",
-            sourceIcon: "images/integrations/slack.svg",
-            title: "Escalation Handling Discussion",
-            snippet: "Thread from the #support channel discussing a complex escalation case and the resolution approach. Village preserved this discussion as a reference for handling similar situations in the future, highlighting effective communication strategies and technical solutions.",
-            date: "3 days ago",
-            author: "Support Team",
-            authorInitials: "ST"
-        }
-    ],
-    "customer health score": [
-        {
-            source: "Notion",
-            sourceIcon: "images/integrations/notion.svg",
-            title: "Customer Health Score Methodology",
-            snippet: "Village's analytics engine powers our customer health scoring system, which combines product usage metrics, support interactions, NPS/CSAT scores, contract data, and engagement indicators. The document explains how these factors are weighted and interpreted for proactive account management.",
-            date: "Updated quarterly",
-            author: "Customer Success Ops",
-            authorInitials: "CO"
-        },
-        {
-            source: "Google Drive",
-            sourceIcon: "images/integrations/google drive.png",
-            title: "Health Score Dashboard Guide",
-            snippet: "Documentation for using the customer health score dashboard, including how to interpret different indicators, recommended actions for various score ranges, and processes for documenting interventions. Village ensures this guide evolves based on patterns in successful account recoveries.",
-            date: "Updated 2 months ago",
-            author: "Success Operations",
-            authorInitials: "SO"
-        }
-    ],
-    // Leadership-related search results
-    "company okrs": [
-        {
-            source: "Notion",
-            sourceIcon: "images/integrations/notion.svg",
-            title: "Company OKRs Q2 2024",
-            snippet: "Village maintains our company-wide Objectives and Key Results, tracking progress and dependencies across departments. The document outlines our top-level goals, success metrics, and the cascade of supporting objectives for each team. Current focus areas include market expansion, product adoption, and operational efficiency.",
-            date: "Updated quarterly",
-            author: "Executive Team",
-            authorInitials: "ET"
-        },
-        {
-            source: "Slack",
-            sourceIcon: "images/integrations/slack.svg",
-            title: "OKR Planning Discussion",
-            snippet: "Thread from the #leadership channel discussing OKR planning for the upcoming quarter. Village's analytics provided historical performance data and trend analysis to inform goal-setting and resource allocation decisions.",
-            date: "2 weeks ago",
-            author: "Operations Leadership",
-            authorInitials: "OL"
-        }
-    ],
-    "leadership principles": [
-        {
-            source: "Notion",
-            sourceIcon: "images/integrations/notion.svg",
-            title: "Leadership Principles Framework",
-            snippet: "Village preserves our core leadership principles, which guide decision-making and team management across the organization. The document outlines our values-based approach to leadership, with specific examples of how these principles apply in different situations and roles.",
-            date: "Updated 2 months ago",
-            author: "People & Culture",
-            authorInitials: "PC"
-        },
-        {
-            source: "Google Drive",
-            sourceIcon: "images/integrations/google drive.png",
-            title: "Leadership Development Resources",
-            snippet: "Compilation of leadership development resources, including training materials, recommended readings, workshop outlines, and coaching frameworks. Village ensures these resources align with our leadership principles and business objectives.",
-            date: "Updated monthly",
-            author: "Leadership Development",
-            authorInitials: "LD"
-        }
-    ],
-    "strategic initiatives": [
-        {
-            source: "Notion",
-            sourceIcon: "images/integrations/notion.svg",
-            title: "Strategic Initiatives Overview 2024",
-            snippet: "Village tracks our key strategic initiatives, including market expansion, product evolution, operational excellence, and organizational development. The document outlines the objectives, timelines, resource allocations, risk assessments, and success metrics for each initiative.",
-            date: "Updated monthly",
-            author: "Strategy Team",
-            authorInitials: "ST"
-        },
-        {
-            source: "Slack",
-            sourceIcon: "images/integrations/slack.svg",
-            title: "Strategic Initiative Progress Review",
-            snippet: "Thread from the #strategic-initiatives channel discussing progress on key initiatives. Village's reporting provides status updates, milestone achievements, resource utilization metrics, and blockers requiring leadership attention.",
-            date: "1 week ago",
-            author: "Executive Leadership",
-            authorInitials: "EL"
-        }
-    ],
-    "board meeting prep": [
-        {
-            source: "Notion",
-            sourceIcon: "images/integrations/notion.svg",
-            title: "Board Meeting Preparation Guide",
-            snippet: "Village maintains our process for board meeting preparation, including required materials, presentation standards, data collection timelines, and stakeholder responsibilities. The document ensures consistent, comprehensive, and strategic communication with our board of directors.",
-            date: "Updated quarterly",
-            author: "CEO Office",
-            authorInitials: "CO"
-        },
-        {
-            source: "Google Drive",
-            sourceIcon: "images/integrations/google drive.png",
-            title: "Board Meeting Materials Template",
-            snippet: "Standardized templates for board meeting materials, including executive summary, financial performance, strategic initiatives, market analysis, and forward-looking projections. Village helps ensure consistency and completeness in board communications.",
-            date: "Updated 3 months ago",
-            author: "Finance Team",
-            authorInitials: "FT"
-        }
-    ]
-};
-
-// Category-specific suggestion chips
-const categorySuggestions = {
+    // Category-specific suggestion chips
     "engineering": [
         { text: "Authentication flow", query: "How to set up the authentication flow?" },
         { text: "Payment API contributors", query: "Who worked on the payment API?" },
-        { text: "Deployment status", query: "What's the status of the latest deployment?" },
-        { text: "User database schema", query: "Find the database schema for users" },
-        { text: "PR review example", query: "Show me a PR review example" },
-        { text: "Engineering productivity", query: "What are the engineering productivity benefits?" },
-        { text: "Automated reporting", query: "How does automated reporting work?" }
+        { text: "PR review example", query: "Show me a PR review example" }
     ],
     "product": [
         { text: "Product roadmap", query: "What's on our product roadmap for Q3?" },
         { text: "Feature prioritization", query: "How do we prioritize new features?" },
-        { text: "User research findings", query: "Summarize recent user research findings" },
-        { text: "Product metrics", query: "What are our key product metrics?" }
+        { text: "User research findings", query: "Summarize recent user research findings" }
     ],
     "marketing": [
         { text: "Campaign performance", query: "How did our last email campaign perform?" },
         { text: "Content calendar", query: "Show me the content calendar for next month" },
-        { text: "Brand guidelines", query: "Where can I find our brand guidelines?" },
-        { text: "Social media strategy", query: "What's our social media strategy?" }
-    ],
-    "sales": [
-        { text: "Sales pipeline", query: "What's our current sales pipeline?" },
-        { text: "Deal closing process", query: "Explain our deal closing process" },
-        { text: "Customer objections", query: "Common customer objections and responses" },
-        { text: "Sales enablement", query: "What sales enablement resources do we have?" }
-    ],
-    "customer-success": [
-        { text: "Customer onboarding", query: "What's our customer onboarding process?" },
-        { text: "Churn reduction", query: "Strategies for reducing customer churn" },
-        { text: "Support escalation", query: "How does our support escalation process work?" },
-        { text: "Customer health score", query: "How do we calculate customer health scores?" }
+        { text: "Brand guidelines", query: "Where can I find our brand guidelines?" }
     ],
     "operations": [
         { text: "Procurement process", query: "What's our procurement process?" },
         { text: "Security protocols", query: "Explain our security protocols" },
-        { text: "Vendor management", query: "How do we manage vendor relationships?" },
-        { text: "Compliance requirements", query: "What compliance requirements do we have?" }
-    ],
-    "leadership": [
-        { text: "Company OKRs", query: "What are our company OKRs this quarter?" },
-        { text: "Leadership principles", query: "What are our leadership principles?" },
-        { text: "Strategic initiatives", query: "What strategic initiatives are we focusing on?" },
-        { text: "Board meeting prep", query: "How should I prepare for board meetings?" }
+        { text: "Vendor management", query: "How do we manage vendor relationships?" }
     ],
     "hr": [
         { text: "Hiring process", query: "What's our hiring process?" },
         { text: "Performance reviews", query: "How do we conduct performance reviews?" },
-        { text: "Employee benefits", query: "What employee benefits do we offer?" },
-        { text: "Remote work policy", query: "What's our remote work policy?" }
+        { text: "Employee benefits", query: "What employee benefits do we offer?" }
+    ]
+};
+
+const categorySuggestions = {
+    "engineering": [
+        { text: "Authentication flow", query: "How to set up the authentication flow?" },
+        { text: "Payment API contributors", query: "Who worked on the payment API?" },
+        { text: "PR review example", query: "Show me a PR review example" }
+    ],
+    "product": [
+        { text: "Product roadmap", query: "What's on our product roadmap for Q3?" },
+        { text: "Feature prioritization", query: "How do we prioritize new features?" },
+        { text: "User research findings", query: "Summarize recent user research findings" }
+    ],
+    "marketing": [
+        { text: "Campaign performance", query: "How did our last email campaign perform?" },
+        { text: "Content calendar", query: "Show me the content calendar for next month" },
+        { text: "Brand guidelines", query: "Where can I find our brand guidelines?" }
+    ],
+    "operations": [
+        { text: "Procurement process", query: "What's our procurement process?" },
+        { text: "Security protocols", query: "Explain our security protocols" },
+        { text: "Vendor management", query: "How do we manage vendor relationships?" }
+    ],
+    "hr": [
+        { text: "Hiring process", query: "What's our hiring process?" },
+        { text: "Performance reviews", query: "How do we conduct performance reviews?" },
+        { text: "Employee benefits", query: "What employee benefits do we offer?" }
     ]
 };
 
@@ -936,95 +692,6 @@ function cycleAutoSuggestions() {
         checkInteraction();
     });
     
-    // Function to fill search with auto-rotation tracking - only fills the search bar, doesn't perform search
-    function autoCycleFillSearch(query) {
-        isTypingInProgress = true;
-        
-        const searchInput = document.getElementById('search-input');
-        const currentText = searchInput.value;
-        
-        // Clear any ongoing animations first
-        if (currentBackspaceInterval) clearInterval(currentBackspaceInterval);
-        if (currentTypeInterval) clearInterval(currentTypeInterval);
-        if (animationPauseTimeout) clearTimeout(animationPauseTimeout);
-        
-        // Add typing class to prevent placeholder flickering
-        searchInput.classList.add('typing-in-progress');
-        
-        // Remove any existing cursor first
-        const existingCursors = document.querySelectorAll('.input-cursor-container');
-        existingCursors.forEach(cursor => {
-            if (cursor.parentNode) {
-                cursor.parentNode.removeChild(cursor);
-            }
-        });
-        
-        // First backspace the current text before typing the new query
-        if (currentText.length > 0) {
-            let currentLength = currentText.length;
-            currentBackspaceInterval = setInterval(() => {
-                if (currentLength > 0) {
-                    searchInput.value = currentText.substring(0, currentLength - 1);
-                    currentLength--;
-                } else {
-                    clearInterval(currentBackspaceInterval);
-                    currentBackspaceInterval = null;
-                    // Add a blinking cursor element during the pause
-                    const cursorContainer = document.createElement('span');
-                    cursorContainer.className = 'input-cursor-container';
-                    cursorContainer.innerHTML = '<span class="input-cursor"></span>';
-                    searchInput.parentNode.appendChild(cursorContainer);
-                    
-                    // Add a delay between backspacing and typing new query
-                    animationPauseTimeout = setTimeout(() => {
-                        // Remove the cursor before starting to type
-                        if (cursorContainer.parentNode) {
-                            cursorContainer.parentNode.removeChild(cursorContainer);
-                        }
-                        // Start typing the new query after backspacing and delay
-                        typeNewQuery();
-                    }, 500); // 500ms delay
-                }
-            }, 15); // Slightly faster backspacing
-        } else {
-            // If no current text, add cursor and pause before typing
-            const cursorContainer = document.createElement('span');
-            cursorContainer.className = 'input-cursor-container';
-            cursorContainer.innerHTML = '<span class="input-cursor"></span>';
-            searchInput.parentNode.appendChild(cursorContainer);
-            
-            // Add a delay before typing new query
-            animationPauseTimeout = setTimeout(() => {
-                // Remove the cursor before starting to type
-                if (cursorContainer.parentNode) {
-                    cursorContainer.parentNode.removeChild(cursorContainer);
-                }
-                // Start typing the new query after delay
-                typeNewQuery();
-            }, 500); // 500ms delay
-        }
-        
-        // Function to type new query after backspacing
-        function typeNewQuery() {
-            let i = 0;
-            currentTypeInterval = setInterval(() => {
-                if (i < query.length) {
-                    searchInput.value = query.substring(0, i + 1);
-                    i++;
-                } else {
-                    clearInterval(currentTypeInterval);
-                    currentTypeInterval = null;
-                    // Remove typing class when done
-                    searchInput.classList.remove('typing-in-progress');
-                    // Don't automatically perform search, just mark typing as complete
-                    setTimeout(() => {
-                        isTypingInProgress = false;
-                    }, 1500); // Shorter delay before allowing next suggestion
-                }
-            }, 20);
-        }
-    }
-    
     // Start cycling through suggestions
     function startCycling() {
         // Clear any existing timeout
@@ -1054,8 +721,14 @@ function cycleAutoSuggestions() {
     // Update cycle when category changes
     document.querySelectorAll('.category-tab').forEach(tab => {
         tab.addEventListener('click', function() {
-            const newCategory = this.getAttribute('data-category');
-            updateSuggestionChips(newCategory);
+            const category = this.getAttribute('data-category');
+            
+            // Update active tab
+            categoryTabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Update suggestion chips
+            updateSuggestionChips(category);
             
             // Reset index for new category
             currentIndex = 0;
@@ -1163,36 +836,6 @@ function performSearch(query) {
         resultsToShow = mockResults["employee benefits"];
     } else if (queryLower.includes('remote work') || queryLower.includes('remote policy')) {
         resultsToShow = mockResults["remote work policy"];
-    }
-    // Sales searches
-    else if (queryLower.includes('sales pipeline') || queryLower.includes('pipeline')) {
-        resultsToShow = mockResults["sales pipeline"];
-    } else if (queryLower.includes('deal closing') || queryLower.includes('closing process')) {
-        resultsToShow = mockResults["deal closing process"];
-    } else if (queryLower.includes('customer objections') || queryLower.includes('objections')) {
-        resultsToShow = mockResults["customer objections"];
-    } else if (queryLower.includes('sales enablement') || queryLower.includes('enablement')) {
-        resultsToShow = mockResults["sales enablement"];
-    }
-    // Customer Success searches
-    else if (queryLower.includes('customer onboarding') || queryLower.includes('onboarding')) {
-        resultsToShow = mockResults["customer onboarding"];
-    } else if (queryLower.includes('churn reduction') || queryLower.includes('churn')) {
-        resultsToShow = mockResults["churn reduction"];
-    } else if (queryLower.includes('support escalation') || queryLower.includes('escalation')) {
-        resultsToShow = mockResults["support escalation"];
-    } else if (queryLower.includes('customer health') || queryLower.includes('health score')) {
-        resultsToShow = mockResults["customer health score"];
-    }
-    // Leadership searches
-    else if (queryLower.includes('company okrs') || queryLower.includes('okrs')) {
-        resultsToShow = mockResults["company okrs"];
-    } else if (queryLower.includes('leadership principles') || queryLower.includes('principles')) {
-        resultsToShow = mockResults["leadership principles"];
-    } else if (queryLower.includes('strategic initiatives') || queryLower.includes('initiatives')) {
-        resultsToShow = mockResults["strategic initiatives"];
-    } else if (queryLower.includes('board meeting') || queryLower.includes('board prep')) {
-        resultsToShow = mockResults["board meeting prep"];
     }
     
     // Short delay to simulate thinking
@@ -1339,50 +982,31 @@ function typeOutResponse(element, html) {
 
 // Function to update suggestion chips based on selected category
 function updateSuggestionChips(category) {
-    const suggestionChipsContainer = document.querySelector('.suggestion-chips');
+    const suggestionChipsContainer = document.querySelector('.search-categories .suggestion-chips');
+    if (!suggestionChipsContainer) return;
+    
     suggestionChipsContainer.innerHTML = '';
-    
-    // Update active tab
-    document.querySelectorAll('.category-tab').forEach(tab => {
-        if (tab.getAttribute('data-category') === category) {
-            tab.classList.add('active');
-        } else {
-            tab.classList.remove('active');
-        }
-    });
-    
     const suggestions = categorySuggestions[category] || categorySuggestions["engineering"];
     
     suggestions.forEach(suggestion => {
         const chip = document.createElement('div');
         chip.className = 'suggestion-chip';
-        chip.textContent = suggestion.text;
         chip.setAttribute('data-query', suggestion.query);
-        chip.addEventListener('click', function(e) {
-            // First clear any ongoing search process
-            if (currentBackspaceInterval) clearInterval(currentBackspaceInterval);
-            if (currentTypeInterval) clearInterval(currentTypeInterval);
-            if (animationPauseTimeout) clearTimeout(animationPauseTimeout);
-            
-            // Make sure we remove all cursor elements
-            const existingCursors = document.querySelectorAll('.input-cursor-container');
-            existingCursors.forEach(cursor => {
-                if (cursor.parentNode) {
-                    cursor.parentNode.removeChild(cursor);
-                }
-            });
-            
-            // Set isTypingInProgress for auto cycle
-            isTypingInProgress = true;
-            
-            // Then fill with the new query
-            const query = this.getAttribute('data-query');
-            fillSearch(query);
-            
-            // Prevent default behavior and stop propagation
-            e.preventDefault();
-            e.stopPropagation();
+        
+        // Add the main text
+        chip.textContent = suggestion.text;
+        
+        // Add the query text in a span
+        const querySpan = document.createElement('span');
+        querySpan.className = 'suggestion-query';
+        querySpan.textContent = suggestion.query;
+        chip.appendChild(querySpan);
+        
+        // Add click event listener
+        chip.addEventListener('click', function() {
+            fillSearch(suggestion.query);
         });
+        
         suggestionChipsContainer.appendChild(chip);
     });
 }

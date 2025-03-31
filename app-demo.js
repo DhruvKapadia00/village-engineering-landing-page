@@ -188,7 +188,6 @@ const mockResults = {
             authorInitials: "AJ"
         }
     ],
-    // Marketing-related search results
     "email campaign performance": [
         {
             source: "Slack",
@@ -269,7 +268,6 @@ const mockResults = {
             authorInitials: "MA"
         }
     ],
-    // Product-related search results
     "product roadmap": [
         {
             source: "Notion",
@@ -350,7 +348,6 @@ const mockResults = {
             authorInitials: "PA"
         }
     ],
-    // Operations-related search results
     "procurement process": [
         {
             source: "Notion",
@@ -431,7 +428,6 @@ const mockResults = {
             authorInitials: "CO"
         }
     ],
-    // HR-related search results
     "hiring process": [
         {
             source: "Notion",
@@ -657,111 +653,6 @@ function fillSearch(query) {
     }
 }
 
-// Function for auto-cycling through search queries with animation
-function autoCycleFillSearch(query) {
-    // Set flag to indicate typing is in progress
-    isTypingInProgress = true;
-    
-    // Use the fillSearch function for the animation
-    fillSearch(query);
-    
-    // Reset the flag after animation completes (typical animation duration + buffer)
-    setTimeout(() => {
-        isTypingInProgress = false;
-    }, (query.length * 20) + 1000); // Typing speed (20ms per char) + 1s buffer
-}
-
-// Function to cycle through suggestions automatically
-function cycleAutoSuggestions() {
-    // Get initial category
-    const currentCategory = document.querySelector('.category-tab.active').getAttribute('data-category');
-    const suggestions = categorySuggestions[currentCategory];
-    let currentIndex = 0;
-    let isUserInteracting = false;
-    let isTypingInProgress = false;
-    let cycleTimeout;
-    
-    // Check if user is interacting with the search
-    const searchInput = document.getElementById('search-input');
-    
-    function checkInteraction() {
-        // If search input has content or search results are showing something other than the placeholder
-        const resultsContainer = document.getElementById('search-results');
-        const hasResults = !resultsContainer.querySelector('.results-placeholder');
-        
-        // Only consider showing results as user interaction, not just having text in the input
-        if (hasResults) {
-            isUserInteracting = true;
-        } else {
-            isUserInteracting = false;
-        }
-    }
-    
-    searchInput.addEventListener('focus', function() {
-        // Don't set isUserInteracting to true on focus, only when results are showing
-        checkInteraction();
-    });
-    
-    searchInput.addEventListener('blur', function() {
-        checkInteraction();
-    });
-    
-    // Start cycling through suggestions
-    function startCycling() {
-        // Clear any existing timeout
-        if (cycleTimeout) clearTimeout(cycleTimeout);
-        
-        // Get current category and suggestions
-        const activeTab = document.querySelector('.category-tab.active');
-        const category = activeTab ? activeTab.getAttribute('data-category') : 'engineering';
-        const currentSuggestions = categorySuggestions[category] || categorySuggestions['engineering'];
-        
-        function checkAndCycle() {
-            // Only cycle if user is not interacting and typing is not in progress
-            checkInteraction();
-            if (!isUserInteracting && !isTypingInProgress) {
-                autoCycleFillSearch(currentSuggestions[currentIndex].query);
-                currentIndex = (currentIndex + 1) % currentSuggestions.length;
-            }
-            
-            // Schedule the next check
-            cycleTimeout = setTimeout(checkAndCycle, 4000); // Check more frequently
-        }
-        
-        // Start the cycle
-        cycleTimeout = setTimeout(checkAndCycle, 1500);
-    }
-    
-    // Update cycle when category changes
-    document.querySelectorAll('.category-tab').forEach(tab => {
-        tab.addEventListener('click', function() {
-            const category = this.getAttribute('data-category');
-            
-            // Update active tab
-            categoryTabs.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Update suggestion chips
-            updateSuggestionChips(category);
-            
-            // Reset index for new category
-            currentIndex = 0;
-            
-            // Restart cycling with the new category
-            startCycling();
-        });
-    });
-    
-    // Initial suggestion after a delay
-    setTimeout(() => {
-        if (!isUserInteracting && !isTypingInProgress) {
-            autoCycleFillSearch(suggestions[0].query);
-            currentIndex = 1; // Start with the second suggestion next time
-        }
-        startCycling();
-    }, 1500);
-}
-
 // Function to perform search and display results with typing effect
 function performSearch(query) {
     const resultsContainer = document.getElementById('search-results');
@@ -883,7 +774,7 @@ function performSearch(query) {
             const chatResponse = document.createElement('div');
             chatResponse.className = 'chat-response';
             
-            const noResultsHTML = `<div class="results-placeholder"><div class="placeholder-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#6A69F8" stroke-width="2"/><path d="M12 8V12L15 15" stroke="#6A69F8" stroke-width="2" stroke-linecap="round"/></svg></div><h3>No results found</h3><p>I couldn't find any matches for "${query}". Try a different search term or browse our suggested searches.</p></div>`;
+            const noResultsHTML = `<div class="results-placeholder"></div>`;
             
             // Create response text container
             const responseText = document.createElement('div');
@@ -896,7 +787,7 @@ function performSearch(query) {
             typeOutResponse(responseText, noResultsHTML);
         } else {
             // Empty query, show default placeholder
-            resultsContainer.innerHTML = `<div class="results-placeholder"><div class="placeholder-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#6A69F8" stroke-width="2"/><path d="M12 8V12L15 15" stroke="#6A69F8" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Ask Village anything about your organization</h3><p>Village connects to your tools and knowledge base to provide instant, accurate answers.</p></div>`;
+            resultsContainer.innerHTML = `<div class="results-placeholder"></div>`;
         }
     }, 1500); // Simulate thinking time
 }
@@ -1047,9 +938,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Handle search input
     const searchInput = document.getElementById('search-input');
-    searchInput.addEventListener('keypress', function(e) {
+    searchInput.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') {
-            const query = this.value.trim();
+            const query = searchInput.value.trim();
             if (query) {
                 // Check if it's a predefined query
                 let isPredefined = false;
@@ -1060,8 +951,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
                 
-                // If not a predefined query, show the popup
-                if (!isPredefined && demoPopup) {
+                // Only show popup if not a predefined query AND not during auto-cycling
+                if (!isPredefined && demoPopup && !isTypingInProgress) {
                     demoPopup.classList.add('show');
                 } else {
                     performSearch(query);
@@ -1095,8 +986,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             
-            // If not a predefined query, show the popup
-            if (!isPredefined && demoPopup) {
+            // Only show popup if not a predefined query AND not during auto-cycling
+            if (!isPredefined && demoPopup && !isTypingInProgress) {
                 demoPopup.classList.add('show');
             } else {
                 performSearch(query);
@@ -1109,7 +1000,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Show default placeholder
     const resultsContainer = document.getElementById('search-results');
-    resultsContainer.innerHTML = `<div class="results-placeholder"><div class="placeholder-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#6A69F8" stroke-width="2"/><path d="M12 8V12L15 15" stroke="#6A69F8" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Ask Village anything about your organization</h3><p>Village connects to your tools and knowledge base to provide instant, accurate answers.</p></div>`;
+    resultsContainer.innerHTML = `<div class="results-placeholder"></div>`;
     
     // Handle demo popup buttons
     const demoPopup = document.getElementById('demo-popup');
@@ -1232,3 +1123,108 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// Function for auto-cycling through search queries with animation
+function autoCycleFillSearch(query) {
+    // Set flag to indicate typing is in progress
+    isTypingInProgress = true;
+    
+    // Use the fillSearch function for the animation
+    fillSearch(query);
+    
+    // Reset the flag after animation completes (typical animation duration + buffer)
+    setTimeout(() => {
+        isTypingInProgress = false;
+    }, (query.length * 40) + 2000); // Increased typing speed (40ms per char) + 2s buffer
+}
+
+// Function to cycle through suggestions automatically
+function cycleAutoSuggestions() {
+    // Get initial category
+    const currentCategory = document.querySelector('.category-tab.active').getAttribute('data-category');
+    const suggestions = categorySuggestions[currentCategory];
+    let currentIndex = 0;
+    let isUserInteracting = false;
+    let isTypingInProgress = false;
+    let cycleTimeout;
+    
+    // Check if user is interacting with the search
+    const searchInput = document.getElementById('search-input');
+    
+    function checkInteraction() {
+        // If search input has content or search results are showing something other than the placeholder
+        const resultsContainer = document.getElementById('search-results');
+        const hasResults = !resultsContainer.querySelector('.results-placeholder');
+        
+        // Only consider showing results as user interaction, not just having text in the input
+        if (hasResults) {
+            isUserInteracting = true;
+        } else {
+            isUserInteracting = false;
+        }
+    }
+    
+    searchInput.addEventListener('focus', function() {
+        // Don't set isUserInteracting to true on focus, only when results are showing
+        checkInteraction();
+    });
+    
+    searchInput.addEventListener('blur', function() {
+        checkInteraction();
+    });
+    
+    // Start cycling through suggestions
+    function startCycling() {
+        // Clear any existing timeout
+        if (cycleTimeout) clearTimeout(cycleTimeout);
+        
+        // Get current category and suggestions
+        const activeTab = document.querySelector('.category-tab.active');
+        const category = activeTab ? activeTab.getAttribute('data-category') : 'engineering';
+        const currentSuggestions = categorySuggestions[category] || categorySuggestions['engineering'];
+        
+        function checkAndCycle() {
+            // Only cycle if user is not interacting and typing is not in progress
+            checkInteraction();
+            if (!isUserInteracting && !isTypingInProgress) {
+                autoCycleFillSearch(currentSuggestions[currentIndex].query);
+                currentIndex = (currentIndex + 1) % currentSuggestions.length;
+            }
+            
+            // Schedule the next check
+            cycleTimeout = setTimeout(checkAndCycle, 8000); // Increased from 4000 to 8000 ms
+        }
+        
+        // Start the cycle
+        cycleTimeout = setTimeout(checkAndCycle, 1500);
+    }
+    
+    // Update cycle when category changes
+    document.querySelectorAll('.category-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            const category = this.getAttribute('data-category');
+            
+            // Update active tab
+            categoryTabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Update suggestion chips
+            updateSuggestionChips(category);
+            
+            // Reset index for new category
+            currentIndex = 0;
+            
+            // Restart cycling with the new category
+            startCycling();
+        });
+    });
+    
+    // Initial suggestion after a delay
+    setTimeout(() => {
+        if (!isUserInteracting && !isTypingInProgress) {
+            autoCycleFillSearch(suggestions[0].query);
+            currentIndex = 1; // Start with the second suggestion next time
+        }
+        startCycling();
+    }, 1500);
+}

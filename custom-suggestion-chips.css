@@ -1,0 +1,67 @@
+/* Custom styling for suggestion chips */
+.search-categories {
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.category-tabs {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding-bottom: 5px;
+    scrollbar-width: none;
+    justify-content: center;
+    margin-top: 22px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.search-categories .suggestion-chips {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    scrollbar-width: none;
+}
+
+.search-categories .suggestion-chip {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    color: #111827;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 180px;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    text-align: center;
+}
+
+.search-categories .suggestion-chip:hover {
+    background-color: #f3f4f6;
+    border-color: #d1d5db;
+}
+
+.suggestion-query {
+    display: none; /* Hide the query text to make chips smaller */
+}
+
+.suggestions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}

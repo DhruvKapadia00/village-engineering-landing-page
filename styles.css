@@ -1296,8 +1296,6 @@ header {
     height: 85px;
     position: relative;
     justify-content: space-between;
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
 }
 
 #search-input {
@@ -1404,6 +1402,8 @@ header {
     height: 65px;
     width: 100%;
     margin: 0 auto;
+    max-width: 900px;
+    padding: 5px;
 }
 
 .search-input-container {
@@ -1595,6 +1595,7 @@ header {
 
 .search-categories {
     margin-top: 15px;
+    width: 100%;
 }
 
 .category-tabs {
@@ -1603,8 +1604,11 @@ header {
     gap: 12px;
     padding-bottom: 5px;
     scrollbar-width: thin;
-    justify-content: center;
+    justify-content: flex-start;
     margin-top: 22px;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .category-tabs::-webkit-scrollbar {
@@ -1715,8 +1719,9 @@ header {
 
 .suggestion-chips {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
     gap: 16px;
     margin-top: 12px;
 }
@@ -1730,6 +1735,7 @@ header {
     color: #4b5563;
     cursor: pointer;
     transition: all 0.2s;
+    white-space: nowrap;
 }
 
 .suggestion-chip:hover {
@@ -2063,7 +2069,7 @@ header {
     display: inline-block;
     width: 2px;
     height: 18px;
-    background-color: #6a69f8;
+    background-color: #000;
     margin-left: 2px;
     vertical-align: middle;
     animation: blink 0.8s infinite;
@@ -2074,67 +2080,205 @@ header {
     50% { opacity: 0; }
 }
 
-/* Brain Logo Styling - Fix scaling */
-.brain-logo {
-    width: 60px;
-    height: 60px;
+/* Ensure the input cursor doesn't interfere with the native cursor */
+#search-input:focus + .input-cursor-container {
+    display: none;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Make the loading logo smaller */
+.loading-logo {
+    width: 50px !important;
+    height: 50px !important;
     margin-bottom: 10px;
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
-    transition: all 0.3s ease;
-    border-radius: 12px;
-    object-fit: contain;
-    display: block;
 }
 
-/* Integration logos - Fix scaling */
-.integration-item img {
-    max-width: 180px;
-    max-height: 80px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-    filter: none;
+.loading-text {
+    font-size: 14px;
+    color: #333;
+    margin: 0;
 }
 
-/* Company logos in carousel - Fix scaling */
-.carousel-slide img {
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-    filter: none !important;
-    transform: translateZ(0);
-    backface-visibility: hidden;
+/* Hide placeholder in the search input */
+#search-input::placeholder {
+    color: transparent;
+    opacity: 0;
 }
 
-/* Results placeholder styling */
-.results-placeholder {
+/* Fix loading screen alignment issues */
+.loading-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.loading-text {
+    font-size: 16px;
+    color: #6b7280;
+    margin: 0;
+}
+
+.chat-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.loading-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 40px 20px;
-    color: #6b7280;
 }
 
-.placeholder-icon {
+/* Footer */
+footer {
+    background-color: #fff;
+    color: var(--neutral-800);
+    padding: 80px 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-logo-section {
+    max-width: 400px;
+    margin-bottom: 40px;
+}
+
+.village-logo-footer {
+    height: 40px;
+    width: auto;
     margin-bottom: 20px;
+    display: block;
+    object-fit: contain;
 }
 
-.results-placeholder h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #111827;
-    margin: 0 0 10px 0;
+.tagline {
+    font-size: 16px;
+    margin-bottom: 16px;
+    color: var(--neutral-800);
 }
 
-.results-placeholder p {
-    font-size: 1rem;
+.copyright {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 8px;
+}
+
+.trademark {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 1.5;
+}
+
+/* Suggestions section under category tabs */
+.suggestions {
+    margin-top: 20px;
+    padding: 0;
+    width: 100%;
+}
+
+.suggestions h3 {
+    font-size: 16px;
     color: #6b7280;
-    max-width: 500px;
-    margin: 0;
+    margin-bottom: 15px;
+    font-weight: 500;
+    text-align: left;
+}
+
+/* Updated suggestion chips to match the image */
+.search-categories .suggestion-chips {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    scrollbar-width: none;
+}
+
+.search-categories .suggestion-chip {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    color: #111827;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+
+.search-categories .suggestion-chip:hover {
+    background-color: #f3f4f6;
+    border-color: #d1d5db;
+}
+
+.suggestion-query {
+    display: block;
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 5px;
+}
+
+/* Focus for today style */
+.search-categories .suggestion-chip.focus-today {
+    background-color: #f0f9ff;
+    border-color: #bae6fd;
+}
+
+/* Stakeholder feedback style */
+.search-categories .suggestion-chip.stakeholder-feedback {
+    background-color: #f0fdf4;
+    border-color: #bbf7d0;
+}
+
+.search-categories .suggestion-chips {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    scrollbar-width: none;
+}
+
+.search-categories .suggestion-chip {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    color: #4b5563;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Chat Response Styling */
@@ -2562,6 +2706,7 @@ header {
     padding: 0 20px;
     height: 85px;
     position: relative;
+    justify-content: space-between;
 }
 
 #om1-popup {
@@ -2704,161 +2849,4 @@ header {
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
-}
-
-/* Make the loading logo smaller */
-.loading-logo {
-    width: 50px !important;
-    height: 50px !important;
-    margin-bottom: 10px;
-}
-
-.loading-text {
-    font-size: 14px;
-    color: #333;
-    margin: 0;
-}
-
-/* Hide placeholder in the search input */
-#search-input::placeholder {
-    color: transparent;
-    opacity: 0;
-}
-
-/* Fix loading screen alignment issues */
-.loading-logo {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 15px;
-    animation: pulse 1.5s infinite ease-in-out;
-}
-
-.loading-text {
-    font-size: 16px;
-    color: #6b7280;
-    margin: 0;
-}
-
-.chat-loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px 0;
-    width: 100%;
-    text-align: center;
-}
-
-.loading-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-/* Footer */
-footer {
-    background-color: #fff;
-    color: var(--neutral-800);
-    padding: 80px 0;
-}
-
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.footer-logo-section {
-    max-width: 400px;
-    margin-bottom: 40px;
-}
-
-.village-logo-footer {
-    height: 40px;
-    width: auto;
-    margin-bottom: 20px;
-    display: block;
-    object-fit: contain;
-}
-
-.tagline {
-    font-size: 16px;
-    margin-bottom: 16px;
-    color: var(--neutral-800);
-}
-
-.copyright {
-    font-size: 14px;
-    color: rgba(0, 0, 0, 0.6);
-    margin-bottom: 8px;
-}
-
-.trademark {
-    font-size: 14px;
-    color: rgba(0, 0, 0, 0.6);
-    line-height: 1.5;
-}
-
-/* Suggestions section under category tabs */
-.suggestions {
-    margin-top: 20px;
-    padding: 0 15px;
-}
-
-.suggestions h3 {
-    font-size: 16px;
-    color: #6b7280;
-    margin-bottom: 15px;
-    font-weight: 500;
-    text-align: left;
-}
-
-/* Updated suggestion chips to match the image */
-.search-categories .suggestion-chips {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.search-categories .suggestion-chip {
-    background-color: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 12px 16px;
-    font-size: 14px;
-    color: #111827;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 300px;
-}
-
-.search-categories .suggestion-chip:hover {
-    background-color: #f3f4f6;
-    border-color: #d1d5db;
-}
-
-.suggestion-query {
-    display: block;
-    font-size: 12px;
-    color: #6b7280;
-    margin-top: 5px;
-}
-
-/* Focus for today style */
-.search-categories .suggestion-chip.focus-today {
-    background-color: #f0f9ff;
-    border-color: #bae6fd;
-}
-
-/* Stakeholder feedback style */
-.search-categories .suggestion-chip.stakeholder-feedback {
-    background-color: #f0fdf4;
-    border-color: #bbf7d0;
 }

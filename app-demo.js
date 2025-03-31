@@ -657,6 +657,20 @@ function fillSearch(query) {
     }
 }
 
+// Function for auto-cycling through search queries with animation
+function autoCycleFillSearch(query) {
+    // Set flag to indicate typing is in progress
+    isTypingInProgress = true;
+    
+    // Use the fillSearch function for the animation
+    fillSearch(query);
+    
+    // Reset the flag after animation completes (typical animation duration + buffer)
+    setTimeout(() => {
+        isTypingInProgress = false;
+    }, (query.length * 20) + 1000); // Typing speed (20ms per char) + 1s buffer
+}
+
 // Function to cycle through suggestions automatically
 function cycleAutoSuggestions() {
     // Get initial category

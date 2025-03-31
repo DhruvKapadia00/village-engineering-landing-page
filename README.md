@@ -13,6 +13,7 @@ A modern, responsive landing page for Village Labs, showcasing their AI-powered 
 - Step-by-step "How It Works" section
 - Video demonstration section
 - Clear calls-to-action throughout
+- Updated suggestion buttons with improved UI
 
 ## Technology Stack
 

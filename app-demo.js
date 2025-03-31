@@ -812,22 +812,93 @@ const categorySuggestions = {
     ]
 };
 
+// Global variables to track animation intervals
+let currentBackspaceInterval = null;
+let currentTypeInterval = null;
+let animationPauseTimeout = null;
+
 // Function to fill the search input with a suggestion
 function fillSearch(query) {
     const searchInput = document.getElementById('search-input');
-    searchInput.value = '';
+    const currentText = searchInput.value;
     
-    // Type the query with animation - one character at a time
-    let i = 0;
-    const typeInterval = setInterval(() => {
-        if (i < query.length) {
-            searchInput.value = query.substring(0, i + 1);
-            i++;
-        } else {
-            clearInterval(typeInterval);
-            // Don't automatically perform search, wait for user to press Enter or click Search
+    // Clear any ongoing animations first
+    if (currentBackspaceInterval) clearInterval(currentBackspaceInterval);
+    if (currentTypeInterval) clearInterval(currentTypeInterval);
+    if (animationPauseTimeout) clearTimeout(animationPauseTimeout);
+    
+    // Add typing class to prevent placeholder flickering
+    searchInput.classList.add('typing-in-progress');
+    
+    // Remove any existing cursor first
+    const existingCursors = document.querySelectorAll('.input-cursor-container');
+    existingCursors.forEach(cursor => {
+        if (cursor.parentNode) {
+            cursor.parentNode.removeChild(cursor);
         }
-    }, 20);
+    });
+    
+    // First backspace the current text before typing the new query
+    if (currentText.length > 0) {
+        let currentLength = currentText.length;
+        currentBackspaceInterval = setInterval(() => {
+            if (currentLength > 0) {
+                searchInput.value = currentText.substring(0, currentLength - 1);
+                currentLength--;
+            } else {
+                clearInterval(currentBackspaceInterval);
+                currentBackspaceInterval = null;
+                // Add a blinking cursor element during the pause
+                const cursorContainer = document.createElement('span');
+                cursorContainer.className = 'input-cursor-container';
+                cursorContainer.innerHTML = '<span class="input-cursor"></span>';
+                searchInput.parentNode.appendChild(cursorContainer);
+                
+                // Add a delay between backspacing and typing new query
+                animationPauseTimeout = setTimeout(() => {
+                    // Remove the cursor before starting to type
+                    if (cursorContainer.parentNode) {
+                        cursorContainer.parentNode.removeChild(cursorContainer);
+                    }
+                    // Start typing the new query after backspacing and delay
+                    typeNewQuery();
+                }, 500); // 500ms delay
+            }
+        }, 15); // Slightly faster backspacing
+    } else {
+        // If no current text, add cursor and pause before typing
+        const cursorContainer = document.createElement('span');
+        cursorContainer.className = 'input-cursor-container';
+        cursorContainer.innerHTML = '<span class="input-cursor"></span>';
+        searchInput.parentNode.appendChild(cursorContainer);
+        
+        // Add a delay before typing new query
+        animationPauseTimeout = setTimeout(() => {
+            // Remove the cursor before starting to type
+            if (cursorContainer.parentNode) {
+                cursorContainer.parentNode.removeChild(cursorContainer);
+            }
+            // Start typing the new query after delay
+            typeNewQuery();
+        }, 500); // 500ms delay
+    }
+    
+    // Function to type new query after backspacing
+    function typeNewQuery() {
+        let i = 0;
+        currentTypeInterval = setInterval(() => {
+            if (i < query.length) {
+                searchInput.value = query.substring(0, i + 1);
+                i++;
+            } else {
+                clearInterval(currentTypeInterval);
+                currentTypeInterval = null;
+                // Remove typing class when done
+                searchInput.classList.remove('typing-in-progress');
+                // Don't automatically perform search, wait for user to press Enter or click Search
+            }
+        }, 20);
+    }
 }
 
 // Function to cycle through suggestions automatically
@@ -869,22 +940,89 @@ function cycleAutoSuggestions() {
     function autoCycleFillSearch(query) {
         isTypingInProgress = true;
         
-        searchInput.value = '';
+        const searchInput = document.getElementById('search-input');
+        const currentText = searchInput.value;
         
-        // Type the query with animation - using substring to avoid adding extra characters
-        let i = 0;
-        const typeInterval = setInterval(() => {
-            if (i < query.length) {
-                searchInput.value = query.substring(0, i + 1);
-                i++;
-            } else {
-                clearInterval(typeInterval);
-                // Don't automatically perform search, just mark typing as complete
-                setTimeout(() => {
-                    isTypingInProgress = false;
-                }, 1500); // Shorter delay before allowing next suggestion
+        // Clear any ongoing animations first
+        if (currentBackspaceInterval) clearInterval(currentBackspaceInterval);
+        if (currentTypeInterval) clearInterval(currentTypeInterval);
+        if (animationPauseTimeout) clearTimeout(animationPauseTimeout);
+        
+        // Add typing class to prevent placeholder flickering
+        searchInput.classList.add('typing-in-progress');
+        
+        // Remove any existing cursor first
+        const existingCursors = document.querySelectorAll('.input-cursor-container');
+        existingCursors.forEach(cursor => {
+            if (cursor.parentNode) {
+                cursor.parentNode.removeChild(cursor);
             }
-        }, 20);
+        });
+        
+        // First backspace the current text before typing the new query
+        if (currentText.length > 0) {
+            let currentLength = currentText.length;
+            currentBackspaceInterval = setInterval(() => {
+                if (currentLength > 0) {
+                    searchInput.value = currentText.substring(0, currentLength - 1);
+                    currentLength--;
+                } else {
+                    clearInterval(currentBackspaceInterval);
+                    currentBackspaceInterval = null;
+                    // Add a blinking cursor element during the pause
+                    const cursorContainer = document.createElement('span');
+                    cursorContainer.className = 'input-cursor-container';
+                    cursorContainer.innerHTML = '<span class="input-cursor"></span>';
+                    searchInput.parentNode.appendChild(cursorContainer);
+                    
+                    // Add a delay between backspacing and typing new query
+                    animationPauseTimeout = setTimeout(() => {
+                        // Remove the cursor before starting to type
+                        if (cursorContainer.parentNode) {
+                            cursorContainer.parentNode.removeChild(cursorContainer);
+                        }
+                        // Start typing the new query after backspacing and delay
+                        typeNewQuery();
+                    }, 500); // 500ms delay
+                }
+            }, 15); // Slightly faster backspacing
+        } else {
+            // If no current text, add cursor and pause before typing
+            const cursorContainer = document.createElement('span');
+            cursorContainer.className = 'input-cursor-container';
+            cursorContainer.innerHTML = '<span class="input-cursor"></span>';
+            searchInput.parentNode.appendChild(cursorContainer);
+            
+            // Add a delay before typing new query
+            animationPauseTimeout = setTimeout(() => {
+                // Remove the cursor before starting to type
+                if (cursorContainer.parentNode) {
+                    cursorContainer.parentNode.removeChild(cursorContainer);
+                }
+                // Start typing the new query after delay
+                typeNewQuery();
+            }, 500); // 500ms delay
+        }
+        
+        // Function to type new query after backspacing
+        function typeNewQuery() {
+            let i = 0;
+            currentTypeInterval = setInterval(() => {
+                if (i < query.length) {
+                    searchInput.value = query.substring(0, i + 1);
+                    i++;
+                } else {
+                    clearInterval(currentTypeInterval);
+                    currentTypeInterval = null;
+                    // Remove typing class when done
+                    searchInput.classList.remove('typing-in-progress');
+                    // Don't automatically perform search, just mark typing as complete
+                    setTimeout(() => {
+                        isTypingInProgress = false;
+                    }, 1500); // Shorter delay before allowing next suggestion
+                }
+            }, 20);
+        }
     }
     
     // Start cycling through suggestions
@@ -941,6 +1079,19 @@ function cycleAutoSuggestions() {
 function performSearch(query) {
     const resultsContainer = document.getElementById('search-results');
     resultsContainer.innerHTML = '';
+    
+    // Clear any ongoing animations first to prevent conflicts
+    if (currentBackspaceInterval) clearInterval(currentBackspaceInterval);
+    if (currentTypeInterval) clearInterval(currentTypeInterval);
+    if (animationPauseTimeout) clearTimeout(animationPauseTimeout);
+    
+    // Remove any existing cursor
+    const existingCursors = document.querySelectorAll('.input-cursor-container');
+    existingCursors.forEach(cursor => {
+        if (cursor.parentNode) {
+            cursor.parentNode.removeChild(cursor);
+        }
+    });
     
     // Create a loading indicator with the logo and text
     const loadingIndicator = document.createElement('div');
@@ -1207,8 +1358,30 @@ function updateSuggestionChips(category) {
         chip.className = 'suggestion-chip';
         chip.textContent = suggestion.text;
         chip.setAttribute('data-query', suggestion.query);
-        chip.addEventListener('click', function() {
-            fillSearch(this.getAttribute('data-query'));
+        chip.addEventListener('click', function(e) {
+            // First clear any ongoing search process
+            if (currentBackspaceInterval) clearInterval(currentBackspaceInterval);
+            if (currentTypeInterval) clearInterval(currentTypeInterval);
+            if (animationPauseTimeout) clearTimeout(animationPauseTimeout);
+            
+            // Make sure we remove all cursor elements
+            const existingCursors = document.querySelectorAll('.input-cursor-container');
+            existingCursors.forEach(cursor => {
+                if (cursor.parentNode) {
+                    cursor.parentNode.removeChild(cursor);
+                }
+            });
+            
+            // Set isTypingInProgress for auto cycle
+            isTypingInProgress = true;
+            
+            // Then fill with the new query
+            const query = this.getAttribute('data-query');
+            fillSearch(query);
+            
+            // Prevent default behavior and stop propagation
+            e.preventDefault();
+            e.stopPropagation();
         });
         suggestionChipsContainer.appendChild(chip);
     });
@@ -1258,9 +1431,20 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+    
+    // Remove cursor when input is focused
+    searchInput.addEventListener('focus', function() {
+        // Remove any existing cursor when user focuses on the input
+        const existingCursors = document.querySelectorAll('.input-cursor-container');
+        existingCursors.forEach(cursor => {
+            if (cursor.parentNode) {
+                cursor.parentNode.removeChild(cursor);
+            }
+        });
+    });
 
     // Handle search button click
-    const searchButton = document.getElementById('send-button');
+    const searchButton = document.getElementById('search-button');
     searchButton.addEventListener('click', function() {
         const query = searchInput.value.trim();
         if (query) {
@@ -1279,14 +1463,6 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 performSearch(query);
             }
-        }
-    });
-    
-    // Handle suggestion chip clicks
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('suggestion-chip')) {
-            const query = e.target.getAttribute('data-query');
-            fillSearch(query);
         }
     });
     

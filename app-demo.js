@@ -188,6 +188,7 @@ const mockResults = {
             authorInitials: "AJ"
         }
     ],
+    // Marketing-related search results
     "email campaign performance": [
         {
             source: "Slack",
@@ -268,6 +269,7 @@ const mockResults = {
             authorInitials: "MA"
         }
     ],
+    // Product-related search results
     "product roadmap": [
         {
             source: "Notion",
@@ -348,6 +350,7 @@ const mockResults = {
             authorInitials: "PA"
         }
     ],
+    // Operations-related search results
     "procurement process": [
         {
             source: "Notion",
@@ -428,6 +431,7 @@ const mockResults = {
             authorInitials: "CO"
         }
     ],
+    // HR-related search results
     "hiring process": [
         {
             source: "Notion",
@@ -568,71 +572,35 @@ const categorySuggestions = {
 let currentBackspaceInterval = null;
 let currentTypeInterval = null;
 let animationPauseTimeout = null;
+let isTypingInProgress = false;
+let isShowingSearchResults = false;  // New flag to track search state
+let cycleTimeout = null;  // Make cycleTimeout globally accessible
 
 // Function to fill the search input with a suggestion
 function fillSearch(query) {
     const searchInput = document.getElementById('search-input');
-    const currentText = searchInput.value;
+    const currentText = searchInput.value.replace('|', ''); // Remove any existing caret
     
     // Clear any ongoing animations first
     if (currentBackspaceInterval) clearInterval(currentBackspaceInterval);
     if (currentTypeInterval) clearInterval(currentTypeInterval);
     if (animationPauseTimeout) clearTimeout(animationPauseTimeout);
     
-    // Add typing class to prevent placeholder flickering
-    searchInput.classList.add('typing-in-progress');
-    
-    // Remove any existing cursor first
-    const existingCursors = document.querySelectorAll('.input-cursor-container');
-    existingCursors.forEach(cursor => {
-        if (cursor.parentNode) {
-            cursor.parentNode.removeChild(cursor);
-        }
-    });
-    
     // First backspace the current text before typing the new query
     if (currentText.length > 0) {
         let currentLength = currentText.length;
         currentBackspaceInterval = setInterval(() => {
             if (currentLength > 0) {
-                searchInput.value = currentText.substring(0, currentLength - 1);
+                searchInput.value = currentText.substring(0, currentLength - 1) + '|';
                 currentLength--;
             } else {
                 clearInterval(currentBackspaceInterval);
                 currentBackspaceInterval = null;
-                // Add a blinking cursor element during the pause
-                const cursorContainer = document.createElement('span');
-                cursorContainer.className = 'input-cursor-container';
-                cursorContainer.innerHTML = '<span class="input-cursor"></span>';
-                searchInput.parentNode.appendChild(cursorContainer);
-                
-                // Add a delay between backspacing and typing new query
-                animationPauseTimeout = setTimeout(() => {
-                    // Remove the cursor before starting to type
-                    if (cursorContainer.parentNode) {
-                        cursorContainer.parentNode.removeChild(cursorContainer);
-                    }
-                    // Start typing the new query after backspacing and delay
-                    typeNewQuery();
-                }, 500); // 500ms delay
+                typeNewQuery();
             }
-        }, 15); // Slightly faster backspacing
+        }, 15);
     } else {
-        // If no current text, add cursor and pause before typing
-        const cursorContainer = document.createElement('span');
-        cursorContainer.className = 'input-cursor-container';
-        cursorContainer.innerHTML = '<span class="input-cursor"></span>';
-        searchInput.parentNode.appendChild(cursorContainer);
-        
-        // Add a delay before typing new query
-        animationPauseTimeout = setTimeout(() => {
-            // Remove the cursor before starting to type
-            if (cursorContainer.parentNode) {
-                cursorContainer.parentNode.removeChild(cursorContainer);
-            }
-            // Start typing the new query after delay
-            typeNewQuery();
-        }, 500); // 500ms delay
+        typeNewQuery();
     }
     
     // Function to type new query after backspacing
@@ -640,17 +608,104 @@ function fillSearch(query) {
         let i = 0;
         currentTypeInterval = setInterval(() => {
             if (i < query.length) {
-                searchInput.value = query.substring(0, i + 1);
+                searchInput.value = query.substring(0, i + 1) + '|';
                 i++;
             } else {
                 clearInterval(currentTypeInterval);
                 currentTypeInterval = null;
-                // Remove typing class when done
-                searchInput.classList.remove('typing-in-progress');
-                // Don't automatically perform search, wait for user to press Enter or click Search
+                searchInput.value = query; // Remove caret at the end
+                // Signal that typing is complete
+                if (window.onTypingComplete) {
+                    window.onTypingComplete();
+                }
             }
         }, 20);
     }
+}
+
+// Function for auto-cycling through search queries with animation
+function autoCycleFillSearch(query) {
+    isTypingInProgress = true;
+    
+    // Use the fillSearch function for the animation
+    fillSearch(query);
+    
+    // Set up callback for when typing is complete
+    window.onTypingComplete = () => {
+        setTimeout(() => {
+            isTypingInProgress = false;
+            window.onTypingComplete = null;
+        }, 300);
+    };
+}
+
+// Function to cycle through suggestions automatically
+function cycleAutoSuggestions() {
+    let currentCategory = 'engineering';
+    let currentIndex = 0;
+    let isUserInteracting = false;
+    
+    function checkAndCycle() {
+        // Get current category from active tab
+        const activeTab = document.querySelector('.category-tab.active');
+        if (activeTab) {
+            currentCategory = activeTab.getAttribute('data-category');
+        }
+        
+        const suggestions = categorySuggestions[currentCategory] || categorySuggestions['engineering'];
+        
+        // Only cycle if not showing search results and not typing
+        if (!isShowingSearchResults && !isUserInteracting && !isTypingInProgress) {
+            autoCycleFillSearch(suggestions[currentIndex].query);
+            currentIndex = (currentIndex + 1) % suggestions.length;
+        }
+        
+        // Only set new timeout if we're not showing search results
+        if (!isShowingSearchResults) {
+            if (cycleTimeout) clearTimeout(cycleTimeout);
+            cycleTimeout = setTimeout(checkAndCycle, 2500);
+        }
+    }
+    
+    // Start first suggestion sooner
+    setTimeout(() => {
+        const activeTab = document.querySelector('.category-tab.active');
+        if (activeTab) {
+            currentCategory = activeTab.getAttribute('data-category');
+        }
+        const suggestions = categorySuggestions[currentCategory] || categorySuggestions['engineering'];
+        if (!isShowingSearchResults && !isTypingInProgress) {
+            autoCycleFillSearch(suggestions[0].query);
+            currentIndex = 1;
+            // Only set new timeout if we're not showing search results
+            if (!isShowingSearchResults) {
+                if (cycleTimeout) clearTimeout(cycleTimeout);
+                cycleTimeout = setTimeout(checkAndCycle, 2500);
+            }
+        }
+    }, 800);
+    
+    // Update category when tabs are clicked
+    document.querySelectorAll('.category-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            const newCategory = this.getAttribute('data-category');
+            if (newCategory !== currentCategory) {
+                currentCategory = newCategory;
+                currentIndex = 0;
+                // Clear existing timeout
+                if (cycleTimeout) {
+                    clearTimeout(cycleTimeout);
+                }
+                // Start new cycle immediately with first suggestion of new category
+                const suggestions = categorySuggestions[currentCategory];
+                if (!isTypingInProgress) {
+                    autoCycleFillSearch(suggestions[0].query);
+                    currentIndex = 1;
+                    cycleTimeout = setTimeout(checkAndCycle, 2500);
+                }
+            }
+        });
+    });
 }
 
 // Function to perform search and display results with typing effect
@@ -658,18 +713,17 @@ function performSearch(query) {
     const resultsContainer = document.getElementById('search-results');
     resultsContainer.innerHTML = '';
     
-    // Clear any ongoing animations first to prevent conflicts
+    // Stop the auto-cycling when performing search
+    isShowingSearchResults = true;
+    if (cycleTimeout) {
+        clearTimeout(cycleTimeout);
+        cycleTimeout = null;
+    }
+    
+    // Clear any ongoing animations first
     if (currentBackspaceInterval) clearInterval(currentBackspaceInterval);
     if (currentTypeInterval) clearInterval(currentTypeInterval);
     if (animationPauseTimeout) clearTimeout(animationPauseTimeout);
-    
-    // Remove any existing cursor
-    const existingCursors = document.querySelectorAll('.input-cursor-container');
-    existingCursors.forEach(cursor => {
-        if (cursor.parentNode) {
-            cursor.parentNode.removeChild(cursor);
-        }
-    });
     
     // Create a loading indicator with the logo and text
     const loadingIndicator = document.createElement('div');
@@ -774,7 +828,7 @@ function performSearch(query) {
             const chatResponse = document.createElement('div');
             chatResponse.className = 'chat-response';
             
-            const noResultsHTML = `<div class="results-placeholder"></div>`;
+            const noResultsHTML = `<div class="results-placeholder"><div class="placeholder-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#6A69F8" stroke-width="2"/><path d="M12 8V12L15 15" stroke="#6A69F8" stroke-width="2" stroke-linecap="round"/></svg></div><h3>No results found</h3><p>I couldn't find any matches for "${query}". Try a different search term or browse our suggested searches.</p></div>`;
             
             // Create response text container
             const responseText = document.createElement('div');
@@ -787,7 +841,11 @@ function performSearch(query) {
             typeOutResponse(responseText, noResultsHTML);
         } else {
             // Empty query, show default placeholder
-            resultsContainer.innerHTML = `<div class="results-placeholder"></div>`;
+            resultsContainer.innerHTML = `<div class="results-placeholder">
+                <img src="images/search-illustration.svg" alt="Search Illustration" class="placeholder-image">
+                <h3>Search across all your engineering tools</h3>
+                <p>Village connects to GitHub, Jira, Slack, Notion, and more to help you find information instantly.</p>
+            </div>`;
         }
     }, 1500); // Simulate thinking time
 }
@@ -909,6 +967,9 @@ function updateSuggestionChips(category) {
         
         // Add click event listener
         chip.addEventListener('click', function() {
+            // Stop the auto-cycling
+            isShowingSearchResults = true;
+            // Use fillSearch to animate the text
             fillSearch(suggestion.query);
         });
         
@@ -938,21 +999,24 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Handle search input
     const searchInput = document.getElementById('search-input');
-    searchInput.addEventListener('keydown', function(e) {
+    searchInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
-            const query = searchInput.value.trim();
+            const query = this.value.trim();
             if (query) {
                 // Check if it's a predefined query
                 let isPredefined = false;
                 for (const category in categorySuggestions) {
-                    if (categorySuggestions[category].some(suggestion => suggestion.query === query)) {
+                    if (categorySuggestions[category].some(suggestion => 
+                        suggestion.query.toLowerCase() === query.toLowerCase() ||  // Exact match
+                        suggestion.text.toLowerCase() === query.toLowerCase()      // Match suggestion text
+                    )) {
                         isPredefined = true;
                         break;
                     }
                 }
                 
-                // Only show popup if not a predefined query AND not during auto-cycling
-                if (!isPredefined && demoPopup && !isTypingInProgress) {
+                // Only show popup for non-predefined (user-typed) queries
+                if (!isPredefined && demoPopup) {
                     demoPopup.classList.add('show');
                 } else {
                     performSearch(query);
@@ -980,14 +1044,17 @@ document.addEventListener('DOMContentLoaded', function() {
             // Check if it's a predefined query
             let isPredefined = false;
             for (const category in categorySuggestions) {
-                if (categorySuggestions[category].some(suggestion => suggestion.query === query)) {
+                if (categorySuggestions[category].some(suggestion => 
+                    suggestion.query.toLowerCase() === query.toLowerCase() ||  // Exact match
+                    suggestion.text.toLowerCase() === query.toLowerCase()      // Match suggestion text
+                )) {
                     isPredefined = true;
                     break;
                 }
             }
             
-            // Only show popup if not a predefined query AND not during auto-cycling
-            if (!isPredefined && demoPopup && !isTypingInProgress) {
+            // Only show popup for non-predefined (user-typed) queries
+            if (!isPredefined && demoPopup) {
                 demoPopup.classList.add('show');
             } else {
                 performSearch(query);
@@ -997,10 +1064,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Start auto-suggestion cycle
     cycleAutoSuggestions();
-    
-    // Show default placeholder
-    const resultsContainer = document.getElementById('search-results');
-    resultsContainer.innerHTML = `<div class="results-placeholder"></div>`;
     
     // Handle demo popup buttons
     const demoPopup = document.getElementById('demo-popup');
@@ -1124,107 +1187,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Function for auto-cycling through search queries with animation
-function autoCycleFillSearch(query) {
-    // Set flag to indicate typing is in progress
-    isTypingInProgress = true;
-    
-    // Use the fillSearch function for the animation
-    fillSearch(query);
-    
-    // Reset the flag after animation completes (typical animation duration + buffer)
-    setTimeout(() => {
-        isTypingInProgress = false;
-    }, (query.length * 40) + 2000); // Increased typing speed (40ms per char) + 2s buffer
-}
-
-// Function to cycle through suggestions automatically
-function cycleAutoSuggestions() {
-    // Get initial category
-    const currentCategory = document.querySelector('.category-tab.active').getAttribute('data-category');
-    const suggestions = categorySuggestions[currentCategory];
-    let currentIndex = 0;
-    let isUserInteracting = false;
-    let isTypingInProgress = false;
-    let cycleTimeout;
-    
-    // Check if user is interacting with the search
+// Add reset function for when search is cleared
+function resetSearch() {
+    isShowingSearchResults = false;
     const searchInput = document.getElementById('search-input');
-    
-    function checkInteraction() {
-        // If search input has content or search results are showing something other than the placeholder
-        const resultsContainer = document.getElementById('search-results');
-        const hasResults = !resultsContainer.querySelector('.results-placeholder');
-        
-        // Only consider showing results as user interaction, not just having text in the input
-        if (hasResults) {
-            isUserInteracting = true;
-        } else {
-            isUserInteracting = false;
-        }
-    }
-    
-    searchInput.addEventListener('focus', function() {
-        // Don't set isUserInteracting to true on focus, only when results are showing
-        checkInteraction();
-    });
-    
-    searchInput.addEventListener('blur', function() {
-        checkInteraction();
-    });
-    
-    // Start cycling through suggestions
-    function startCycling() {
-        // Clear any existing timeout
-        if (cycleTimeout) clearTimeout(cycleTimeout);
-        
-        // Get current category and suggestions
-        const activeTab = document.querySelector('.category-tab.active');
-        const category = activeTab ? activeTab.getAttribute('data-category') : 'engineering';
-        const currentSuggestions = categorySuggestions[category] || categorySuggestions['engineering'];
-        
-        function checkAndCycle() {
-            // Only cycle if user is not interacting and typing is not in progress
-            checkInteraction();
-            if (!isUserInteracting && !isTypingInProgress) {
-                autoCycleFillSearch(currentSuggestions[currentIndex].query);
-                currentIndex = (currentIndex + 1) % currentSuggestions.length;
-            }
-            
-            // Schedule the next check
-            cycleTimeout = setTimeout(checkAndCycle, 8000); // Increased from 4000 to 8000 ms
-        }
-        
-        // Start the cycle
-        cycleTimeout = setTimeout(checkAndCycle, 1500);
-    }
-    
-    // Update cycle when category changes
-    document.querySelectorAll('.category-tab').forEach(tab => {
-        tab.addEventListener('click', function() {
-            const category = this.getAttribute('data-category');
-            
-            // Update active tab
-            categoryTabs.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Update suggestion chips
-            updateSuggestionChips(category);
-            
-            // Reset index for new category
-            currentIndex = 0;
-            
-            // Restart cycling with the new category
-            startCycling();
-        });
-    });
-    
-    // Initial suggestion after a delay
-    setTimeout(() => {
-        if (!isUserInteracting && !isTypingInProgress) {
-            autoCycleFillSearch(suggestions[0].query);
-            currentIndex = 1; // Start with the second suggestion next time
-        }
-        startCycling();
-    }, 1500);
+    searchInput.value = '';
+    const resultsContainer = document.getElementById('search-results');
+    resultsContainer.innerHTML = `<div class="results-placeholder">
+        <img src="images/search-illustration.svg" alt="Search Illustration" class="placeholder-image">
+        <h3>Search across all your engineering tools</h3>
+        <p>Village connects to GitHub, Jira, Slack, Notion, and more to help you find information instantly.</p>
+    </div>`;
+    // Restart the suggestion cycle
+    cycleAutoSuggestions();
 }

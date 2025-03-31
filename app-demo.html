@@ -66,16 +66,26 @@
                     <div class="search-container">
                         <div class="search-bar">
                             <i class="fas fa-search search-icon"></i>
-                            <input type="text" id="search-input" placeholder="Search across all your engineering tools...">
+                            <div class="search-input-container">
+                                <input type="text" id="search-input" placeholder="Search across all your engineering tools...">
+                            </div>
                             <button class="search-button"><i class="fas fa-arrow-right"></i></button>
                         </div>
-                        <div class="search-suggestions">
-                            <p>Try searching for:</p>
+                        <div class="suggestions">
+                            <h3>Suggestions</h3>
                             <div class="suggestion-chips">
-                                <span class="suggestion-chip" onclick="fillSearch('How to set up the authentication flow?')">How to set up the authentication flow?</span>
-                                <span class="suggestion-chip" onclick="fillSearch('Who worked on the payment API?')">Who worked on the payment API?</span>
-                                <span class="suggestion-chip" onclick="fillSearch('Latest deployment issues')">Latest deployment issues</span>
-                                <span class="suggestion-chip" onclick="fillSearch('Database schema for users')">Database schema for users</span>
+                                <div class="suggestion-chip" onclick="fillSearch('How to set up the authentication flow?')">
+                                    <h4>Authentication flow</h4>
+                                    <p>How to set up the authentication flow?</p>
+                                </div>
+                                <div class="suggestion-chip" onclick="fillSearch('Who worked on the payment API?')">
+                                    <h4>Payment API contributors</h4>
+                                    <p>Who worked on the payment API?</p>
+                                </div>
+                                <div class="suggestion-chip" onclick="fillSearch('Show me a PR review example')">
+                                    <h4>PR review example</h4>
+                                    <p>Show me a PR review example</p>
+                                </div>
                             </div>
                         </div>
                     </div>

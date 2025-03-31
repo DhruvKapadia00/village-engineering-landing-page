@@ -160,7 +160,10 @@
 /* Search Container */
 .search-container {
     padding: 24px;
+    padding-bottom: 12px;
     border-bottom: 1px solid var(--border-color);
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .search-bar {
@@ -178,6 +181,13 @@
     margin-right: 12px;
 }
 
+.search-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
 #search-input {
     flex-grow: 1;
     border: none;
@@ -187,6 +197,7 @@
     color: var(--text-color);
     outline: none;
     font-family: 'THICCCBOI', sans-serif;
+    padding: 0 4px;
 }
 
 #search-input::placeholder {
@@ -212,33 +223,56 @@
 }
 
 .search-suggestions {
-    margin-top: 16px;
+    margin-top: 24px;
 }
 
-.search-suggestions p {
-    margin: 0 0 8px;
-    font-size: 14px;
-    color: var(--placeholder-color);
+.suggestions {
+    margin-top: 24px;
+}
+
+.suggestions h3 {
+    color: #6B7280;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 16px;
 }
 
 .suggestion-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    padding: 0;
 }
 
 .suggestion-chip {
-    background-color: var(--chip-bg);
-    padding: 6px 12px;
-    border-radius: 16px;
-    font-size: 14px;
-    color: var(--text-color);
+    background-color: #fff;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 16px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .suggestion-chip:hover {
-    background-color: var(--chip-hover);
+    background-color: #F9FAFB;
+    border-color: #D1D5DB;
+}
+
+.suggestion-chip h4 {
+    color: #111827;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 4px 0;
+}
+
+.suggestion-chip p {
+    color: #6B7280;
+    font-size: 14px;
+    margin: 0;
 }
 
 /* Search Results */
@@ -387,26 +421,18 @@
     .search-bar {
         height: 44px;
     }
-    
-    .suggestion-chips {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .suggestion-chip {
-        width: 100%;
-    }
 }
 
 /* Typing Animation */
 .typing-cursor {
     display: inline-block;
     width: 2px;
-    height: 1.2em;
-    background-color: var(--cursor-color);
-    margin-left: 2px;
-    vertical-align: middle;
+    height: 20px;
+    background-color: #333;
+    position: absolute;
+    top: 15px;
     animation: blink 1s step-end infinite;
+    pointer-events: none;
 }
 
 @keyframes blink {

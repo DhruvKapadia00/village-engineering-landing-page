@@ -1,6 +1,6 @@
 /* Custom styling for suggestion chips */
 .search-categories {
-    margin-top: 15px;
+    margin-top: 12px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -10,11 +10,11 @@
 .category-tabs {
     display: flex;
     overflow-x: auto;
-    gap: 12px;
+    gap: 10px;
     padding-bottom: 5px;
     scrollbar-width: none;
     justify-content: center;
-    margin-top: 22px;
+    margin-top: 18px;
     width: 100%;
     max-width: 600px;
 }
@@ -23,8 +23,8 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 8px;
+    margin-bottom: 16px;
     width: 100%;
     max-width: 600px;
     overflow-x: auto;
@@ -36,7 +36,7 @@
     background-color: #f9fafb;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
-    padding: 8px 15px;
+    padding: 6px 12px;
     font-size: 0.9rem;
     color: #111827;
     cursor: pointer;

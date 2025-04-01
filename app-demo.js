@@ -979,6 +979,37 @@ function updateSuggestionChips(category) {
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', function() {
+    // Add a CSS rule to ensure all elements in the app demo section use Inter font
+    const style = document.createElement('style');
+    style.textContent = `
+        .app-demo-section * {
+            font-family: 'Inter', sans-serif !important;
+        }
+        
+        .app-demo-section h3,
+        .app-demo-section h4,
+        .app-demo-section .demo-title,
+        .app-demo-section .result-title,
+        .app-demo-section .suggestions h3 {
+            font-weight: 500 !important;
+        }
+        
+        .app-demo-section p,
+        .app-demo-section input,
+        .app-demo-section .result-snippet,
+        .app-demo-section .source-name,
+        .app-demo-section .result-date,
+        .app-demo-section .result-author {
+            font-weight: 400 !important;
+        }
+        
+        .app-demo-container .search-input-container input {
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 400 !important;
+        }
+    `;
+    document.head.appendChild(style);
+    
     // Initialize category tabs
     const categoryTabs = document.querySelectorAll('.category-tab');
     categoryTabs.forEach(tab => {

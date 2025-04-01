@@ -15,6 +15,7 @@
     --chip-hover: #e2e8f0;
     --result-highlight: #f0f5ff;
     --cursor-color: #3182ce;
+    --demo-font: 'Inter', sans-serif;
 }
 
 .app-demo-section {
@@ -46,6 +47,42 @@
     border: 1px solid var(--border-color);
 }
 
+/* App Demo Container */
+.app-demo-container {
+    font-family: var(--demo-font);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.app-demo-header {
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: white;
+}
+
+.brain-logo {
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+}
+
+.demo-title {
+    font-family: var(--demo-font);
+    font-weight: 500;
+    font-size: 18px;
+    margin: 0;
+}
+
+.app-demo-content {
+    position: relative;
+}
+
 /* Sidebar */
 .app-sidebar {
     width: 240px;
@@ -53,6 +90,7 @@
     border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
+    font-family: var(--demo-font);
 }
 
 .sidebar-header {
@@ -71,7 +109,8 @@
 .sidebar-header h3 {
     margin: 0;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
+    font-family: var(--demo-font);
 }
 
 .sidebar-menu {
@@ -86,9 +125,10 @@
     display: flex;
     align-items: center;
     color: var(--sidebar-text);
-    font-weight: 500;
+    font-weight: 400;
     cursor: pointer;
     transition: all 0.2s ease;
+    font-family: var(--demo-font);
 }
 
 .sidebar-menu li i {
@@ -128,8 +168,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 600;
+    font-weight: 500;
     margin-right: 12px;
+    font-family: var(--demo-font);
 }
 
 .user-info {
@@ -138,14 +179,16 @@
 
 .user-name {
     margin: 0;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 14px;
+    font-family: var(--demo-font);
 }
 
 .user-role {
     margin: 0;
     font-size: 12px;
     color: var(--placeholder-color);
+    font-family: var(--demo-font);
 }
 
 /* Main Content */
@@ -158,12 +201,9 @@
 }
 
 /* Search Container */
-.search-container {
-    padding: 24px;
-    padding-bottom: 12px;
+.app-demo-search {
+    padding: 20px 16px 20px 0;
     border-bottom: 1px solid var(--border-color);
-    max-width: 800px;
-    margin: 0 auto;
 }
 
 .search-bar {
@@ -171,14 +211,14 @@
     align-items: center;
     background-color: var(--search-bg);
     border-radius: 8px;
-    padding: 0 16px;
+    padding: 0 8px;
     height: 50px;
     margin-bottom: 16px;
 }
 
 .search-icon {
     color: var(--placeholder-color);
-    margin-right: 12px;
+    margin-right: 8px;
 }
 
 .search-input-container {
@@ -186,6 +226,7 @@
     display: flex;
     align-items: center;
     flex: 1;
+    padding: 14px 8px 14px 0;
 }
 
 #search-input {
@@ -196,8 +237,11 @@
     font-size: 16px;
     color: var(--text-color);
     outline: none;
-    font-family: 'THICCCBOI', sans-serif;
-    padding: 0 4px;
+    font-family: var(--demo-font);
+    font-weight: 400;
+    padding: 0 0 0 4px;
+    text-indent: 0;
+    margin-left: 0;
 }
 
 #search-input::placeholder {
@@ -209,17 +253,37 @@
     color: white;
     border: none;
     border-radius: 6px;
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    margin-left: 4px;
 }
 
 .search-button:hover {
     background-color: #2c5282;
+}
+
+.mic-button {
+    background: none;
+    border: none;
+    color: var(--placeholder-color);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.memory-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 8px;
 }
 
 .search-suggestions {
@@ -235,6 +299,7 @@
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 16px;
+    font-family: var(--demo-font);
 }
 
 .suggestion-chips {
@@ -255,6 +320,7 @@
     flex-direction: column;
     text-align: left;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    font-family: var(--demo-font);
 }
 
 .suggestion-chip:hover {
@@ -267,12 +333,15 @@
     font-size: 16px;
     font-weight: 500;
     margin: 0 0 4px 0;
+    font-family: var(--demo-font);
 }
 
 .suggestion-chip p {
     color: #6B7280;
     font-size: 14px;
     margin: 0;
+    font-weight: 400;
+    font-family: var(--demo-font);
 }
 
 /* Search Results */
@@ -302,12 +371,16 @@
     margin: 0 0 12px;
     font-size: 20px;
     color: var(--text-color);
+    font-family: var(--demo-font);
+    font-weight: 500;
 }
 
 .results-placeholder p {
     margin: 0;
     color: var(--placeholder-color);
     max-width: 500px;
+    font-family: var(--demo-font);
+    font-weight: 400;
 }
 
 /* Search Result Items */
@@ -318,6 +391,7 @@
     border: 1px solid var(--border-color);
     transition: all 0.2s ease;
     cursor: pointer;
+    font-family: var(--demo-font);
 }
 
 .result-item:hover {
@@ -340,13 +414,16 @@
 .source-name {
     font-size: 14px;
     color: var(--placeholder-color);
+    font-family: var(--demo-font);
+    font-weight: 400;
 }
 
 .result-title {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     margin: 0 0 8px;
     color: var(--text-color);
+    font-family: var(--demo-font);
 }
 
 .result-snippet {
@@ -354,6 +431,8 @@
     color: var(--text-color);
     margin: 0;
     line-height: 1.5;
+    font-family: var(--demo-font);
+    font-weight: 400;
 }
 
 .result-meta {
@@ -362,15 +441,20 @@
     margin-top: 12px;
     font-size: 12px;
     color: var(--placeholder-color);
+    font-family: var(--demo-font);
 }
 
 .result-date {
     margin-right: 16px;
+    font-family: var(--demo-font);
+    font-weight: 400;
 }
 
 .result-author {
     display: flex;
     align-items: center;
+    font-family: var(--demo-font);
+    font-weight: 400;
 }
 
 .author-avatar {
@@ -384,6 +468,60 @@
     justify-content: center;
     font-size: 10px;
     margin-right: 6px;
+    font-family: var(--demo-font);
+    font-weight: 500;
+}
+
+/* Popup Styles */
+.popup {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 700px;
+    z-index: 100;
+    font-family: var(--demo-font);
+}
+
+.popup-content {
+    padding: 24px;
+}
+
+.popup h3 {
+    margin: 0 0 16px;
+    font-size: 18px;
+    color: var(--text-color);
+    font-family: var(--demo-font);
+    font-weight: 500;
+}
+
+.popup p {
+    margin: 0 0 16px;
+    color: var(--placeholder-color);
+    font-family: var(--demo-font);
+    font-weight: 400;
+}
+
+.popup ul {
+    margin: 0 0 16px;
+    padding-left: 20px;
+}
+
+.popup li {
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-family: var(--demo-font);
+    font-weight: 400;
+}
+
+/* PR Review Example Styles */
+.pr-review-example {
+    font-family: var(--demo-font);
 }
 
 /* Responsive Styles */
@@ -447,4 +585,70 @@
 
 .search-results.typing * {
     transition: none;
+}
+
+.unified-search-bar {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    padding: 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.search-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding: 14px 8px 14px 0;
+}
+
+#search-input {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    height: 100%;
+    font-size: 16px;
+    color: var(--text-color);
+    outline: none;
+    font-family: var(--demo-font);
+    font-weight: 400;
+    padding: 0 0 0 4px;
+    text-indent: 0;
+    margin-left: 0;
+}
+
+.search-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding: 12px 16px 12px 0;
+    background-color: white;
+}
+
+.connector-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 0;
+}
+
+.connector-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.connector-more {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--neutral-600);
+    padding: 2px 4px;
+    border-radius: 4px;
+    background-color: white;
 }

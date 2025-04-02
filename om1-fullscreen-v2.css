@@ -17,7 +17,9 @@ body {
 }
 
 body.om1-active {
-  /* Empty rule - we're using inline styles for overflow now */
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }
 
 /* Fullscreen Overlay */
@@ -516,21 +518,25 @@ body.om1-active {
   margin-bottom: 8px;
 }
 
-/* Popup styling */
+/* OM1 Popup Styles */
 .om1-popup {
-  position: absolute;
   display: none;
-  z-index: 1000;
-  left: 0;
-  background-color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: absolute;
+  background-color: #ffffff;
   border-radius: 8px;
-  max-width: 400px;
-  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 350px;
+  max-width: 90vw;
+  z-index: 1000;
+  font-size: 14px;
+  border: 1px solid #e5e7eb;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .om1-popup-content {
-  padding: 20px;
+  padding: 16px;
 }
 
 .om1-popup h3 {
@@ -542,22 +548,24 @@ body.om1-active {
 }
 
 .om1-popup p {
-  margin-bottom: 12px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #4D4D4D;
+  margin: 0 0 12px;
+  line-height: 1.5;
+  color: #4d4d4d;
 }
 
 .om1-popup ul {
-  margin: 0;
-  padding-left: 20px;
+  margin: 0 0 12px;
+  padding-left: 24px;
 }
 
 .om1-popup li {
   margin-bottom: 8px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #4D4D4D;
+  line-height: 1.5;
+  color: #4d4d4d;
+}
+
+.om1-popup li:last-child {
+  margin-bottom: 0;
 }
 
 .om1-connector-grid {

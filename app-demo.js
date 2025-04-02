@@ -652,7 +652,7 @@ function cycleAutoSuggestions() {
             currentCategory = activeTab.getAttribute('data-category');
         }
         
-        const suggestions = categorySuggestions[currentCategory] || categorySuggestions['engineering'];
+        const suggestions = categorySuggestions[currentCategory] || categorySuggestions["engineering"];
         
         // Only cycle if not showing search results and not typing
         if (!isShowingSearchResults && !isUserInteracting && !isTypingInProgress) {
@@ -673,7 +673,7 @@ function cycleAutoSuggestions() {
         if (activeTab) {
             currentCategory = activeTab.getAttribute('data-category');
         }
-        const suggestions = categorySuggestions[currentCategory] || categorySuggestions['engineering'];
+        const suggestions = categorySuggestions[currentCategory] || categorySuggestions["engineering"];
         if (!isShowingSearchResults && !isTypingInProgress) {
             autoCycleFillSearch(suggestions[0].query);
             currentIndex = 1;
@@ -979,6 +979,9 @@ function updateSuggestionChips(category) {
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', function() {
+    // Remove fullscreen button since we're keeping only the regular version
+    removeFullscreenButton();
+    
     // Add a CSS rule to ensure all elements in the app demo section use Inter font
     const style = document.createElement('style');
     style.textContent = `
@@ -1224,11 +1227,28 @@ function resetSearch() {
     const searchInput = document.getElementById('search-input');
     searchInput.value = '';
     const resultsContainer = document.getElementById('search-results');
-    resultsContainer.innerHTML = `<div class="results-placeholder">
-        <img src="images/search-illustration.svg" alt="Search Illustration" class="placeholder-image">
-        <h3>Search across all your engineering tools</h3>
-        <p>Village connects to GitHub, Jira, Slack, Notion, and more to help you find information instantly.</p>
-    </div>`;
+    resultsContainer.innerHTML = `
+        <div class="results-placeholder">
+            <img src="images/search-illustration.svg" alt="Search Illustration" class="placeholder-image">
+            <h3>Search across all your engineering tools</h3>
+            <p>Village connects to GitHub, Jira, Slack, Notion, and more to help you find information instantly.</p>
+        </div>
+    `;
     // Restart the suggestion cycle
     cycleAutoSuggestions();
+}
+
+// Remove fullscreen button if it exists (since we're removing the fullscreen version)
+function removeFullscreenButton() {
+    // Remove any fullscreen buttons that might be added by the fullscreen scripts
+    const fullscreenButton = document.getElementById('om1-fullscreen-button');
+    if (fullscreenButton) {
+        fullscreenButton.parentNode.removeChild(fullscreenButton);
+    }
+    
+    // Also remove any fullscreen button containers
+    const buttonContainers = document.querySelectorAll('.fullscreen-button-container');
+    buttonContainers.forEach(container => {
+        container.parentNode.removeChild(container);
+    });
 }

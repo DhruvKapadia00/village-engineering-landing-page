@@ -52,9 +52,9 @@ Release notes in Notion.`
       prompt: "Roadmap status?",
       answer: `Q2 Roadmap:
 
-- Coworker AI ✅
-- Search infra 🟡
-- Workflow tools 🔴 (delayed 1 week)
+- Coworker AI 
+- Search infra 
+- Workflow tools (delayed 1 week)
 
 ~68% completion.`
     },
@@ -73,13 +73,13 @@ Reprioritized for infra scaling.`
       prompt: "Latest deal status?",
       answer: `Active enterprise deals:
 
-1. Acme Corp: Final stage ✅
+1. Acme Corp: Final stage 
    Contract in legal review
    
-2. TechGlobal: Discovery 🟡
+2. TechGlobal: Discovery 
    Demo scheduled for Thursday
    
-3. DataFlow: Negotiation 🟡
+3. DataFlow: Negotiation 
    Discussing enterprise terms`
     },
     {
@@ -111,16 +111,16 @@ Current win rate: 21%`
       prompt: "At-risk accounts?",
       answer: `At-risk accounts (July):
 
-1. **Nexus Systems** ⚠️
+1. **Nexus Systems** 
    - Low usage in engineering team
    - Action: Executive business review scheduled
    
-2. **Meridian Inc** ⚠️
+2. **Meridian Inc** 
    - Contract renewal in 45 days
    - Pricing concerns raised
    - Action: Discount options prepared
 
-3. **TechFront** 🔴
+3. **TechFront** 
    - Usage dropped 60% last month
    - Restructuring their team
    - Action: Health check call tomorrow`
@@ -214,16 +214,16 @@ All contracts in Contract Management System.`
       prompt: "Company priorities Q3?",
       answer: `Q3 2024 Company Priorities:
 
-1. **Revenue Growth** 🎯
+1. **Revenue Growth** 
    - Target: $2.8M ARR (+40%)
    - Owner: Sara (CRO)
    
-2. **Product Market Fit** 📈
+2. **Product Market Fit** 
    - Improve product NPS to 60+
    - Reduce churn to <5%
    - Owner: Michael (CPO)
    
-3. **Operational Excellence** ⚙️
+3. **Operational Excellence** 
    - Improve gross margins to 80%
    - Standardize reporting
    - Owner: Priya (COO)
@@ -382,12 +382,27 @@ function initFullscreenOverlay() {
                 <img src="images/integrations/download.png" class="connector-icon" alt="API">
                 <span class="connector-more">20+</span>
               
-                <div class="memory-toggle">
+                <div class="memory-toggle" id="memory-toggle-fullscreen">
                   <label class="toggle">
                     <input type="checkbox" checked>
                     <span class="toggle-slider"></span>
                   </label>
                   <span class="toggle-label">OM1</span>
+                </div>
+                
+                <!-- OM1 Popup (Directly in the DOM) -->
+                <div id="om1-popup-fullscreen" class="om1-popup" style="display: none; position: absolute; z-index: 1000; width: 350px; background: white; border-radius: 8px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); border: 1px solid #e5e7eb;">
+                  <div class="om1-popup-content">
+                    <h3>Organizational Memory (OM1)</h3>
+                    <p>Village's Organizational Memory (OM1) preserves and organizes all knowledge across your company's tools and systems. It enables:</p>
+                    <ul>
+                      <li>Instant access to historical context and decisions</li>
+                      <li>Automatic knowledge retention as team members come and go</li>
+                      <li>Improved accuracy for answers based on your organization's specific information</li>
+                      <li>Cross-referencing information across different tools and platforms</li>
+                    </ul>
+                    <p>With OM1 enabled, Village provides more accurate, context-aware responses specific to your organization.</p>
+                  </div>
                 </div>
               </div>
               
@@ -484,6 +499,111 @@ function setupEventListeners() {
         handleSearch(query);
       }
     });
+  }
+  
+  // Setup OM1 toggle popup
+  const memoryToggle = document.querySelector('.memory-toggle');
+  if (memoryToggle) {
+    // Create OM1 popup if it doesn't exist
+    if (!document.getElementById('om1-memory-popup')) {
+      const popup = document.createElement('div');
+      popup.id = 'om1-memory-popup';
+      popup.className = 'om1-popup';
+      popup.innerHTML = `
+        <div class="om1-popup-content">
+          <h3>Organizational Memory (OM1)</h3>
+          <p>Village's Organizational Memory (OM1) preserves and organizes all knowledge across your company's tools and systems. It enables:</p>
+          <ul>
+            <li>Instant access to historical context and decisions</li>
+            <li>Automatic knowledge retention as team members come and go</li>
+            <li>Improved accuracy for answers based on your organization's specific information</li>
+            <li>Cross-referencing information across different tools and platforms</li>
+          </ul>
+          <p>With OM1 enabled, Village provides more accurate, context-aware responses specific to your organization.</p>
+        </div>
+      `;
+      
+      // Add popup to the search container
+      const searchContainer = document.querySelector('.om1-search-container');
+      if (searchContainer) {
+        searchContainer.appendChild(popup);
+      }
+    }
+    
+    // Show popup when clicking on memory toggle (but not the checkbox)
+    memoryToggle.addEventListener('click', function(e) {
+      // Don't show popup when clicking on the checkbox itself
+      if (e.target.tagName === 'INPUT') {
+        e.stopPropagation();
+        return;
+      }
+      
+      e.stopPropagation();
+      const popup = document.getElementById('om1-memory-popup');
+      if (popup) {
+        popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+        
+        // Position the popup correctly
+        const rect = memoryToggle.getBoundingClientRect();
+        popup.style.top = (rect.bottom + 10) + 'px';
+        popup.style.left = (rect.left) + 'px';
+      }
+    });
+    
+    // Close popup when clicking outside
+    document.addEventListener('click', function(e) {
+      const popup = document.getElementById('om1-memory-popup');
+      if (popup && !memoryToggle.contains(e.target) && !popup.contains(e.target)) {
+        popup.style.display = 'none';
+      }
+    });
+  }
+  
+  // Setup OM1 toggle popup for fullscreen
+  const memoryToggleFullscreen = document.getElementById('memory-toggle-fullscreen');
+  if (memoryToggleFullscreen) {
+    const popupFullscreen = document.getElementById('om1-popup-fullscreen');
+    if (popupFullscreen) {
+      // Show popup when clicking on memory toggle (but not the checkbox)
+      memoryToggleFullscreen.addEventListener('click', function(e) {
+        // Don't show popup when clicking on the checkbox itself
+        if (e.target.tagName === 'INPUT') {
+          e.stopPropagation();
+          return;
+        }
+        
+        e.stopPropagation();
+        popupFullscreen.style.display = popupFullscreen.style.display === 'block' ? 'none' : 'block';
+        
+        // Make popup visible but with opacity 0 to measure its size
+        popupFullscreen.style.display = 'block';
+        popupFullscreen.style.opacity = '0';
+        
+        // Position to the right of the toggle instead of below it
+        const rect = memoryToggleFullscreen.getBoundingClientRect();
+        popupFullscreen.style.top = rect.top + 'px';
+        popupFullscreen.style.left = (rect.right + 10) + 'px';
+        
+        // Force layout calculation
+        const popupWidth = popupFullscreen.offsetWidth;
+        
+        // Check if popup would go off the right edge of the screen
+        if (rect.right + 10 + popupWidth > window.innerWidth) {
+          // If it would go off the right edge, position it to the left of the toggle
+          popupFullscreen.style.left = (rect.left - popupWidth - 10) + 'px';
+        }
+        
+        // Make popup visible
+        popupFullscreen.style.opacity = '1';
+      });
+      
+      // Close popup when clicking outside
+      document.addEventListener('click', function(e) {
+        if (popupFullscreen && !memoryToggleFullscreen.contains(e.target) && !popupFullscreen.contains(e.target)) {
+          popupFullscreen.style.display = 'none';
+        }
+      });
+    }
   }
 }
 

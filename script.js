@@ -1,3 +1,80 @@
+// Function to toggle OM1 popup
+function toggleOM1Popup(event) {
+    // Don't show popup when clicking on the checkbox itself
+    if (event.target.tagName === 'INPUT') {
+        event.stopPropagation();
+        return;
+    }
+    
+    event.stopPropagation();
+    
+    // Get the memory toggle element
+    const memoryToggle = event.currentTarget;
+    
+    // Get or create the popup
+    let popup = document.getElementById('om1-popup');
+    
+    if (!popup) {
+        // Create popup if it doesn't exist
+        popup = document.createElement('div');
+        popup.id = 'om1-popup';
+        popup.className = 'popup';
+        popup.innerHTML = `
+            <div class="popup-content">
+                <h3>Organizational Memory (OM1)</h3>
+                <p>Village's Organizational Memory (OM1) preserves and organizes all knowledge across your company's tools and systems. It enables:</p>
+                <ul>
+                    <li>Instant access to historical context and decisions</li>
+                    <li>Automatic knowledge retention as team members come and go</li>
+                    <li>Improved accuracy for answers based on your organization's specific information</li>
+                    <li>Cross-referencing information across different tools and platforms</li>
+                </ul>
+                <p>With OM1 enabled, Village provides more accurate, context-aware responses specific to your organization.</p>
+            </div>
+        `;
+        document.body.appendChild(popup);
+    }
+    
+    // Toggle popup visibility
+    if (popup.style.display === 'block') {
+        popup.style.display = 'none';
+    } else {
+        // Make popup visible but with opacity 0 to measure its size
+        popup.style.display = 'block';
+        popup.style.opacity = '0';
+        
+        // Position the popup correctly
+        const rect = memoryToggle.getBoundingClientRect();
+        
+        // Position to the right of the toggle instead of below it
+        popup.style.top = rect.top + window.scrollY + 'px';
+        popup.style.left = (rect.right + window.scrollX + 10) + 'px';
+        
+        // Force layout calculation
+        const popupWidth = popup.offsetWidth;
+        
+        // Check if popup would go off the right edge of the screen
+        if (rect.right + 10 + popupWidth > window.innerWidth) {
+            // If it would go off the right edge, position it to the left of the toggle
+            popup.style.left = (rect.left + window.scrollX - popupWidth - 10) + 'px';
+        }
+        
+        // Make popup visible
+        popup.style.opacity = '1';
+    }
+    
+    // Add document click listener to close popup when clicking outside
+    setTimeout(() => {
+        const closePopupOnClickOutside = function(e) {
+            if (!memoryToggle.contains(e.target) && !popup.contains(e.target)) {
+                popup.style.display = 'none';
+                document.removeEventListener('click', closePopupOnClickOutside);
+            }
+        };
+        document.addEventListener('click', closePopupOnClickOutside);
+    }, 10);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
     const menuToggle = document.querySelector('.menu-toggle');
@@ -14,6 +91,55 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (navButtons) {
                 navButtons.classList.toggle('active');
+            }
+        });
+    }
+    
+    // OM1 Popup functionality
+    const memoryToggle = document.getElementById('memory-toggle-main');
+    const om1Popup = document.getElementById('om1-popup-direct');
+    
+    if (memoryToggle && om1Popup) {
+        memoryToggle.addEventListener('click', function(e) {
+            // Don't show popup when clicking on the checkbox itself
+            if (e.target.tagName === 'INPUT') {
+                e.stopPropagation();
+                return;
+            }
+            
+            // Toggle popup visibility
+            if (om1Popup.style.display === 'block') {
+                om1Popup.style.display = 'none';
+            } else {
+                // Make popup visible but with opacity 0 to measure its size
+                om1Popup.style.display = 'block';
+                om1Popup.style.opacity = '0';
+                
+                // Position the popup correctly
+                const rect = memoryToggle.getBoundingClientRect();
+                
+                // Position to the right of the toggle instead of below it
+                om1Popup.style.top = rect.top + window.scrollY + 'px';
+                om1Popup.style.left = (rect.right + window.scrollX + 10) + 'px';
+                
+                // Force layout calculation
+                const popupWidth = om1Popup.offsetWidth;
+                
+                // Check if popup would go off the right edge of the screen
+                if (rect.right + 10 + popupWidth > window.innerWidth) {
+                    // If it would go off the right edge, position it to the left of the toggle
+                    om1Popup.style.left = (rect.left + window.scrollX - popupWidth - 10) + 'px';
+                }
+                
+                // Make popup visible
+                om1Popup.style.opacity = '1';
+            }
+        });
+        
+        // Close popup when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!memoryToggle.contains(e.target) && !om1Popup.contains(e.target) && om1Popup.style.display === 'block') {
+                om1Popup.style.display = 'none';
             }
         });
     }

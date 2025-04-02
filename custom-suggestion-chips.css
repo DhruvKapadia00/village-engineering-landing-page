@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: visible; /* Ensure content isn't cut off */
 }
 
 .category-tabs {
@@ -21,14 +22,13 @@
 
 .search-categories .suggestion-chips {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap; /* Changed from nowrap to wrap to prevent horizontal overflow */
     justify-content: center;
-    gap: 8px;
+    gap: 12px;
     margin-bottom: 16px;
     width: 100%;
-    max-width: 600px;
-    overflow-x: auto;
-    padding-bottom: 5px;
+    max-width: 800px; /* Increased from 600px to provide more space */
+    padding-bottom: 8px;
     scrollbar-width: none;
 }
 
@@ -36,19 +36,19 @@
     background-color: #f9fafb;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
-    padding: 6px 12px;
-    font-size: 0.9rem;
-    color: #111827;
+    padding: 12px;
     cursor: pointer;
     transition: all 0.2s;
-    white-space: nowrap;
     flex-shrink: 0;
     min-width: 180px;
     max-width: 220px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: inline-block;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    min-height: 90px;
+    margin-bottom: 10px; /* Added margin to ensure spacing when wrapped */
 }
 
 .search-categories .suggestion-chip:hover {
@@ -56,12 +56,55 @@
     border-color: #d1d5db;
 }
 
-.suggestion-query {
-    display: none; /* Hide the query text to make chips smaller */
+/* New styles for the updated format */
+.suggestion-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500; /* Medium */
+    color: #111827;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    text-align: center;
+}
+
+.suggestion-preview {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400; /* Regular */
+    font-size: 0.8rem;
+    color: #6B7280;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2; /* Added standard property for compatibility */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    width: 100%;
+    max-height: 3.2em;
+    margin-top: 2px;
+    text-align: center;
 }
 
 .suggestions {
     display: flex;
     justify-content: center;
     width: 100%;
+    padding: 0 15px; /* Added padding to prevent edge cutting */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .search-categories .suggestion-chips {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .search-categories .suggestion-chip {
+        min-width: 150px;
+        max-width: 200px;
+    }
 }

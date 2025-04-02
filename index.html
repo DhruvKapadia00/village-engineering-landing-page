@@ -21,6 +21,14 @@
             font-display: swap;
         }
         
+        @font-face {
+            font-family: 'THICCCBOI';
+            src: url('fonts/THICCCBOI-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        
         h1, h2, h3, h4, h5, h6 {
             font-family: "THICCCBOI", sans-serif !important;
             font-weight: 700 !important;
@@ -29,6 +37,7 @@
         
         h2 {
             font-size: 42px !important;
+            font-weight: 500 !important;
         }
 
         .unified-search-bar {
@@ -95,7 +104,10 @@
             <div class="app-demo-container">
                 <div class="app-demo-header">
                     <img src="images/village-brain-logo.png" alt="Village Brain" class="brain-logo">
-                    <h3 class="demo-title">Your company's brain</h3>
+                    <div class="header-text">
+                        <h3 class="demo-title">Information to action in seconds.</h3>
+                        <p class="demo-subtitle">Superhuman answers, analysis, and work across all your company's apps.</p>
+                    </div>
                 </div>
                 <div class="app-demo-content">
                     <div class="app-demo-search" style="padding-left: 0;">
@@ -160,9 +172,18 @@
                             </div>
                             <div class="suggestions">
                                 <div class="suggestion-chips">
-                                    <div class="suggestion-chip" data-query="How to set up the authentication flow?">Authentication flow<span class="suggestion-query">How to set up the authentication flow?</span></div>
-                                    <div class="suggestion-chip" data-query="Who worked on the payment API?">Payment API contributors<span class="suggestion-query">Who worked on the payment API?</span></div>
-                                    <div class="suggestion-chip" data-query="Show me a PR review example">PR review example<span class="suggestion-query">Show me a PR review example</span></div>
+                                    <div class="suggestion-chip" data-query="How to set up the authentication flow?">
+                                        <div class="suggestion-title">Authentication flow</div>
+                                        <div class="suggestion-preview">How to set up the authentication flow?</div>
+                                    </div>
+                                    <div class="suggestion-chip" data-query="Who worked on the payment API?">
+                                        <div class="suggestion-title">Payment API contributors</div>
+                                        <div class="suggestion-preview">Who worked on the payment API?</div>
+                                    </div>
+                                    <div class="suggestion-chip" data-query="Show me a PR review example">
+                                        <div class="suggestion-title">PR review example</div>
+                                        <div class="suggestion-preview">Show me a PR review example</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -205,9 +226,18 @@
             <div class="demo-suggestions" style="display: none;">
                 <p>Try asking about:</p>
                 <div class="suggestion-chips">
-                    <div class="suggestion-chip" data-query="How to set up the authentication flow?">Authentication flow</div>
-                    <div class="suggestion-chip" data-query="Who worked on the payment API?">Payment API contributors</div>
-                    <div class="suggestion-chip" data-query="Show me a PR review example">PR review example</div>
+                    <div class="suggestion-chip" data-query="How to set up the authentication flow?">
+                        <div class="suggestion-title">Authentication flow</div>
+                        <div class="suggestion-preview">How to set up the authentication flow?</div>
+                    </div>
+                    <div class="suggestion-chip" data-query="Who worked on the payment API?">
+                        <div class="suggestion-title">Payment API contributors</div>
+                        <div class="suggestion-preview">Who worked on the payment API?</div>
+                    </div>
+                    <div class="suggestion-chip" data-query="Show me a PR review example">
+                        <div class="suggestion-title">PR review example</div>
+                        <div class="suggestion-preview">Show me a PR review example</div>
+                    </div>
                 </div>
             </div>
         </div>

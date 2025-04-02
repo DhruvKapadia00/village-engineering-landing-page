@@ -1,6 +1,9 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="32" height="32" rx="8" fill="#3182CE"/>
-  <path d="M8 12L16 6L24 12V24H8V12Z" fill="white"/>
-  <path d="M12 16H14V24H12V16Z" fill="#3182CE"/>
-  <path d="M18 16H20V24H18V16Z" fill="#3182CE"/>
+<svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="16.8081" cy="16" r="16" fill="url(#paint0_linear_1021_710)"/>
+<defs>
+<linearGradient id="paint0_linear_1021_710" x1="1.43825" y1="18.8129" x2="32.3492" y2="18.8129" gradientUnits="userSpaceOnUse">
+<stop offset="0.00612977" stop-color="#D1FD81"/>
+<stop offset="0.948854" stop-color="#1EB7C9"/>
+</linearGradient>
+</defs>
 </svg>

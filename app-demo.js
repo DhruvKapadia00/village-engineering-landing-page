@@ -814,12 +814,52 @@ function performSearch(query) {
             
             resultsContainer.appendChild(chatResponse);
             
-            // Prepare the full response text
-            let fullResponseHTML = '';
+            // Create a GitHub PR style response
+            let fullResponseHTML = `
+                <div class="github-pr-container">
+                    <div class="pr-content">
+                        <p class="pr-context"><img src="images/village-icon.svg" class="inline-logo" alt="Village Logo">Here are the most recent pull requests from GitHub, focusing on the latest changes:</p>
+                        <h3 class="pr-title">${resultsToShow[0].title}</h3>
+                        <p class="pr-description">This is the most recent PR, focusing on ${resultsToShow[0].title.toLowerCase()}:</p>
+                        <ul class="pr-changes">`;
             
-            resultsToShow.forEach((result, index) => {
-                fullResponseHTML += `<div class="result-item"><div class="result-source"><img src="${result.sourceIcon}" alt="${result.source}" class="source-icon"><span class="source-name">${result.source}</span></div><h4 class="result-title">${result.title}</h4><p class="result-snippet">${result.snippet}</p><div class="result-meta"><span class="result-date">${result.date}</span><div class="result-author"><div class="author-avatar">${result.authorInitials}</div><span>${result.author}</span></div></div></div>${index < resultsToShow.length - 1 ? '<hr class="result-divider">' : ''}`;
+            // Add bullet points for each result
+            resultsToShow.forEach(result => {
+                fullResponseHTML += `
+                    <li class="pr-change-item">
+                        <span class="pr-change-text">${result.snippet}</span>
+                        <span class="pr-link">[<span style="color: #41cfa4;">${result.source}</span>]</span>
+                    </li>`;
             });
+            
+            // Add risk score and other sections
+            fullResponseHTML += `
+                        </ul>
+                        <div class="pr-risk-score">
+                            <strong>Risk Score:</strong> 4/10 - Moderate changes with potential interaction complexity
+                        </div>
+                        
+                        <h4 class="pr-section-title">Notable Code Changes:</h4>
+                        <div class="code-block">
+                            <pre><code>useEffect(() => {
+  isListeningRef.current = isListening;
+  currentHandleSubmitRef.current = handleSubmit;
+}, );</code></pre>
+                        </div>
+                        
+                        <h4 class="pr-section-title">Potential Issues:</h4>
+                        <ul class="pr-issues">
+                            <li>Complex state management using multiple refs could lead to unexpected behavior</li>
+                            <li>Async handling of attachments during speech input stop could introduce race conditions</li>
+                        </ul>
+                        
+                        <h4 class="pr-section-title">Related Active Issues:</h4>
+                        <ul class="pr-related-issues">
+                            <li>A bug was recently reported regarding ${resultsToShow[0].title.toLowerCase()} continuing to record after submission</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
             
             // Type out the response
             typeOutResponse(responseText, fullResponseHTML);
@@ -956,14 +996,19 @@ function updateSuggestionChips(category) {
         chip.className = 'suggestion-chip';
         chip.setAttribute('data-query', suggestion.query);
         
-        // Add the main text
-        chip.textContent = suggestion.text;
+        // Create title element
+        const titleElement = document.createElement('div');
+        titleElement.className = 'suggestion-title';
+        titleElement.textContent = suggestion.text;
         
-        // Add the query text in a span
-        const querySpan = document.createElement('span');
-        querySpan.className = 'suggestion-query';
-        querySpan.textContent = suggestion.query;
-        chip.appendChild(querySpan);
+        // Create preview element that shows the actual query
+        const previewElement = document.createElement('div');
+        previewElement.className = 'suggestion-preview';
+        previewElement.textContent = suggestion.query;
+        
+        // Add elements to chip
+        chip.appendChild(titleElement);
+        chip.appendChild(previewElement);
         
         // Add click event listener
         chip.addEventListener('click', function() {

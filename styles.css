@@ -2120,7 +2120,7 @@ header {
     width: 80px;
     height: 80px;
     margin-bottom: 15px;
-    animation: pulse 1.5s infinite ease-in-out;
+    /* Removed animation: pulse 1.5s infinite ease-in-out; */
 }
 
 .loading-text {

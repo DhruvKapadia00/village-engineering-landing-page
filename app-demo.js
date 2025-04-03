@@ -514,57 +514,87 @@ const mockResults = {
     ],
     // Category-specific suggestion chips
     "engineering": [
-        { text: "Authentication flow", query: "How to set up the authentication flow?" },
-        { text: "Payment API contributors", query: "Who worked on the payment API?" },
-        { text: "PR review example", query: "Show me a PR review example" }
+        { text: "Chat with codebase", query: "What are the potential security vulnerabilities in our user data handling?" },
+        { text: "Draft PRs based on Jira tickets", query: "Triage our high priority bug tickets and draft a PR for each" },
+        { text: "Generate context-aware code from terminal", query: "Create a unified validation function referencing our security best practices" }
     ],
     "product": [
-        { text: "Product roadmap", query: "What's on our product roadmap for Q3?" },
-        { text: "Feature prioritization", query: "How do we prioritize new features?" },
-        { text: "User research findings", query: "Summarize recent user research findings" }
+        { text: "Create Jira tickets", query: "File the bugs we just discussed in the Standup meeting" },
+        { text: "Draft context-aware product and eng docs", query: "Do some research then turn our product jam into a PRD" },
+        { text: "Aggregate customer insights", query: "What customer feedback haven't we actioned yet?" }
     ],
     "marketing": [
-        { text: "Campaign performance", query: "How did our last email campaign perform?" },
-        { text: "Content calendar", query: "Show me the content calendar for next month" },
-        { text: "Brand guidelines", query: "Where can I find our brand guidelines?" }
+        { text: "Generate content", query: "Create landing page copy based on our most recent product releases" },
+        { text: "Market research", query: "Research how to position this release against similar offerings in market" },
+        { text: "Campaign analysis", query: "Analyze the impact that this campaign had on key business metrics" }
     ],
     "operations": [
-        { text: "Procurement process", query: "What's our procurement process?" },
-        { text: "Security protocols", query: "Explain our security protocols" },
-        { text: "Vendor management", query: "How do we manage vendor relationships?" }
+        { text: "Metrics tracking & analysis", query: "Update the QBR with the most recent metrics" },
+        { text: "Process documentation", query: "Create processes based on our most recent onboarding calls" },
+        { text: "Aggregate feedback", query: "Can aggregate customer feedback and prioritize it for the product team" }
     ],
     "hr": [
-        { text: "Hiring process", query: "What's our hiring process?" },
-        { text: "Performance reviews", query: "How do we conduct performance reviews?" },
-        { text: "Employee benefits", query: "What employee benefits do we offer?" }
+        { text: "Performance reviews", query: "Write comprehensive perf reviews by synthesizing last quarter's work and feedback" },
+        { text: "New hire onboarding", query: "Draft an onboarding plan for a front-end engineer" },
+        { text: "Recruiting pipeline analytics", query: "Track our funnel metrics. Where and why are we losing candidates?" }
+    ],
+    "sales": [
+        { text: "Score sales calls", query: "Score my team's 10 most recent sales calls" },
+        { text: "Research prospects", query: "Research how today's prospects could use our product" },
+        { text: "Automate follow ups", query: "Draft follow ups for today's calls" }
+    ],
+    "leadership": [
+        { text: "Generate team updates", query: "Create a summary of what different teams got done this week" },
+        { text: "Analyze company-wide trends", query: "What is slowing down our engineering team?" },
+        { text: "Track OKRs & projects", query: "Analyze our progress towards Q1 OKRs" }
+    ],
+    "customer-success": [
+        { text: "Analyze support feedback", query: "Identify trends and recurring issues across our customers" },
+        { text: "Track customer health", query: "Identify at risk accounts based on engagement metrics and comms" },
+        { text: "Create context-aware documentation", query: "Can you generate FAQs based on recent customer calls" }
     ]
 };
 
 const categorySuggestions = {
     "engineering": [
-        { text: "Authentication flow", query: "How to set up the authentication flow?" },
-        { text: "Payment API contributors", query: "Who worked on the payment API?" },
-        { text: "PR review example", query: "Show me a PR review example" }
+        { text: "Chat with codebase", query: "What are the potential security vulnerabilities in our user data handling?" },
+        { text: "Draft PRs based on Jira tickets", query: "Triage our high priority bug tickets and draft a PR for each" },
+        { text: "Generate context-aware code from terminal", query: "Create a unified validation function referencing our security best practices" }
     ],
     "product": [
-        { text: "Product roadmap", query: "What's on our product roadmap for Q3?" },
-        { text: "Feature prioritization", query: "How do we prioritize new features?" },
-        { text: "User research findings", query: "Summarize recent user research findings" }
+        { text: "Create Jira tickets", query: "File the bugs we just discussed in the Standup meeting" },
+        { text: "Draft context-aware product and eng docs", query: "Do some research then turn our product jam into a PRD" },
+        { text: "Aggregate customer insights", query: "What customer feedback haven't we actioned yet?" }
     ],
     "marketing": [
-        { text: "Campaign performance", query: "How did our last email campaign perform?" },
-        { text: "Content calendar", query: "Show me the content calendar for next month" },
-        { text: "Brand guidelines", query: "Where can I find our brand guidelines?" }
+        { text: "Generate content", query: "Create landing page copy based on our most recent product releases" },
+        { text: "Market research", query: "Research how to position this release against similar offerings in market" },
+        { text: "Campaign analysis", query: "Analyze the impact that this campaign had on key business metrics" }
     ],
     "operations": [
-        { text: "Procurement process", query: "What's our procurement process?" },
-        { text: "Security protocols", query: "Explain our security protocols" },
-        { text: "Vendor management", query: "How do we manage vendor relationships?" }
+        { text: "Metrics tracking & analysis", query: "Update the QBR with the most recent metrics" },
+        { text: "Process documentation", query: "Create processes based on our most recent onboarding calls" },
+        { text: "Aggregate feedback", query: "Can aggregate customer feedback and prioritize it for the product team" }
     ],
     "hr": [
-        { text: "Hiring process", query: "What's our hiring process?" },
-        { text: "Performance reviews", query: "How do we conduct performance reviews?" },
-        { text: "Employee benefits", query: "What employee benefits do we offer?" }
+        { text: "Performance reviews", query: "Write comprehensive perf reviews by synthesizing last quarter's work and feedback" },
+        { text: "New hire onboarding", query: "Draft an onboarding plan for a front-end engineer" },
+        { text: "Recruiting pipeline analytics", query: "Track our funnel metrics. Where and why are we losing candidates?" }
+    ],
+    "sales": [
+        { text: "Score sales calls", query: "Score my team's 10 most recent sales calls" },
+        { text: "Research prospects", query: "Research how today's prospects could use our product" },
+        { text: "Automate follow ups", query: "Draft follow ups for today's calls" }
+    ],
+    "leadership": [
+        { text: "Generate team updates", query: "Create a summary of what different teams got done this week" },
+        { text: "Analyze company-wide trends", query: "What is slowing down our engineering team?" },
+        { text: "Track OKRs & projects", query: "Analyze our progress towards Q1 OKRs" }
+    ],
+    "customer-success": [
+        { text: "Analyze support feedback", query: "Identify trends and recurring issues across our customers" },
+        { text: "Track customer health", query: "Identify at risk accounts based on engagement metrics and comms" },
+        { text: "Create context-aware documentation", query: "Can you generate FAQs based on recent customer calls" }
     ]
 };
 
@@ -1082,23 +1112,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.key === 'Enter') {
             const query = this.value.trim();
             if (query) {
-                // Check if it's a predefined query
-                let isPredefined = false;
-                for (const category in categorySuggestions) {
-                    if (categorySuggestions[category].some(suggestion => 
-                        suggestion.query.toLowerCase() === query.toLowerCase() ||  // Exact match
-                        suggestion.text.toLowerCase() === query.toLowerCase()      // Match suggestion text
-                    )) {
-                        isPredefined = true;
-                        break;
-                    }
-                }
-                
-                // Only show popup for non-predefined (user-typed) queries
-                if (!isPredefined && demoPopup) {
+                // Always show the demo popup when Enter is pressed
+                if (demoPopup) {
                     demoPopup.classList.add('show');
-                } else {
-                    performSearch(query);
                 }
             }
         }
@@ -1120,23 +1136,9 @@ document.addEventListener('DOMContentLoaded', function() {
     searchButton.addEventListener('click', function() {
         const query = searchInput.value.trim();
         if (query) {
-            // Check if it's a predefined query
-            let isPredefined = false;
-            for (const category in categorySuggestions) {
-                if (categorySuggestions[category].some(suggestion => 
-                    suggestion.query.toLowerCase() === query.toLowerCase() ||  // Exact match
-                    suggestion.text.toLowerCase() === query.toLowerCase()      // Match suggestion text
-                )) {
-                    isPredefined = true;
-                    break;
-                }
-            }
-            
-            // Only show popup for non-predefined (user-typed) queries
-            if (!isPredefined && demoPopup) {
+            // Always show the demo popup when search button is clicked
+            if (demoPopup) {
                 demoPopup.classList.add('show');
-            } else {
-                performSearch(query);
             }
         }
     });
@@ -1162,8 +1164,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (stayHereButton) {
             stayHereButton.addEventListener('click', function() {
                 demoPopup.classList.remove('show');
-                // Perform search with the current query
-                performSearch(searchInput.value.trim());
             });
         }
         

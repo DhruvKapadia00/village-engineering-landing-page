@@ -1272,9 +1272,9 @@ header {
 /* App Demo Styles */
 .app-demo-container {
     background: #FFFFFF;
-    border: 1px solid #E5E7EB;
+    border: none;
     border-radius: 12px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: none;
     margin: 40px 0;
     overflow: hidden;
     font-family: 'Inter', sans-serif;
@@ -1361,14 +1361,15 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
-    padding-top: 20px;
+    margin-bottom: 10px;
+    padding-top: 40px;
+    padding-bottom: 10px;
 }
 
 .brain-logo {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 10px;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
     transition: all 0.3s ease;
     border-radius: 12px;
@@ -1382,10 +1383,10 @@ header {
 }
 
 .demo-title {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     font-weight: 600;
     color: #111827;
-    margin: 0 0 10px 0;
+    margin: 0 0 15px 0;
     text-align: center;
 }
 
@@ -1627,7 +1628,7 @@ header {
 }
 
 .category-tab {
-    padding: 1px 12px;
+    padding: 1px 8px;
     background-color: #ffffff;
     border-radius: 4px;
     font-size: 0.85rem;
@@ -1637,8 +1638,10 @@ header {
     transition: all 0.2s;
     text-align: center;
     border: 1px solid #e5e7eb;
-    min-width: 80px;
-    max-width: 120px;
+    min-width: 60px;
+    max-width: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .category-tab:hover {
@@ -2450,7 +2453,6 @@ footer {
 .search-actions {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 8px;
     height: 100%;
     padding-right: 5px;

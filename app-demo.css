@@ -102,16 +102,20 @@
     font-family: var(--demo-font);
     font-weight: 500; /* Medium */
     font-size: 28px;
-    margin: 0 0 8px 0;
+    margin: 0;
     color: var(--text-color);
+    line-height: 1.1;
 }
 
 .demo-subtitle {
     font-family: var(--demo-font);
     font-weight: 400; /* Regular */
-    font-size: 16px;
+    font-size: 1.25rem;
     margin: 0;
     color: var(--placeholder-color);
+    text-align: center;
+    max-width: 80%;
+    line-height: 1.3;
 }
 
 .app-demo-content {
@@ -358,6 +362,7 @@
 
 /* Search Results */
 .search-results {
+    display: none !important;
     flex-grow: 1;
     padding: 24px;
     overflow-y: auto;

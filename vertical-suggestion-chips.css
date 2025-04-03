@@ -1,0 +1,51 @@
+/* Vertical Suggestion Chips Styling */
+.suggested-tasks-container {
+    padding: 20px;
+    background-color: white;
+}
+
+.suggested-tasks-heading {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #6B7280;
+    margin: 0 0 16px 0;
+}
+
+.vertical-suggestion-chips {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.vertical-suggestion-chip {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    text-align: left;
+}
+
+.vertical-suggestion-chip:hover {
+    background-color: #f3f4f6;
+}
+
+.vertical-suggestion-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #111827;
+    font-size: 1rem;
+    margin-bottom: 6px;
+}
+
+.vertical-suggestion-preview {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #6B7280;
+    line-height: 1.5;
+}

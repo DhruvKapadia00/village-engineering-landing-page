@@ -2661,6 +2661,7 @@ footer {
     display: flex;
     align-items: center;
     gap: 5px;
+    margin-left: 10px;
 }
 
 .mic-button, .send-button {
@@ -2900,4 +2901,11 @@ footer {
     align-items: center;
     padding: 0 15px;
     height: 75px;
+}
+
+/* Make search button slightly smaller and move it to the right */
+#search-button.search-button {
+    width: 32px;
+    height: 32px;
+    margin-left: 5px;
 }

@@ -807,7 +807,7 @@ input:checked + .toggle-slider:before {
 
 .category-tabs {
     display: flex;
-    gap: 8px;
+    gap: 12px;
     margin-bottom: 16px;
     overflow-x: auto;
     padding-bottom: 4px;
@@ -815,7 +815,7 @@ input:checked + .toggle-slider:before {
 }
 
 .category-tab {
-    padding: 8px 16px;
+    padding: 8px 12px;
     border-radius: 20px;
     font-size: 14px;
     cursor: pointer;

@@ -43,7 +43,8 @@
         .unified-search-bar {
             display: flex;
             flex-direction: column;
-            border-radius: 8px;
+            border: 2px solid #EAECF0;
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
             background-color: white;
@@ -53,6 +54,65 @@
         .search-input-container {
             padding-left: 0;
         }
+        
+        /* Make the center line invisible */
+        .search-toolbar {
+            border-top: 1px solid transparent !important;
+        }
+        
+        /* App demo header styling to match the image */
+        .app-demo-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .app-demo-header .brain-logo {
+            margin-bottom: 15px;
+            filter: none;
+            box-shadow: none;
+        }
+        
+        .app-demo-header .header-text {
+            text-align: center;
+            width: 100%;
+        }
+        
+        .app-demo-header .demo-title {
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 500 !important;
+            font-size: 38px !important;
+            line-height: 1.2 !important;
+            margin-bottom: 10px;
+            color: #111827;
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .app-demo-header .demo-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400; /* Inter Regular */
+            font-size: 20px;
+            line-height: 1.5;
+            color: #6B7280;
+            width: 90%;
+            margin: 0 auto;
+        }
+        
+        /* Actual CSS instead of placeholder comments */
+        .search-categories {
+            margin-top: 8px;
+            width: 100%;
+        }
+        
+        /* Rest of the CSS remains the same */
+        
+        /* ... */
     </style>
 </head>
 <body>
@@ -97,10 +157,6 @@
     <!-- Interactive App Demo Section -->
     <section class="app-demo-section app-demo-inter-font">
         <div class="container">
-            <div class="section-header">
-                <h2>Try Village for yourself</h2>
-                <p>See how Village can help your team find information instantly</p>
-            </div>
             <div class="app-demo-container">
                 <div class="app-demo-header">
                     <img src="images/village-brain-logo.png" alt="Village Brain" class="brain-logo">
@@ -164,25 +220,28 @@
                         </div>
                         <div class="search-categories">
                             <div class="category-tabs">
-                                <div class="category-tab" data-category="marketing">Marketing</div>
+                                <div class="category-tab" data-category="operations">Operations</div>
                                 <div class="category-tab" data-category="product">Product</div>
                                 <div class="category-tab active" data-category="engineering">Engineering</div>
-                                <div class="category-tab" data-category="operations">Operations</div>
+                                <div class="category-tab" data-category="sales">Sales</div>
+                                <div class="category-tab" data-category="customer-success">Customer Success</div>
+                                <div class="category-tab" data-category="leadership">Leadership</div>
                                 <div class="category-tab" data-category="hr">HR / People</div>
                             </div>
+                            <div class="suggested-tasks-label">Suggested Tasks</div>
                             <div class="suggestions">
                                 <div class="suggestion-chips">
                                     <div class="suggestion-chip" data-query="How to set up the authentication flow?">
                                         <div class="suggestion-title">Authentication flow</div>
-                                        <div class="suggestion-preview">How to set up the authentication flow?</div>
+                                        <div class="suggestion-preview">"How to set up the authentication flow?"</div>
                                     </div>
                                     <div class="suggestion-chip" data-query="Who worked on the payment API?">
                                         <div class="suggestion-title">Payment API contributors</div>
-                                        <div class="suggestion-preview">Who worked on the payment API?</div>
+                                        <div class="suggestion-preview">"Who worked on the payment API?"</div>
                                     </div>
                                     <div class="suggestion-chip" data-query="Show me a PR review example">
                                         <div class="suggestion-title">PR review example</div>
-                                        <div class="suggestion-preview">Show me a PR review example</div>
+                                        <div class="suggestion-preview">"Show me a PR review example"</div>
                                     </div>
                                 </div>
                             </div>
@@ -228,15 +287,15 @@
                 <div class="suggestion-chips">
                     <div class="suggestion-chip" data-query="How to set up the authentication flow?">
                         <div class="suggestion-title">Authentication flow</div>
-                        <div class="suggestion-preview">How to set up the authentication flow?</div>
+                        <div class="suggestion-preview">"How to set up the authentication flow?"</div>
                     </div>
                     <div class="suggestion-chip" data-query="Who worked on the payment API?">
                         <div class="suggestion-title">Payment API contributors</div>
-                        <div class="suggestion-preview">Who worked on the payment API?</div>
+                        <div class="suggestion-preview">"Who worked on the payment API?"</div>
                     </div>
                     <div class="suggestion-chip" data-query="Show me a PR review example">
                         <div class="suggestion-title">PR review example</div>
-                        <div class="suggestion-preview">Show me a PR review example</div>
+                        <div class="suggestion-preview">"Show me a PR review example"</div>
                     </div>
                 </div>
             </div>

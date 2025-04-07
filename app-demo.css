@@ -88,8 +88,8 @@
 }
 
 .brain-logo {
-    width: 64px;
-    height: 64px;
+    width: 140px;
+    height: 140px;
     margin-bottom: 16px;
 }
 
@@ -100,7 +100,7 @@
 
 .demo-title {
     font-family: var(--demo-font);
-    font-weight: 500; /* Medium */
+    font-weight: 600;
     font-size: 28px;
     margin: 0;
     color: var(--text-color);

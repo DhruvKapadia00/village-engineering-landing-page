@@ -75,6 +75,8 @@
             margin-bottom: 15px;
             filter: none;
             box-shadow: none;
+            width: 150px; /* Smaller size than before */
+            height: auto; /* Maintain aspect ratio */
         }
         
         .app-demo-header .header-text {
@@ -84,23 +86,26 @@
         
         .app-demo-header .demo-title {
             font-family: 'Inter', sans-serif !important;
-            font-weight: 500 !important;
-            font-size: 38px !important;
+            font-weight: 600 !important;
+            font-size: 48px !important;
             line-height: 1.2 !important;
             margin-bottom: 10px;
             color: #111827;
             width: 70%;
             margin-left: auto;
             margin-right: auto;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         .app-demo-header .demo-subtitle {
             font-family: 'Inter', sans-serif;
-            font-weight: 400; /* Inter Regular */
+            font-weight: 500; /* Changed to Inter Medium (500) */
             font-size: 20px;
             line-height: 1.5;
             color: #6B7280;
-            width: 90%;
+            width: 60%; /* Reduced width to be less than the header (70%) */
             margin: 0 auto;
         }
         
@@ -162,7 +167,7 @@
                     <img src="images/Village-Gif.gif" alt="Village" class="brain-logo" data-component-name="<img />">
                     <div class="header-text">
                         <h3 class="demo-title">Information to action in seconds.</h3>
-                        <p class="demo-subtitle">Superhuman answers, analysis, and work across all your company's apps.</p>
+                        <p class="demo-subtitle">Coworker deeply understands your company. It answers, analyzes, and does work across all your connected apps and data.</p>
                     </div>
                 </div>
                 <div class="app-demo-content">
